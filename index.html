@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="منصة الخدمات العامة - بوابتك الشاملة للوصول إلى الخدمات الحكومية والبنكية والتعليمية والتأمينية بسهولة.">
+  <title>منصة الخدمات العامة</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <style>
+    html, body {height: 100%; margin: 0; display: flex; flex-direction: column;}
+    body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
+    body.light-mode {background-color:#ffffff;color:#000000;}
+    .navbar-dark-mode {background-color:#15294b!important;}
+    .navbar-light-mode {background-color:#334a6b!important;}
+    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
+    #mainTitle{margin-top:100px;}
+    footer{color:white;margin-top:auto;}
+    .footer-top{background-color:#15294b;padding:40px 0 10px 0;}
+    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
+    .service-card {border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.2);padding:20px;margin:15px;transition: all 0.3s;}
+    .light-mode .service-card {background:#fff;color:#000;}
+    .dark-mode .service-card { background-color: #1b335c; color: #f1f1f1; }
+    .service-card:hover {transform:translateY(-5px);}
+    .dark-mode .dropdown-menu { background-color: #102544; }
+    .dark-mode .dropdown-item {color:#fff;}
+    .dark-mode .dropdown-item:hover {background-color:#1f3a63;}
+    .search-bar {margin-top:20px; text-align:center;}
+    .search-bar input {width:60%; max-width:400px; padding:10px; border:1px solid #ccc; border-radius:8px;}
+    .search-bar button {padding:10px 20px; border:none; border-radius:8px; background-color:#15294b; color:white; margin-right:5px;}
+    .dark-mode .search-bar input {background-color:#1a2e4f; color:white; border:1px solid #334a6b;}
+    .news-section {margin-top:50px; padding:20px; border-radius:10px;}
+    .light-mode .news-section {background-color:#f8f9fa; color:#000;}
+    .dark-mode .news-section {background-color:#15294b; color:#fff;}
+    .dropdown-submenu {position: relative;}
+    .dropdown-submenu .dropdown-menu {top: 0; right: 100%; margin-top: 0; margin-right: .1rem; display: none; position: absolute;}
+    .dropdown-submenu:hover .dropdown-menu {display: block;}
+    .modal-header {display: flex; justify-content: space-between; flex-direction: row-reverse;}
+    body.dark-mode .modal-content {background-color: #15294b;}
+
+    :root {
+      --saudi-green: #00A651;
+      --saudi-dark: #0b1a2e;
+    }
+    .btn-primary {background-color: var(--saudi-green) !important; border-color: var(--saudi-green) !important;}
+    .btn-primary:hover {background-color: #008c44 !important;}
+    .service-card {border-right: 4px solid var(--saudi-green); border-left: none;}
+    .service-card:hover {box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3) !important;}
+
+    /* تأثير التوهج على صورة البوت */
+    #chatbot-icon img { border-radius: 50%; box-shadow: 0 0 15px #00A651, 0 0 30px rgba(0,166,81,0.6); border: 2px solid #00A651; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    #chatbot-icon img:hover { transform: scale(1.05); box-shadow: 0 0 25px #00ff80, 0 0 50px rgba(0,166,81,0.8); }
+
+    /* العنوان يظهر دائمًا وواضح */
+    #newsTitle{ text-align:right; font-weight:700; margin:0 0 10px 0; }
+    .dark-mode .news-section #newsTitle{ color:#fff; }
+    .light-mode .news-section #newsTitle{ color:#000; }
+
+    /* صندوق السلايدر */
+    .news-slider-container{ height:55px; overflow:hidden; position:relative; background:#fff; border-radius:8px; }
+    .news-slider{ display:flex; flex-direction:column; animation:slideUp 9s infinite; animation-delay:.5s; }
+    .news-slider .list-group-item{
+      height:55px; display:flex; align-items:center; justify-content:flex-start; padding:0 15px;
+      border:none; border-bottom:1px solid #ddd; background:#fff; color:#000; text-decoration:none;
+      font-size:15px; font-weight:500; transition:background .3s, color .3s;
+    }
+    .news-slider .list-group-item:hover{ background:#f5f5f5; color:#00A651; }
+
+    @keyframes slideUp{
+      0%,30%   { transform:translateY(0); }
+      33%,63%  { transform:translateY(-55px); }
+      66%,96%  { transform:translateY(-110px); }
+      100%     { transform:translateY(0); }
+    }
+
+    /* شات فقاعات */
+    #chatMessages {scroll-behavior: smooth;}
+    .bubble { max-width: 80%; padding: 8px 12px; border-radius: 15px; margin: 5px; line-height: 1.5; font-size: 15px; display: inline-block; word-wrap: break-word; }
+    .user { background-color: #00A651; color: white; align-self: flex-end; border-bottom-right-radius: 2px; float: right; clear: both; }
+    .bot { background-color: #1f3a63; color: #fff; align-self: flex-start; border-bottom-left-radius: 2px; float: left; clear: both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .bubble.bot { animation: fadeIn 0.6s ease; }
+    .chatbox-container { transition: background-color 0.3s ease; }
+    body.dark-mode .chatbox-container { background-color: #15294b; color: white; }
+    body.light-mode .chatbox-container { background-color: #f8f9fa; color: black; }
+    .chatbot-title { transition: color 0.3s ease; }
+    body.dark-mode .chatbot-title { color: #ffffff; }
+    body.light-mode .chatbot-title { color: #000000; }
+
+/* تصحيح لون نص نتائج البحث في الوضع الليلي */
+.dark-mode #searchResults p.text-muted {
+  color: #ddd !important;
+}
+
+.dark-mode #searchResults h5 {
+  color: #fff !important;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html" id="brandName">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:55px; display:block;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="menuList"></ul>
+        <div class="d-flex">
+          <button class="lang-switch" id="langSwitch">EN</button>
+          <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-fill">
+    <div class="container mt-5 pt-5 text-center">
+      <h1 class="mt-4" id="mainTitle">مرحباً بك في منصة الخدمات العامة</h1>
+      <p id="mainDesc">اختر نوع الخدمة التي ترغب بالوصول إليها من القائمة أعلاه</p>
+
+      <div class="search-bar">
+        <input type="text" placeholder="ابحث في الموقع..." id="searchInput">
+        <button id="searchBtn">بحث</button>
+      </div>
+      <div id="searchResults" class="container mt-3"></div>
+
+      <div class="row mt-5" id="contentCards">
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
+            <h4>الخدمات الحكومية</h4>
+            <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية</p>
+            <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fas fa-university fa-3x mb-3 text-primary"></i>
+            <h4>الخدمات البنكية</h4>
+            <p>تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.</p>
+            <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
+            <h4>التأمين والمطالبات</h4>
+            <p>تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.</p>
+            <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- row 2 -->
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fa-solid fa-graduation-cap fa-3x mb-3 text-primary"></i>
+            <h4>الخدمات التعليمية</h4>
+            <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.</p>
+            <button class="btn btn-primary" data-service="education" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fas fa-city fa-3x mb-3 text-primary"></i>
+            <h4>الخدمات البلدية</h4>
+            <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
+            <button class="btn btn-primary" data-service="municipal" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
+            <h4>الضمان الاجتماعي</h4>
+            <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
+            <button class="btn btn-primary" data-service="social" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم الأخبار -->
+      <div class="news-section text-start">
+        <h3 id="newsTitle">اخر الاخبار السعودية</h3>
+
+        <div class="news-slider-container">
+          <div class="news-slider">
+            <a href="https://www.spa.gov.sa/news/tags/4" target="_blank" class="list-group-item" id="newsItem1">
+              جلسة مجلس الوزراء برئاسة ولي العهد حول توطين المهن (4 نوفمبر 2025)
+            </a>
+            <a href="https://www.spa.gov.sa/news/tags/3?page=1" target="_blank" class="list-group-item" id="newsItem2">
+              مرسوم ملكي رقم (م/73) بتعيين مفتي عام جديد (7 نوفمبر 2025)
+            </a>
+            <a href="https://uqn.gov.sa/" target="_blank" class="list-group-item" id="newsItem3">
+              تعديل جدول المخالفات والعقوبات لنظام العمل (أحدث تحديث HRSD)
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-top text-center text-md-start" id="footerTop">
+      <div class="container">
+        <div class="row" id="footerContent"></div>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
+    </div>
+  </footer>
+
+  <!-- modal -->
+  <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#00A651; color:white;">
+          <h5 class="modal-title" id="detailsTitle"><span class="visually-hidden">تفاصيل الخدمة</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+        </div>
+        <div class="modal-body" id="modalDetailsBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- chatbot icon & window -->
+  <div id="chatbot-icon" style="position:fixed;bottom:25px;right:25px;cursor:pointer;z-index:1000;">
+    <img src="images/animebot.png" width="70" alt="Chat Icon">
+  </div>
+
+  <div id="chatbox" class="chatbox-container" style="display:none;position:fixed;bottom:110px;right:20px;width:330px;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.4);padding:10px;z-index:1000;">
+    <button id="closeChat" title="إغلاق" style="position:absolute;top:10px;left:10px;width:30px;height:30px;border-radius:50%;background-color:#00A651;color:white;border:none;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 6px rgba(0,0,0,0.3);transition:background 0.2s;">×</button>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;margin-top:10px;">
+      <img src="images/animebot.png" alt="بوت الخدمات" width="45" height="45" style="border-radius:50%;border:2px solid #00A651;">
+      <h5 class="chatbot-title mb-0">بوت الخدمات العامة 💬</h5>
+    </div>
+
+    <div id="chatMessages" style="height:280px;overflow-y:auto;background:#0b1a2e;padding:8px;border-radius:10px;margin-bottom:8px;"></div>
+    <input id="userInput" type="text" placeholder="اكتب سؤالك..." class="form-control mb-1">
+    <button id="sendBtn" class="btn btn-success w-100">إرسال</button>
+  </div>
+
+  <!-- inline small styles for chat bubbles -->
+  <style>
+    /* إضافي صغير لضمان ظهور جيد للفقاعات داخل نافذة الشات */
+    #chatMessages .bubble { max-width: 90%; }
+  </style>
+
+  <!-- سكربتات -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
