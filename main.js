@@ -207,25 +207,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const newsTitle = document.getElementById("newsTitle");
     const newsSlider = document.querySelector(".news-slider");
     const newsItems = [document.getElementById("newsItem1"), document.getElementById("newsItem2"), document.getElementById("newsItem3")];
-
+    
     if (lang === "en") {
       // نصوص عامة
       document.querySelectorAll('.service-card button').forEach(btn => btn.textContent = 'Continue');
       mainTitle.textContent = "Welcome to the Public Services Platform";
       mainDesc.textContent = "Choose the type of service you want from the menu above";
+      // English card titles (9 cards)
       if (cards[0]) cards[0].textContent = "Government Services";
       if (cards[1]) cards[1].textContent = "Banking Services";
-      if (cards[2]) cards[2].textContent = "Insurance & Claims";
-      if (cards[3]) cards[3].textContent = "Educational Services";
-      if (cards[4]) cards[4].textContent = "Municipal Services";
-      if (cards[5]) cards[5].textContent = "Social Security";
+      if (cards[2]) cards[2].textContent = "Insurance and Claims";
+      if (cards[3]) cards[3].textContent = "Ministry of Commerce Services";
+      if (cards[4]) cards[4].textContent = "Qiwa Platform Services";
+      if (cards[5]) cards[5].textContent = "Citizen Account Services";
+      if (cards[6]) cards[6].textContent = "Educational Services";
+      if (cards[7]) cards[7].textContent = "Municipal Services";
+      if (cards[8]) cards[8].textContent = "Social Security";
 
-      if (cardTexts[0]) cardTexts[0].textContent = "Civil Affairs, Passports, Traffic, Courts and Foreign Affairs services in one place.";
-      if (cardTexts[1]) cardTexts[1].textContent = "Access official Saudi bank links and perform your transactions easily.";
-      if (cardTexts[2]) cardTexts[2].textContent = "Information and links to submit claims at various insurance companies.";
-      if (cardTexts[3]) cardTexts[3].textContent = "Learn how to access the Noor platform, follow students, and explore educational e-services.";
-      if (cardTexts[4]) cardTexts[4].textContent = "Learn how to issue municipal licenses, submit reports, and file complaints.";
-      if (cardTexts[5]) cardTexts[5].textContent = "Learn how to register and check support and assistance programs.";
+
+      // English card descriptions
+      if (cardTexts[0]) cardTexts[0].textContent = "Learn how to fill out official government forms.";
+      if (cardTexts[1]) cardTexts[1].textContent = "Learn how to make deposits, print cards, and more.";
+      if (cardTexts[2]) cardTexts[2].textContent = "Learn how to choose the right insurance company and submit claims.";
+      if (cardTexts[3]) cardTexts[3].textContent = "Learn about Ministry of Commerce services such as issuing and updating commercial registrations.";
+      if (cardTexts[4]) cardTexts[4].textContent = "Main Qiwa services such as work permits, employee transfer, and contract attestation.";
+      if (cardTexts[5]) cardTexts[5].textContent = "How to register, update information, and check eligibility in the Citizen Account program.";
+      if (cardTexts[6]) cardTexts[6].textContent = "Learn how to access Noor, Madrasati, and other educational platforms.";
+      if (cardTexts[7]) cardTexts[7].textContent = "Learn how to issue municipal licenses and follow up transactions electronically.";
+      if (cardTexts[8]) cardTexts[8].textContent = "Learn how to register for Social Security and check your support status.";
+
 
       // أخبار
       if (newsTitle) newsTitle.textContent = "Latest Orders and Decisions";
@@ -241,9 +251,14 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.service-card button')[0]?.setAttribute('aria-label', 'View Government Services details');
       document.querySelectorAll('.service-card button')[1]?.setAttribute('aria-label', 'View Banking Services details');
       document.querySelectorAll('.service-card button')[2]?.setAttribute('aria-label', 'View Insurance & Claims details');
-      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'View Educational Services details');
-      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'View Municipal Services details');
-      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'View Social Security details');
+      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'View Ministry of Labor Services details');
+      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'View Qiwa Platform Services details');
+      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'View Citizen Account Services details');
+      document.querySelectorAll('.service-card button')[6]?.setAttribute('aria-label', 'View Educational Services details');
+      document.querySelectorAll('.service-card button')[7]?.setAttribute('aria-label', 'View Municipal Services details');
+      document.querySelectorAll('.service-card button')[8]?.setAttribute('aria-label', 'View Social Security details');
+
+
 
       // فوتر و منيو
       document.getElementById('menuList').innerHTML = menus.en;
@@ -252,21 +267,28 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       // عربي - نصوص أصلية
       document.querySelectorAll('.service-card button').forEach(btn => btn.textContent = 'للمتابعة');
-      if (mainTitle) mainTitle.textContent = "مرحباً بك في منصة الخدمات العامة";
-      if (mainDesc) mainDesc.textContent = "اختر نوع الخدمة التي ترغب بالوصول إليها من القائمة أعلاه";
-      if (cards[0]) cards[0].textContent = "الخدمات الحكومية";
-      if (cards[1]) cards[1].textContent = "الخدمات البنكية";
-      if (cards[2]) cards[2].textContent = "التأمين والمطالبات";
-      if (cards[3]) cards[3].textContent = "الخدمات التعليمية";
-      if (cards[4]) cards[4].textContent = "الخدمات البلدية";
-      if (cards[5]) cards[5].textContent = "الضمان الاجتماعي";
+     // عناوين الكروت (9 كروت)
+     if (cards[0]) cards[0].textContent = "الخدمات الحكومية";
+     if (cards[1]) cards[1].textContent = "الخدمات البنكية";
+     if (cards[2]) cards[2].textContent = "التأمين والمطالبات";
+     if (cards[3]) cards[3].textContent = "خدمات وزارة التجارة";
+     if (cards[4]) cards[4].textContent = "خدمات منصة قوى";
+     if (cards[5]) cards[5].textContent = "خدمات حساب المواطن";
+     if (cards[6]) cards[6].textContent = "الخدمات التعليمية";
+     if (cards[7]) cards[7].textContent = "الخدمات البلدية";
+     if (cards[8]) cards[8].textContent = "الضمان الاجتماعي";
 
-      if (cardTexts[0]) cardTexts[0].textContent = "تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.";
-      if (cardTexts[1]) cardTexts[1].textContent = "تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.";
-      if (cardTexts[2]) cardTexts[2].textContent = "تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.";
-      if (cardTexts[3]) cardTexts[3].textContent = "تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.";
-      if (cardTexts[4]) cardTexts[4].textContent = "تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.";
-      if (cardTexts[5]) cardTexts[5].textContent = "تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.";
+     // نصوص الكروت (الوصف تحت العنوان)
+     if (cardTexts[0]) cardTexts[0].textContent = "تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.";
+     if (cardTexts[1]) cardTexts[1].textContent = "تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.";
+     if (cardTexts[2]) cardTexts[2].textContent = "تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.";
+     if (cardTexts[3]) cardTexts[3].textContent = "تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.";
+     if (cardTexts[4]) cardTexts[4].textContent = "خطوات استخدام منصة قوى مثل تسديد الرسوم ونقل خدمات العامل وتوثيق العقود.";
+     if (cardTexts[5]) cardTexts[5].textContent = "شرح التسجيل في حساب المواطن وتحديث البيانات وحل المشاكل الشائعة.";
+     if (cardTexts[6]) cardTexts[6].textContent = "تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.";
+     if (cardTexts[7]) cardTexts[7].textContent = "تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.";
+     if (cardTexts[8]) cardTexts[8].textContent = "تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.";
+
 
       // أخبار عربي
       if (newsTitle) newsTitle.textContent = "اخر الاخبار الملكية";
@@ -282,9 +304,13 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.service-card button')[0]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات الحكومية');
       document.querySelectorAll('.service-card button')[1]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات البنكية');
       document.querySelectorAll('.service-card button')[2]?.setAttribute('aria-label', 'عرض تفاصيل التأمين والمطالبات');
-      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات التعليمية');
-      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات البلدية');
-      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'عرض تفاصيل الضمان الاجتماعي');
+      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'عرض تفاصيل خدمات وزارة العمل');
+      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'عرض تفاصيل خدمات منصة قوى');
+      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'عرض تفاصيل خدمات حساب المواطن');
+      document.querySelectorAll('.service-card button')[6]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات التعليمية');
+      document.querySelectorAll('.service-card button')[7]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات البلدية');
+      document.querySelectorAll('.service-card button')[8]?.setAttribute('aria-label', 'عرض تفاصيل الضمان الاجتماعي');
+
 
       document.getElementById('menuList').innerHTML = menus.ar;
       footerContent.innerHTML = footerText.ar;
@@ -372,6 +398,24 @@ document.addEventListener('DOMContentLoaded', function () {
         `
       },
       {
+        title: "خدمات وزارة التجارة",
+        body: `
+         <p>خدمات وزارة التجارة مثل إصدار السجل التجاري، تجديده، تعديله وشطبه.</p>
+       `
+      },
+      {
+        title: "خدمات منصة قوى",
+        body: `
+          <p>شرح أهم خدمات منصة قوى مثل إصدار وتجديد رخص العمل، نقل خدمات العامل، وتوثيق العقود.</p>
+       `
+      },
+      {
+        title: "خدمات حساب المواطن",
+        body: `
+          <p>خطوات التسجيل في حساب المواطن، إضافة التابعين، وتحديث البيانات والاستعلام عن الأهلية.</p>
+       `
+      },
+      {
         title: "الخدمات التعليمية",
         body: `
           <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.</p>
@@ -433,6 +477,24 @@ document.addEventListener('DOMContentLoaded', function () {
             <li><a href="Najm_website.html" class="text-decoration-none text-primary">Najm website and insurance claims</a></li>
           </ul>
         `
+      },
+      {
+        title: "Ministry of Commerce Services",
+        body: `
+           <p>Ministry of Commerce services such as issuing, renewing, modifying, and canceling commercial registrations.</p>
+       `
+      },
+      {
+        title: "Qiwa Platform Services",
+        body: `
+          <p>Main Qiwa services such as issuing work permits, transferring employees, and contract attestation.</p>
+       `
+      },
+      {
+        title: "Citizen Account Services",
+        body: `
+          <p>How to register, update information, and check eligibility in the Citizen Account program.</p>
+       `
       },
       {
         title: "Educational Services",

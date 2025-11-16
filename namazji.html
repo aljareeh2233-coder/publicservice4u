@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="نماذجي | النماذج الحكومية والبلدية والتعليمية والضمان الاجتماعي الجاهزة للطباعة والتعبئة في المملكة العربية السعودية">
+  <title>نماذجي | النماذج الرسمية السعودية الجاهزة</title>
+
+  <!-- تحميل Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- خط Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* تعريف الألوان المخصصة والخطوط لـ Tailwind */
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    
+    .search-svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    /* إخفاء رسالة عدم وجود نتائج في البداية */
+    .search-empty-message {
+        display: none;
+    }
+    /* تنسيقات النافذة المنبثقة (Modal) */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0.3s, opacity 0.3s;
+    }
+    .modal-overlay.open {
+        opacity: 1;
+        visibility: visible;
+    }
+    .modal-content {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        width: 90%;
+        max-width: 450px;
+        transform: translateY(-50px);
+        transition: transform 0.3s ease-out;
+    }
+    .modal-overlay.open .modal-content {
+        transform: translateY(0);
+    }
+
+    /* تنسيقات الأكورديون (الأقسام الحكومية) */
+    .gov-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 1.3s ease, opacity 0.9s ease;
+    }
+
+    .gov-content.open {
+      max-height: 2000px;
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    // إعدادات Tailwind المخصصة
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#3d553d', // أخضر زيتي
+            'primary-dark': '#2c3e2c',
+            'secondary': '#f8f4e3', // بيج مائل للأصفر
+            'card-bg': '#ffffff', // خلفية البطاقات (أبيض)
+            'card-hover': '#f9f7f0', // لون عند مرور الماوس
+            'pdf-red': '#D32F2F', // أحمر أدوبي
+            'word-blue': '#2196F3', // أزرق مايكروسوفت
+          },
+          fontFamily: {
+            'cairo': ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+
+    /**
+     * وظيفة البحث عن النماذج (Filter)
+     */
+    function filterForms() {
+      const searchInputEl = document.getElementById('search-input');
+      const searchInput = searchInputEl ? searchInputEl.value.toLowerCase().trim() : '';
+
+      const formItems = document.querySelectorAll('.form-item');
+      const searchEmptyMessage = document.getElementById('search-empty-message');
+      const categories = document.querySelectorAll('.category');
+
+      const govSections = document.querySelectorAll('.gov-section');
+      const govContents = document.querySelectorAll('.gov-content');
+
+      // المتغير الذي سيحفظ القسم الذي ظهرت منه نتيجة البحث
+      let lastMatchedGovSection = null;
+
+      // إذا خانة البحث فاضية → نرجع للحالة الافتراضية
+      if (searchInput === '') {
+        // إغلاق كل الأقسام
+        govContents.forEach(group => group.classList.remove('open'));
+
+        // فتح أول قسم فقط (الأحوال المدنية)
+        if (govContents[0]) {
+          govContents[0].classList.add('open');
+        }
+
+        // إظهار كل البطاقات
+        formItems.forEach(item => item.style.display = 'block');
+
+        // إظهار كل الفئات
+        categories.forEach(category => category.style.display = 'block');
+
+        // إخفاء رسالة لا نتائج
+        searchEmptyMessage.style.display = 'none';
+
+        return;
+      }
+
+      let formsFound = 0;
+
+      // فلترة البطاقات
+      formItems.forEach(item => {
+        const formName = item.querySelector('.form-name')?.textContent.toLowerCase() || '';
+        const formSource = item.querySelector('.form-source')?.textContent.toLowerCase() || '';
+        const isMatch = formName.includes(searchInput) || formSource.includes(searchInput);
+
+        const parentGovSection = item.closest('.gov-section');
+
+        if (isMatch) {
+          if (parentGovSection && !lastMatchedGovSection) {
+            lastMatchedGovSection = parentGovSection;
+          }
+          item.style.display = 'block';
+          formsFound++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // إغلاق كل الأقسام الحكومية
+      govContents.forEach(group => group.classList.remove('open'));
+
+      // إذا وُجدت نتيجة داخل قسم حكومي → افتحه
+      if (lastMatchedGovSection) {
+        const content = lastMatchedGovSection.querySelector('.gov-content');
+        if (content) {
+          content.classList.add('open');
+        }
+
+        // إخفاء بطاقات الأقسام الأخرى
+        govSections.forEach(sec => {
+          if (sec !== lastMatchedGovSection) {
+            sec.querySelectorAll('.form-item').forEach(item => item.style.display = 'none');
+          }
+        });
+
+        // حفظ القسم للرجوع لاحقًا
+        window._lastMatchedGovSection = lastMatchedGovSection;
+      }
+
+      // إظهار/إخفاء الفئات حسب النتائج
+      categories.forEach(category => {
+        const visibleItem = category.querySelector('.form-item[style*="display: block"]');
+        category.style.display = visibleItem ? 'block' : 'none';
+      });
+
+      // رسالة لا نتائج
+      searchEmptyMessage.style.display = formsFound === 0 ? 'block' : 'none';
+    }
+
+    /**
+     * وظيفة فتح النافذة المنبثقة للتحميل
+     */
+    function openDownloadModal(buttonElement) {
+      const item = buttonElement.closest('.form-item');
+      const formName = item.querySelector('.form-name').textContent;
+      const pdfLink = buttonElement.getAttribute('data-pdf-link');
+      const wordLink = buttonElement.getAttribute('data-word-link');
+      
+      const modal = document.getElementById('download-modal');
+      const modalTitle = document.getElementById('modal-form-name');
+      const pdfIconLink = document.getElementById('pdf-icon-link');
+      const wordIconLink = document.getElementById('word-icon-link');
+
+      modalTitle.textContent = formName;
+      
+      // تحديث روابط التحميل
+      pdfIconLink.href = pdfLink || '#';
+      wordIconLink.href = wordLink || '#';
+
+      // إظهار/إخفاء الخيارات
+      const pdfOption = document.getElementById('pdf-download-option');
+      const wordOption = document.getElementById('word-download-option');
+
+      pdfOption.classList.toggle('hidden', !pdfLink || pdfLink === '#');
+      wordOption.classList.toggle('hidden', !wordLink || wordLink === '#');
+
+      modal.classList.add('open');
+    }
+
+    /**
+     * وظيفة إغلاق النافذة المنبثقة
+     */
+    function closeDownloadModal() {
+      document.getElementById('download-modal').classList.remove('open');
+    }
+
+    // ربط الدوال بعناصر الصفحة
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+      
+      searchButton.addEventListener('click', filterForms);
+      searchInput.addEventListener('input', filterForms);
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') filterForms();
+      });
+      
+      // ربط أزرار التحميل
+      document.querySelectorAll('.form-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          openDownloadModal(button);
+        });
+      });
+
+      // إغلاق المودال
+      document.getElementById('close-modal-button').addEventListener('click', closeDownloadModal);
+      document.getElementById('download-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'download-modal') closeDownloadModal();
+      });
+
+      // الأكورديون: فتح قسم واحد فقط
+      const govSections = document.querySelectorAll('.gov-section');
+      govSections.forEach(section => {
+        const btn = section.querySelector('.gov-toggle');
+        const content = section.querySelector('.gov-content');
+
+        if (!btn || !content) return;
+
+        btn.addEventListener('click', () => {
+          const isOpen = content.classList.contains('open');
+
+          // إغلاق كل الأقسام
+          govSections.forEach(sec => {
+            const c = sec.querySelector('.gov-content');
+            if (c) c.classList.remove('open');
+          });
+
+          // فتح القسم الحالي إذا لم يكن مفتوحًا
+          if (!isOpen) {
+            content.classList.add('open');
+          }
+        });
+      });
+
+      // فتح أول قسم افتراضيًا
+      const firstContent = document.querySelector('.gov-content');
+      if (firstContent) {
+        firstContent.classList.add('open');
+      }
+    });
+    </script>
+</head>
+<body class="bg-secondary font-cairo" dir="rtl">
+
+  <!-- الشريط العلوي اللاصق -->
+  <header class="bg-primary text-white text-center p-3 shadow-md sticky top-0 z-50">
+    <h1 class="text-3xl font-extrabold tracking-wide">نماذجي</h1>
+    
+  <a href="#" 
+     class="absolute top-2 left-4 bg-white text-primary font-semibold px-3 py-1 rounded-lg shadow hover:bg-secondary transition-colors text-sm">
+    💚 ساهم في تطوير نماذجي
+  </a>
+  </header>
+
+  <main class="container mx-auto p-4 md:p-8">
+
+    <!-- 1. قسم البحث -->
+    <section class="mb-8 p-6 bg-white rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold text-center mb-4 text-primary">ابحث عن النموذج الذي تحتاجه</h2>
+      <p class="text-center text-gray-600 mb-6">ابحث باسم النموذج، الوزارة، أو الخدمة (مثل: تجديد جواز، رخصة بناء...)</p>
+      <div class="flex flex-col md:flex-row gap-2">
+        <input 
+          id="search-input"
+          type="text" 
+          placeholder="مثال: نموذج نقل طالب" 
+          class="flex-grow p-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary transition-colors"
+        >
+        <button id="search-button" class="bg-primary hover:bg-primary-dark text-white font-bold p-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors">
+          <svg class="search-svg text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L500 454.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+          </svg>
+          <span>بحث</span>
+        </button>
+      </div>
+    </section>
+    
+    <!-- رسالة عدم وجود نتائج -->
+    <div id="search-empty-message" class="search-empty-message bg-red-100 border-r-4 border-red-500 text-red-700 p-4 mb-8 rounded-lg shadow-md">
+        <p class="font-bold">عذراً!</p>
+        <p>لم يتم العثور على أي نماذج مطابقة لكلمة البحث. يرجى التأكد من كتابة الكلمة الصحيحة والمحاولة مرة أخرى.</p>
+    </div>
+
+    <!-- تنبيه PDF وتنويه المصدر -->
+<div class="bg-yellow-100 border-r-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded-lg shadow-md">
+  <p class="font-bold text-lg">تنبيه مهم</p>
+  
+  <!-- التنويه العام -->
+  <p class="text-sm leading-relaxed mt-1">
+    جميع النماذج المعروضة مأخوذة من المصادر الرسمية الحكومية ويتم تحديثها بشكل دوري لضمان دقتها.
+  </p>
+  
+  <!-- تنبيه PDF -->
+  <p class="text-sm leading-relaxed mt-2">
+    يتطلب عرض وتعديل وثائق PDF وجود برنامج  
+    <a href="https://get.adobe.com/reader/" target="_blank" class="font-semibold text-blue-700 underline hover:text-blue-900">
+      أدوبي أكروبات ريدر (Adobe Acrobat Reader)
+    </a>
+  </p>
+</div>
+
+
+    <!-- 2. قسم الفئات -->
+    <section id="forms-section">
+      <!-- الفئة 1: خدمات حكومية -->
+      <div class="category mb-8">
+        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">
+          الفئة: خدمات حكومية
+        </h3>
+
+        <!-- أقسام الأحوال، الجوازات، المرور -->
+        <div class="space-y-3 mb-4">
+
+          <!-- قسم الأحوال المدنية -->
+          <div class="gov-section" data-section="ahwal">
+            <button type="button" class="gov-toggle w-full text-right font-semibold py-2 px-3 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+              نماذج الأحوال المدنية
+            </button>
+            <div class="gov-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- بطاقات الأحوال -->
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج إصدار الهوية الوطنية</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> وكالة وزارة الداخلية للأحوال المدنية</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/a8e6545b-c3bd-4144-9d32-52626ebc1789/%D9%86%D9%85%D9%88%D8%B0%D8%AC+%D8%A7%D8%B5%D8%AF%D8%A7%D8%B1+%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9+%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%D8%A9.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a8e6545b-c3bd-4144-9d32-52626ebc1789-oFqTKrC"
+                   data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج إصدار سجل الأسرة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> الأحوال المدنية</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/954d13ab-89c3-4de1-986e-ae7b1444a096/%D8%AC%D8%AF%D8%A8%D8%AF+%D9%86%D9%85%D9%88%D8%B0%D8%AC+%D8%A7%D9%84%D9%85%D9%81%D9%82%D9%88%D8%AF.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-954d13ab-89c3-4de1-986e-ae7b1444a096-ot6.t59"
+                   data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج طلب تعديل / حذف / إضافة (58)</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> وكالة الأحوال المدنية</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/eb19722e-efb5-403a-8a19-7e6804ffe704/EditDeleteAddCorrectionApplication_n.pdf.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb19722e-efb5-403a-8a19-7e6804ffe704-oBDUFoh"
+                   data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج تسجيل واقعة ميلاد</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> الأحوال المدنية</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/478a3e6f-be86-44bf-a6ce-94273db78e8c/BirthApplication.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-478a3e6f-be86-44bf-a6ce-94273db78e8c-nWGl.xW"
+                   data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- قسم الجوازات -->
+          <div class="gov-section" data-section="jawazat">
+            <button type="button" class="gov-toggle w-full text-right font-semibold py-2 px-3 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+              نماذج الجوازات للمقيمين
+            </button>
+            <div class="gov-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">طلب تجديد إقامة (للمقيمين)</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> منصة أبشر - وزارة الداخلية</p>
+                  <p><strong>آخر تحديث:</strong> 05/11/2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/4/%D8%A3%D8%B3%D8%AA%D9%85%D8%A7%D8%B1%D8%A9%20%D8%B7%D9%84%D8%A8%201.pdf"
+                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/Ebeia460JsJBs2-bumZJepYB9nLQ12evNF9BGLiRe2gTFw?e=Ut3hHw">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج تعديل المعلومات الخاصة بالوافدين</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/7/%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%D8%A8%D8%A7%D9%84%D9%88%D8%A7%D9%81%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D9%84%D9%8A%D9%86.pdf"
+                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EX0CdEIL5ThGjZnO8j_awcQBwgrFMtKdBn0ECswc1iAodg?e=K9nvGS">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">طلب تمديد تأشيرة الزيارة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/1/%D8%B7%D9%84%D8%A8%20%D8%AA%D9%85%D8%AF%D9%8A%D8%AF%20%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9.pdf"
+                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EbV3F_Fzc81CpaPfwHyZDR0B53zFxdedM-Mg59QL7-tnTg?e=oOG81c">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">محضر فحص وتدقيق الوثائق للمقيمين</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+                  <p><strong>آخر تحديث:</strong> 2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/8/%D9%85%D8%AD%D8%B6%D8%B1%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%AF%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%20%D9%84%D9%84%D9%85%D9%82%D9%8A%D9%85%D9%8A%D9%86.pdf" data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- قسم المرور -->
+          <div class="gov-section" data-section="traffic">
+            <button type="button" class="gov-toggle w-full text-right font-semibold py-2 px-3 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+              نماذج المرور
+            </button>
+            <div class="gov-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج طلب تصدير مركبة لخارج المملكة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للمرور</p>
+                  <p><strong>آخر تحديث:</strong> 01/12/2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/c2d4c4804d4bb72d8acbdfbed7ca8368/export_vehicle_FP.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c2d4c4804d4bb72d8acbdfbed7ca8368-lDGtt3G"
+                   data-word-link="https://www.moi.gov.sa/wps/wcm/connect/c2d4c4804d4bb72d8acbdfbed7ca8368/export_vehicle_FP.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c2d4c4804d4bb72d8acbdfbed7ca8368-lDGtt3G">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج طلب تسجيل مركبة جديدة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المرور السعودي</p>
+                  <p><strong>آخر تحديث:</strong> 20/11/2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="#" data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج إسقاط (تشليح) مركبة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للمرور</p>
+                  <p><strong>آخر تحديث:</strong> 10/12/2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="#" data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+
+              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+                <h4 class="form-name text-lg font-bold mb-3">نموذج تفويض قيادة مركبة</h4>
+                <div class="text-sm text-gray-500 mb-4 space-y-1">
+                  <p class="form-source"><strong>المصدر:</strong> المرور السعودي</p>
+                  <p><strong>آخر تحديث:</strong> 15/12/2024</p>
+                </div>
+                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                   data-pdf-link="#" data-word-link="#">
+                  تحميل النموذج
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- الفئة 2: خدمات بلدية -->
+      <div class="category mb-8">
+        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: خدمات بلدية</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">نموذج بلاغ مخالفة (منصة بلدي)</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> وزارة الشؤون البلدية والقروية</p>
+              <p><strong>آخر تحديث:</strong> 15/08/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">طلب رخصة بناء (مخطط سكني)</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> أمانة المنطقة</p>
+              <p><strong>آخر تحديث:</strong> 01/10/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- الفئة 3: خدمات تعليمية -->
+      <div class="category mb-8">
+        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: خدمات تعليمية</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">نموذج نقل طالب (داخلي/خارجي)</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> وزارة التعليم - نظام نور</p>
+              <p><strong>آخر تحديث:</strong> 01/08/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">طلب إجازة/تفرغ دراسي (للموظفين)</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> نظام الموارد البشرية التعليمي</p>
+              <p><strong>آخر تحديث:</strong> 25/10/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- الفئة 4: الضمان الاجتماعي -->
+      <div class="category mb-8">
+        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: الضمان الاجتماعي والتمويل</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">نموذج طلب دعم مالي (الضمان)</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> وزارة الموارد البشرية (الضمان)</p>
+              <p><strong>آخر تحديث:</strong> 01/07/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">نموذج تحديث بيانات مستفيد</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> الضمان الاجتماعي المطور</p>
+              <p><strong>آخر تحديث:</strong> 15/06/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- الفئة 5: التجارة والاستثمار -->
+      <div class="category mb-8">
+        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: التجارة والاستثمار</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">تأسيس سجل تجاري لمؤسسة فردية</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> المركز السعودي للأعمال</p>
+              <p><strong>آخر تحديث:</strong> 05/11/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">طلب تعديل بيانات السجل التجاري</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> وزارة التجارة</p>
+              <p><strong>آخر تحديث:</strong> 01/11/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">طلب تسجيل أو تجديد علامة تجارية</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> الهيئة السعودية للملكية الفكرية</p>
+              <p><strong>آخر تحديث:</strong> 20/10/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="#" data-word-link="#">
+              تحميل النموذج
+            </a>
+          </div>
+          
+          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+            <h4 class="form-name text-lg font-bold mb-3">طلب تسجيل براءة اختراع</h4>
+            <div class="text-sm text-gray-500 mb-4 space-y-1">
+              <p class="form-source"><strong>المصدر:</strong> الهيئة السعودية للملكية الفكرية</p>
+              <p><strong>آخر تحديث:</strong> 15/11/2024</p>
+            </div>
+            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
+              تحميل النموذج
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- التذييل -->
+  <footer class="bg-black text-white text-center p-2 mt-8">
+    <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
+  </footer>
+  
+  <!-- النافذة المنبثقة للتحميل -->
+  <div id="download-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="flex justify-between items-start mb-6">
+        <h4 class="text-xl font-bold text-primary" id="modal-form-name">اسم النموذج</h4>
+        <button id="close-modal-button" class="text-gray-400 hover:text-gray-700 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <p class="text-gray-600 mb-8 text-center">يرجى اختيار صيغة الملف المناسبة للتحميل:</p>
+
+      <div class="flex justify-center gap-8">
+        <div id="pdf-download-option" class="flex flex-col items-center group">
+          <a href="#" id="pdf-icon-link" target="_blank" onclick="closeDownloadModal()" 
+             class="flex flex-col items-center justify-center p-4 w-24 h-24 rounded-lg border-2 border-pdf-red text-pdf-red hover:bg-red-50 transition-all cursor-pointer shadow-md group-hover:shadow-lg">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V224H184c-13.3 0-24 10.7-24 24v160c0 13.3 10.7 24 24 24H360c13.3 0 24-10.7 24-24V320H480c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H384V384H192c-35.3 0-64 28.7-64 64V512H64c-35.3 0-64-28.7-64-64V64zm384 16h64L320 0V160H384V80z"/>
+            </svg>
+            <span class="mt-2 text-pdf-red font-semibold text-base">PDF</span>
+          </a>
+          <p class="text-xs text-gray-500 mt-2">للطباعة السريعة</p>
+        </div>
+        
+        <div id="word-download-option" class="flex flex-col items-center group">
+          <a href="#" id="word-icon-link" target="_blank" onclick="closeDownloadModal()" 
+             class="flex flex-col items-center justify-center p-4 w-24 h-24 rounded-lg border-2 border-word-blue text-word-blue hover:bg-blue-50 transition-all cursor-pointer shadow-md group-hover:shadow-lg">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M480 405.3C480 431.2 458.7 453.3 432 453.3H80C53.25 453.3 32 431.2 32 405.3V106.7C32 80.75 53.25 58.67 80 58.67H224C240 58.67 256 65.81 268.8 77.37L359.8 159.2C372.6 170.8 388.7 177.6 405.3 177.6H480V405.3ZM453.3 192H405.3C388.7 192 372.6 184.4 359.8 172.8L268.8 90.95C256 79.4 240 72 224 72H80C61.13 72 48 85.13 48 104V408C48 426.9 61.13 440 80 440H432C450.9 440 464 426.9 464 408V192H453.3zM119.5 352H183.1C189.6 352 192.1 354.7 192.1 360.5C192.1 366.3 189.6 369.1 183.1 369.1H119.5C113 369.1 110.5 366.3 110.5 360.5C110.5 354.7 113 352 119.5 352zM119.5 304H214.5C221 304 223.5 306.7 223.5 312.5C223.5 318.3 221 321.1 214.5 321.1H119.5C113 321.1 110.5 318.3 110.5 312.5C110.5 306.7 113 304 119.5 304zM119.5 256H255.5C262 256 264.5 258.7 264.5 264.5C264.5 270.3 262 273.1 255.5 273.1H119.5C113 273.1 110.5 270.3 110.5 264.5C110.5 258.7 113 256 119.5 256zM119.5 208H286.5C293 208 295.5 210.7 295.5 216.5C295.5 222.3 293 225.1 286.5 225.1H119.5C113 225.1 110.5 222.3 110.5 216.5C110.5 210.7 113 208 119.5 208z"/>
+            </svg>
+            <span class="mt-2 text-word-blue font-semibold text-base">Word</span>
+          </a>
+          <p class="text-xs text-gray-500 mt-2">للتعديل والتعبئة</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

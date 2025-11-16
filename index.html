@@ -132,60 +132,115 @@
       </div>
       <div id="searchResults" class="container mt-3"></div>
 
-      <div class="row mt-5" id="contentCards">
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
-            <h4>الخدمات الحكومية</h4>
-            <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية</p>
-            <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fas fa-university fa-3x mb-3 text-primary"></i>
-            <h4>الخدمات البنكية</h4>
-            <p>تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.</p>
-            <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
-            <h4>التأمين والمطالبات</h4>
-            <p>تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.</p>
-            <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
-          </div>
-        </div>
-      </div>
+      <!-- زر صفحة نماذجي -->
+<div class="flex justify-center mt-6">
+  <a href="namazji.html"
+     class="flex items-center justify-center gap-2 text-white font-semibold rounded-xl transition-all duration-200"
+     style="
+       background-color: #00A651;
+       padding: 14px 24px;
+       width: 50%;
+       text-decoration: none;
+     "
+     onmouseover="this.style.backgroundColor='#00B85E'"
+     onmouseout="this.style.backgroundColor='#00A651'">
+     
+     📄
+     <span>نماذج الخدمات الحكومية</span>
 
-      <!-- row 2 -->
-      <div class="row mt-4">
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fa-solid fa-graduation-cap fa-3x mb-3 text-primary"></i>
-            <h4>الخدمات التعليمية</h4>
-            <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.</p>
-            <button class="btn btn-primary" data-service="education" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fas fa-city fa-3x mb-3 text-primary"></i>
-            <h4>الخدمات البلدية</h4>
-            <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
-            <button class="btn btn-primary" data-service="municipal" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card text-center">
-            <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
-            <h4>الضمان الاجتماعي</h4>
-            <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
-            <button class="btn btn-primary" data-service="social" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
-          </div>
-        </div>
-      </div>
+  </a>
+</div>
+
+        <!-- row 1 -->
+<div class="row mt-5" id="contentCards">
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
+      <h4>الخدمات الحكومية</h4>
+      <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-university fa-3x mb-3 text-primary"></i>
+      <h4>الخدمات البنكية</h4>
+      <p>تستطيع في هذه الخدمة التعلم طريقة الإيداع وطباعة البطاقات وغيرها.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
+      <h4>التأمين والمطالبات</h4>
+      <p>تستطيع في هذه الخدمة التعلم طريقة التأمين والاختيار ومطالبة الشركات.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
+    </div>
+  </div>
+</div>
+
+<!-- row 2: وزارة العمل – قوى – حساب المواطن -->
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-briefcase fa-3x mb-3 text-primary"></i>
+      <h4>خدمات وزارة العمل</h4>
+      <p>تعرف على خدمات وزارة العمل مثل نقل الخدمات، تحديث البيانات وغيرها.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات وزارة العمل">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-users-cog fa-3x mb-3 text-primary"></i>
+      <h4>خدمات منصة قوى</h4>
+      <p>خطوات منصة قوى مثل تسديد الرسوم، نقل خدمات العامل، وتوثيق العقود.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات منصة قوى">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-hand-holding-usd fa-3x mb-3 text-primary"></i>
+      <h4>خدمات حساب المواطن</h4>
+      <p>شرح التسجيل، إضافة تابع، تحديث البيانات، وحل المشكلات الشائعة.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات حساب المواطن">للمتابعة</button>
+    </div>
+  </div>
+</div>
+
+<!-- row 3 -->
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-graduation-cap fa-3x mb-3 text-primary"></i>
+      <h4>الخدمات التعليمية</h4>
+      <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-city fa-3x mb-3 text-primary"></i>
+      <h4>الخدمات البلدية</h4>
+      <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="service-card text-center">
+      <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
+      <h4>الضمان الاجتماعي</h4>
+      <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
+      <button class="btn btn-primary" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
+    </div>
+  </div>
+</div>
+
 
       <!-- قسم الأخبار -->
       <div class="news-section text-start">
