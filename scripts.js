@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
           contactHeaders[1].innerHTML = '<i class="fas fa-phone me-2"></i>Phone';
           contactParagraphs[1].textContent = '+966577478383';
           contactHeaders[2].innerHTML = '<i class="fas fa-envelope me-2"></i>Email';
-          contactParagraphs[2].textContent = 'support@publicservices.sa';
+          contactParagraphs[2].textContent = 'info@publicservice4u.com';
           contactHeaders[3].innerHTML = '<i class="fas fa-clock me-2"></i>Working Hours';
           contactParagraphs[3].textContent = 'Sunday to Thursday, 8 AM - 4 PM';
         } else {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
           contactHeaders[1].innerHTML = '<i class="fas fa-phone me-2"></i>الهاتف';
           contactParagraphs[1].textContent = '+966577478383';
           contactHeaders[2].innerHTML = '<i class="fas fa-envelope me-2"></i>الإيميل';
-          contactParagraphs[2].textContent = 'support@publicservices.sa';
+          contactParagraphs[2].textContent = 'info@publicservice4u.com';
           contactHeaders[3].innerHTML = '<i class="fas fa-clock me-2"></i>ساعات العمل';
           contactParagraphs[3].textContent = 'من الأحد إلى الخميس، 8 صباحاً - 4 مساءً';
         }
@@ -627,7 +627,7 @@ else if (page.includes('faq.html')) {
         accordionBodies[6].textContent = "Yes, all links are official, and the website uses HTTPS and best security practices.";
 
         accordionButtons[7].textContent = "How do I contact support?";
-        accordionBodies[7].textContent = 'Use the “Contact Us” page in the menu or email <a href="mailto:support@publicservices.sa">support@publicservices.sa</a>.';
+        accordionBodies[7].textContent = 'Use the “Contact Us” page in the menu or email <a href="mailto:info@publicservice4u.com">info@publicservice4u.com</a>.';
       } else {
         accordionButtons[0].textContent = "كيف أحجز موعد في الأحوال المدنية؟";
         accordionBodies[0].innerHTML = 'ادخل على أبشر، اختر "حجز موعد"، واتبع الخطوات. الرابط: <a href="https://www.absher.sa" target="_blank">أبشر</a>.';
@@ -651,7 +651,7 @@ else if (page.includes('faq.html')) {
         accordionBodies[6].textContent = "نعم، كل الروابط رسمية، ونستخدم HTTPS وأفضل ممارسات الأمان.";
 
         accordionButtons[7].textContent = "كيف أتواصل مع الدعم؟";
-        accordionBodies[7].innerHTML = 'استخدم صفحة "اتصل بنا" في المنيو، أو أرسل إيميل إلى <a href="mailto:support@publicservices.sa">support@publicservices.sa</a>.';
+        accordionBodies[7].innerHTML = 'استخدم صفحة "اتصل بنا" في المنيو، أو أرسل إيميل إلى <a href="mailto:info@publicservice4u.com">info@publicservice4u.com</a>.';
       }
     }
   }
@@ -682,7 +682,7 @@ else if (page.includes('privacy.html')) {
     if (accordionButtons.length >= 8 && accordionBodies.length >= 8) {
       if (lang === 'en') {
         accordionButtons[0].textContent = "1. Introduction";
-        accordionBodies[0].textContent = "The Public Services platform (publicservices.sa) is committed to protecting user privacy according to the Saudi PDPL and international standards like GDPR. This policy applies to all visitors and users.";
+        accordionBodies[0].textContent = "The Public Services platform (publicservice4u.com) is committed to protecting user privacy according to the Saudi PDPL and international standards like GDPR. This policy applies to all visitors and users.";
 
         accordionButtons[1].textContent = "2. Data Collection";
         accordionBodies[1].textContent = "We collect personal data such as name and email only when you contact us. We do not collect sensitive data and use cookies to improve the experience (you can disable them in your browser). We never sell or share data with third parties without consent.";
@@ -691,7 +691,7 @@ else if (page.includes('privacy.html')) {
         accordionBodies[2].textContent = "We use data to respond to your inquiries, improve services, and send updates (you can unsubscribe). Data is retained for 2 years, then deleted.";
 
         accordionButtons[3].textContent = "4. Your Rights";
-        accordionBodies[3].textContent = "You have the right to access, modify, delete, or object to data processing. Contact us via support@publicservices.sa to exercise your rights.";
+        accordionBodies[3].textContent = "You have the right to access, modify, delete, or object to data processing. Contact us via info@publicservice4u.com to exercise your rights.";
 
         accordionButtons[4].textContent = "5. Terms of Use";
         accordionBodies[4].textContent = "You must be over 18 to use the website. Do not use it for illegal purposes. We are not responsible for external links, and terms may change without prior notice.";
@@ -703,10 +703,10 @@ else if (page.includes('privacy.html')) {
         accordionBodies[6].textContent = "We update this policy as needed and publish changes here. Last updated: November 1, 2025.";
 
         accordionButtons[7].textContent = "8. Contact";
-        accordionBodies[7].innerHTML = 'For inquiries, contact us at <a href="mailto:support@publicservices.sa">support@publicservices.sa</a> or via the “Contact Us” page.';
+        accordionBodies[7].innerHTML = 'For inquiries, contact us at <a href="mailto:info@publicservice4u.com">info@publicservice4u.com</a> or via the “Contact Us” page.';
       } else {
         accordionButtons[0].textContent = "1. مقدمة";
-        accordionBodies[0].textContent = "منصة الخدمات العامة (publicservices.sa) ملتزمة بحماية خصوصية المستخدمين وفقاً لقانون حماية البيانات الشخصية في المملكة العربية السعودية (PDPL) ومعايير عالمية مثل GDPR. هذه السياسة تنطبق على جميع الزوار والمستخدمين.";
+        accordionBodies[0].textContent = "منصة الخدمات العامة (publicservice4u.com) ملتزمة بحماية خصوصية المستخدمين وفقاً لقانون حماية البيانات الشخصية في المملكة العربية السعودية (PDPL) ومعايير عالمية مثل GDPR. هذه السياسة تنطبق على جميع الزوار والمستخدمين.";
 
         accordionButtons[1].textContent = "2. جمع البيانات";
         accordionBodies[1].textContent = "نجمع البيانات الشخصية مثل الاسم والإيميل فقط عند الاتصال بنا. لا نجمع بيانات حساسة، ونستخدم cookies لتحسين التجربة (يمكنك تعطيلها في المتصفح). لا نبيع أو نشارك بياناتك مع أطراف ثالثة دون موافقة.";
@@ -715,7 +715,7 @@ else if (page.includes('privacy.html')) {
         accordionBodies[2].textContent = "نستخدم البيانات للرد على استفساراتك، تحسين الخدمات، وإرسال تحديثات (يمكنك إلغاء الاشتراك). نحتفظ بالبيانات لمدة 2 سنة، ثم نحذفها.";
 
         accordionButtons[3].textContent = "4. حقوقك";
-        accordionBodies[3].textContent = "لديك الحق في الوصول، التعديل، الحذف، أو الاعتراض على معالجة بياناتك. اتصل بنا عبر support@publicservices.sa لممارسة حقوقك.";
+        accordionBodies[3].textContent = "لديك الحق في الوصول، التعديل، الحذف، أو الاعتراض على معالجة بياناتك. اتصل بنا عبر info@publicservice4u.com لممارسة حقوقك.";
 
         accordionButtons[4].textContent = "5. شروط الاستخدام";
         accordionBodies[4].textContent = "يجب أن تكون فوق 18 عاماً للاستخدام. لا تستخدم الموقع لأغراض غير قانونية. نحن غير مسؤولين عن الروابط الخارجية. يحق لنا تعديل الشروط دون إشعار.";
@@ -727,7 +727,7 @@ else if (page.includes('privacy.html')) {
         accordionBodies[6].textContent = "نعدّل السياسة حسب الحاجة، وننشر التغييرات هنا. آخر تحديث: 1 نوفمبر 2025.";
 
         accordionButtons[7].textContent = "8. الاتصال";
-        accordionBodies[7].innerHTML = 'لأي استفسار، اتصل بنا عبر <a href="mailto:support@publicservices.sa">support@publicservices.sa</a> أو صفحة "اتصل بنا".';
+        accordionBodies[7].innerHTML = 'لأي استفسار، اتصل بنا عبر <a href="mailto:info@publicservice4u.com">info@publicservice4u.com</a> أو صفحة "اتصل بنا".';
       }
     }
   }
@@ -739,8 +739,10 @@ else if (page.includes('privacy.html')) {
 // 📞 CONTACT PAGE
 // ==========================================================
 else if (page.includes('contact.html')) {
+  // 1. تعريف المتغيرات (ملاحظة: تم إضافة formTitle هنا)
   const mainTitle = document.getElementById('mainTitle');
   const mainDesc = document.getElementById('mainDesc');
+  const formTitle = document.getElementById('formTitle'); // <== متغيّر جديد لترجمة "أرسل رسالتك"
   const formLabels = document.querySelectorAll('.form-label');
   const inputs = document.querySelectorAll('.form-control');
   const sendButton = document.querySelector('button[type="submit"]');
@@ -748,7 +750,8 @@ else if (page.includes('contact.html')) {
   const contactInfoParagraphs = document.querySelectorAll('.contact-info p');
 
   function updateContactText(lang) {
-setTimeout(() => { document.title = document.title; }, 100);
+    // تم حذف setTimeout غير الضروري
+    
     // ✅ تحديث عنوان التبويب (Title)
     if (lang === 'en') {
       document.title = "Contact Us - Public Services Platform";
@@ -760,6 +763,9 @@ setTimeout(() => { document.title = document.title; }, 100);
     if (mainDesc) mainDesc.textContent = lang === 'en'
       ? "We are happy to serve you and answer your inquiries. You can reach us using the form below or through the following information."
       : "نسعد بخدمتك والإجابة على استفساراتك. يمكنك التواصل معنا عبر النموذج أدناه أو باستخدام المعلومات التالية.";
+      
+    // ✅ ترجمة عنوان النموذج (يحتاج إلى id="formTitle" في HTML)
+    if (formTitle) formTitle.textContent = lang === 'en' ? "Send Your Message" : "أرسل رسالتك";
 
     if (formLabels.length >= 4 && inputs.length >= 4) {
       if (lang === 'en') {
@@ -777,6 +783,7 @@ setTimeout(() => { document.title = document.title; }, 100);
 
         sendButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Send Message';
 
+        // ترجمة 4 عناصر اتصال (العنوان، الهاتف، الإيميل، ساعات العمل)
         contactHeaders[0].innerHTML = '<i class="fas fa-map-marker-alt me-2"></i>Address';
         contactHeaders[1].innerHTML = '<i class="fas fa-phone me-2"></i>Phone';
         contactHeaders[2].innerHTML = '<i class="fas fa-envelope me-2"></i>Email';
@@ -784,7 +791,7 @@ setTimeout(() => { document.title = document.title; }, 100);
 
         contactInfoParagraphs[0].textContent = "Jeddah, Saudi Arabia";
         contactInfoParagraphs[1].textContent = "+966577478383";
-        contactInfoParagraphs[2].textContent = "support@publicservices.sa";
+        contactInfoParagraphs[2].textContent = "info@publicservice4u.com";
         contactInfoParagraphs[3].textContent = "Sunday to Thursday, 8 AM - 4 PM";
       } else {
         formLabels[0].textContent = "الاسم الكامل";
@@ -801,6 +808,7 @@ setTimeout(() => { document.title = document.title; }, 100);
 
         sendButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> إرسال الرسالة';
 
+        // ترجمة 4 عناصر اتصال (العنوان، الهاتف، الإيميل، ساعات العمل)
         contactHeaders[0].innerHTML = '<i class="fas fa-map-marker-alt me-2"></i>العنوان';
         contactHeaders[1].innerHTML = '<i class="fas fa-phone me-2"></i>الهاتف';
         contactHeaders[2].innerHTML = '<i class="fas fa-envelope me-2"></i>الإيميل';
@@ -814,7 +822,7 @@ setTimeout(() => { document.title = document.title; }, 100);
     }
   }
 
-  updateContactText(savedLang);
+  updateContactText(savedLang); 
 }
 
 // ==========================================================

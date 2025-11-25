@@ -278,19 +278,42 @@
         firstContent.classList.add('open');
       }
     });
+    
+    </script>
+
+    <script>
+  function openSupportModal() {
+    document.getElementById('support-modal').classList.add('open');
+  }
+
+  function closeSupportModal() {
+    document.getElementById('support-modal').classList.remove('open');
+  }
     </script>
 </head>
 <body class="bg-secondary font-cairo" dir="rtl">
 
   <!-- الشريط العلوي اللاصق -->
-  <header class="bg-primary text-white text-center p-3 shadow-md sticky top-0 z-50">
-    <h1 class="text-3xl font-extrabold tracking-wide">نماذجي</h1>
-    
-  <a href="#" 
-     class="absolute top-2 left-4 bg-white text-primary font-semibold px-3 py-1 rounded-lg shadow hover:bg-secondary transition-colors text-sm">
-    💚 ساهم في تطوير نماذجي
+ <header class="bg-primary text-white p-3 shadow-md sticky top-0 z-50 relative">
+
+  <!-- زر الرئيسية (يمين الهيدر) -->
+  <a href="index.html"
+     class="absolute right-4 top-1/2 -translate-y-1/2 text-white font-bold text-lg hover:underline">
+    الرئيسية
   </a>
-  </header>
+
+  <!-- عنوان الموقع (بالمنتصف) -->
+  <h1 class="text-3xl font-extrabold tracking-wide text-center">
+    نماذجي
+  </h1>
+
+  <!-- زر التبرع (يسار الهيدر) -->
+  <a href="#" 
+   onclick="openSupportModal()" 
+   class="absolute top-1/2 -translate-y-1/2 left-4 bg-white text-primary font-semibold px-3 py-1 rounded-lg shadow hover:bg-secondary transition-colors text-sm">
+  💚 ساهم في تطوير نماذجي
+</a>
+</header>
 
   <main class="container mx-auto p-4 md:p-8">
 
@@ -301,7 +324,8 @@
       <div class="flex flex-col md:flex-row gap-2">
         <input 
           id="search-input"
-          type="text" 
+          type="text"
+          autocomplete="off"
           placeholder="مثال: نموذج نقل طالب" 
           class="flex-grow p-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary transition-colors"
         >
@@ -412,63 +436,85 @@
           </div>
 
           <!-- قسم الجوازات -->
-          <div class="gov-section" data-section="jawazat">
-            <button type="button" class="gov-toggle w-full text-right font-semibold py-2 px-3 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-              نماذج الجوازات للمقيمين
-            </button>
-            <div class="gov-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-                <h4 class="form-name text-lg font-bold mb-3">طلب تجديد إقامة (للمقيمين)</h4>
-                <div class="text-sm text-gray-500 mb-4 space-y-1">
-                  <p class="form-source"><strong>المصدر:</strong> منصة أبشر - وزارة الداخلية</p>
-                  <p><strong>آخر تحديث:</strong> 05/11/2024</p>
-                </div>
-                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/4/%D8%A3%D8%B3%D8%AA%D9%85%D8%A7%D8%B1%D8%A9%20%D8%B7%D9%84%D8%A8%201.pdf"
-                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/Ebeia460JsJBs2-bumZJepYB9nLQ12evNF9BGLiRe2gTFw?e=Ut3hHw">
-                  تحميل النموذج
-                </a>
-              </div>
+<div class="gov-section" data-section="jawazat">
+  <button type="button" class="gov-toggle w-full text-right font-semibold py-2 px-3 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+    نماذج الجوازات للمقيمين
+  </button>
 
-              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-                <h4 class="form-name text-lg font-bold mb-3">نموذج تعديل المعلومات الخاصة بالوافدين</h4>
-                <div class="text-sm text-gray-500 mb-4 space-y-1">
-                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
-                  <p><strong>آخر تحديث:</strong> 2024</p>
-                </div>
-                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/7/%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%D8%A8%D8%A7%D9%84%D9%88%D8%A7%D9%81%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D9%84%D9%8A%D9%86.pdf"
-                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EX0CdEIL5ThGjZnO8j_awcQBwgrFMtKdBn0ECswc1iAodg?e=K9nvGS">
-                  تحميل النموذج
-                </a>
-              </div>
+  <div class="gov-content mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-                <h4 class="form-name text-lg font-bold mb-3">طلب تمديد تأشيرة الزيارة</h4>
-                <div class="text-sm text-gray-500 mb-4 space-y-1">
-                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
-                  <p><strong>آخر تحديث:</strong> 2024</p>
-                </div>
-                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/1/%D8%B7%D9%84%D8%A8%20%D8%AA%D9%85%D8%AF%D9%8A%D8%AF%20%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9.pdf"
-                   data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EbV3F_Fzc81CpaPfwHyZDR0B53zFxdedM-Mg59QL7-tnTg?e=oOG81c">
-                  تحميل النموذج
-                </a>
-              </div>
+    <!-- بطاقة: طلب تجديد إقامة -->
+    <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
 
-              <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-                <h4 class="form-name text-lg font-bold mb-3">محضر فحص وتدقيق الوثائق للمقيمين</h4>
-                <div class="text-sm text-gray-500 mb-4 space-y-1">
-                  <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
-                  <p><strong>آخر تحديث:</strong> 2024</p>
-                </div>
-                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/8/%D9%85%D8%AD%D8%B6%D8%B1%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%AF%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%20%D9%84%D9%84%D9%85%D9%82%D9%8A%D9%85%D9%8A%D9%86.pdf" data-word-link="#">
-                  تحميل النموذج
-                </a>
-              </div>
-            </div>
-          </div>
+      <h4 class="form-name text-lg font-bold mb-3">طلب تجديد إقامة (للمقيمين)</h4>
+
+      <div class="text-sm text-gray-500 mb-4 space-y-1">
+        <p class="form-source"><strong>المصدر:</strong> منصة أبشر - وزارة الداخلية</p>
+        <p><strong>آخر تحديث:</strong> 05/11/2024</p>
+      </div>
+
+      <a href="#"
+        class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+        data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/4/%D8%A3%D8%B3%D8%AA%D9%85%D8%A7%D8%B1%D8%A9%20%D8%B7%D9%84%D8%A8%201.pdf"
+        data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/Ebeia460JsJBs2-bumZJepYB9nLQ12evNF9BGLiRe2gTFw?e=Ut3hHw">
+        تحميل النموذج
+      </a>
+
+      <a href="pdf-viewer.html?file=jawazat_form.pdf&title=نموذج الجوازات"
+        class="mt-3 bg-primary text-white font-semibold py-2 px-4 rounded-lg w-full text-center block hover:bg-primary-dark transition">
+        👁‍🗨 عرض النموذج التفاعلي
+      </a>
+
+    </div>
+
+    <!-- بطاقة 2: تعديل المعلومات -->
+    <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+      <h4 class="form-name text-lg font-bold mb-3">نموذج تعديل المعلومات الخاصة بالوافدين</h4>
+      <div class="text-sm text-gray-500 mb-4 space-y-1">
+        <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+        <p><strong>آخر تحديث:</strong> 2024</p>
+      </div>
+      <a href="#"
+        class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+        data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/7/%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%D8%A8%D8%A7%D9%84%D9%88%D8%A7%D9%81%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D9%84%D9%8A%D9%86.pdf"
+        data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EX0CdEIL5ThGjZnO8j_awcQBwgrFMtKdBn0ECswc1iAodg?e=K9nvGS">
+        تحميل النموذج
+      </a>
+    </div>
+
+    <!-- بطاقة 3: تمديد الزيارة -->
+    <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+      <h4 class="form-name text-lg font-bold mb-3">طلب تمديد تأشيرة الزيارة</h4>
+      <div class="text-sm text-gray-500 mb-4 space-y-1">
+        <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+        <p><strong>آخر تحديث:</strong> 2024</p>
+      </div>
+      <a href="#"
+        class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+        data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/1/%D8%B7%D9%84%D8%A8%20%D8%AA%D9%85%D8%AF%D9%8A%D8%AF%20%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9.pdf"
+        data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EbV3F_Fzc81CpaPfwHyZDR0B53zFxdedM-Mg59QL7-tnTg?e=oOG81c">
+        تحميل النموذج
+      </a>
+    </div>
+
+    <!-- بطاقة 4: محضر فحص الوثائق -->
+    <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
+      <h4 class="form-name text-lg font-bold mb-3">محضر فحص وتدقيق الوثائق للمقيمين</h4>
+      <div class="text-sm text-gray-500 mb-4 space-y-1">
+        <p class="form-source"><strong>المصدر:</strong> المديرية العامة للجوازات</p>
+        <p><strong>آخر تحديث:</strong> 2024</p>
+      </div>
+      <a href="#"
+        class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+        data-pdf-link="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Lists/Forms/Attachments/8/%D9%85%D8%AD%D8%B6%D8%B1%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%AF%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%20%D9%84%D9%84%D9%85%D9%82%D9%8A%D9%85%D9%8A%D9%86.pdf"
+        data-word-link="#">
+        تحميل النموذج
+      </a>
+    </div>
+
+  </div>
+</div>
+
 
           <!-- قسم المرور -->
           <div class="gov-section" data-section="traffic">
@@ -496,7 +542,8 @@
                   <p><strong>آخر تحديث:</strong> 20/11/2024</p>
                 </div>
                 <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="#" data-word-link="#">
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/4da0d8004d4bb79d8d42ddbed7ca8368/Traffic_Registermotorvehicle_FP.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-4da0d8004d4bb79d8d42ddbed7ca8368-lDGqrsH"
+                   data-word-link="#">
                   تحميل النموذج
                 </a>
               </div>
@@ -508,7 +555,8 @@
                   <p><strong>آخر تحديث:</strong> 10/12/2024</p>
                 </div>
                 <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="#" data-word-link="#">
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/9457e9004d4bb72f8ad8dfbed7ca8368/scrap_vehicle_FP.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9457e9004d4bb72f8ad8dfbed7ca8368-lDGt-aE"
+                   data-word-link="#">
                   تحميل النموذج
                 </a>
               </div>
@@ -520,7 +568,8 @@
                   <p><strong>آخر تحديث:</strong> 15/12/2024</p>
                 </div>
                 <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="#" data-word-link="#">
+                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/b86672ee-564d-4db6-bfef-490f3b24a2a4/%D9%82%D9%8A%D8%A7%D8%AF%D8%A9+%D9%85%D8%B1%D9%83%D8%A8%D8%A9.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-b86672ee-564d-4db6-bfef-490f3b24a2a4-l7e5.UP"
+                   data-word-link="#">
                   تحميل النموذج
                 </a>
               </div>
@@ -571,7 +620,8 @@
               <p><strong>آخر تحديث:</strong> 01/08/2024</p>
             </div>
             <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
+               data-pdf-link="https://1drv.ms/b/c/dfaa6275c73429a4/ESAOZGNezXNIoNznzLazRA4Bu342akQ1oo2F_tpRF5aGEA?e=okegqg"
+               data-word-link="https://placeholder.com/word/link">
               تحميل النموذج
             </a>
           </div>
@@ -583,7 +633,8 @@
               <p><strong>آخر تحديث:</strong> 25/10/2024</p>
             </div>
             <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
+               data-pdf-link="#"
+               data-word-link="https://1drv.ms/w/c/dfaa6275c73429a4/EY-524Asb1VGn7sMstbb9zUBvVdlJ5DmXW7tcE6xIkcdhQ?e=82G5px">
               تحميل النموذج
             </a>
           </div>
@@ -718,9 +769,35 @@
           </a>
           <p class="text-xs text-gray-500 mt-2">للتعديل والتعبئة</p>
         </div>
+       </div>
       </div>
-    </div>
   </div>
+
+<!-- نافذة التبرع -->
+<div id="support-modal" class="modal-overlay support-modal">
+  <div class="modal-content max-w-sm text-center">
+
+    <!-- زر الإغلاق -->
+    <button onclick="closeSupportModal()" class="text-gray-400 hover:text-gray-600 absolute top-4 left-4">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- عنوان -->
+    <h3 class="text-xl font-bold text-primary mb-4">رمز الدعم عبر الراجحي</h3>
+
+    <!-- صورة QR -->
+    <img src="images/QR_Code.jpeg" 
+         alt="QR Al Rajhi" 
+         class="mx-auto w-56 h-56 rounded-lg shadow-lg mb-4">
+
+    <!-- الاسم -->
+    <p class="text-lg font-bold text-gray-700 tracking-wide">يساهم دعمكم في استمرار تطوير نماذجي</p>
+
+  </div>
+</div>
 
 </body>
 </html>
