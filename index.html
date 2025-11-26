@@ -15,30 +15,47 @@
     html, body {height: 100%; margin: 0; display: flex; flex-direction: column;}
     body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
     body.light-mode {background-color:#ffffff;color:#000000;}
+    
+    /* تنسيقات النافبار */
     .navbar-dark-mode {
-  background-color:#15294b!important;
-  color: white !important; /* لضمان ظهور النص باللون الأبيض */
-}
-.navbar-light-mode {
-  background-color:#334a6b!important;
-  color: white !important; /* لضمان ظهور النص باللون الأبيض */
-}
+      background-color:#15294b!important;
+      color: white !important;
+    }
+    .navbar-light-mode {
+      background-color:#334a6b!important;
+      color: white !important;
+    }
+    .navbar-dark-mode .nav-link, 
+    .navbar-dark-mode .dropdown-toggle {
+        color: white !important;
+    }
+    .navbar-light-mode .nav-link,
+    .navbar-light-mode .dropdown-toggle {
+        color: white !important;
+    }
 
-/* وأضف هذا أيضاً إذا كانت الروابط لا تزال داكنة */
-.navbar-dark-mode .nav-link, 
-.navbar-dark-mode .dropdown-toggle {
-    color: white !important;
-}
+    /* --- إصلاح زر القائمة (الهامبرغر) للوضع الليلي --- */
+    .navbar-dark-mode .navbar-toggler {
+      border-color: rgba(255,255,255,0.5) !important;
+    }
+    .navbar-dark-mode .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    /* --- إصلاح زر القائمة للوضع النهاري (ليظهر بالأبيض على الخلفية الزرقاء) --- */
+    .navbar-light-mode .navbar-toggler {
+      border-color: rgba(255,255,255,0.5) !important;
+    }
 
-.navbar-light-mode .nav-link,
-.navbar-light-mode .dropdown-toggle {
-    color: white !important;
-}
-    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    #mainTitle{margin-top:100px;}
-    footer{color:white;margin-top:auto;}
-    .footer-top{background-color:#15294b;padding:40px 0 10px 0;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
+    .navbar-light-mode .navbar-toggler-icon {
+   /* نفس كود الأيقونة البيضاء */
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    .lang-switch, .mode-switch {border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
+    #mainTitle {margin-top:100px;}
+    footer {color:white;margin-top:auto;}
+    .footer-top {background-color:#15294b;padding:40px 0 10px 0;}
+    .footer-bottom {background-color:#000000;padding:10px 0;font-size:14px;}
     .service-card {border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.2);padding:20px;margin:15px;transition: all 0.3s;}
     .light-mode .service-card {background:#fff;color:#000;}
     .dark-mode .service-card { background-color: #1b335c; color: #f1f1f1; }
@@ -46,10 +63,21 @@
     .dark-mode .dropdown-menu { background-color: #102544; }
     .dark-mode .dropdown-item {color:#fff;}
     .dark-mode .dropdown-item:hover {background-color:#1f3a63;}
+    
+    /* تنسيقات البحث */
     .search-bar {margin-top:20px; text-align:center;}
     .search-bar input {width:60%; max-width:400px; padding:10px; border:1px solid #ccc; border-radius:8px;}
-    .search-bar button {padding:10px 20px; border:none; border-radius:8px; background-color:#15294b; color:white; margin-right:5px;}
+    /* تم تعديل لون زر البحث ليظهر بوضوح */
+    .search-bar button {
+        padding:10px 20px; 
+        border:none; 
+        border-radius:8px; 
+        background-color:#00A651; /* لون أخضر واضح */
+        color:white; 
+        margin-right:5px;
+    }
     .dark-mode .search-bar input {background-color:#1a2e4f; color:white; border:1px solid #334a6b;}
+    
     .news-section {margin-top:50px; padding:20px; border-radius:10px;}
     .light-mode .news-section {background-color:#f8f9fa; color:#000;}
     .dark-mode .news-section {background-color:#15294b; color:#fff;}
@@ -108,24 +136,23 @@
     body.dark-mode .chatbot-title { color: #ffffff; }
     body.light-mode .chatbot-title { color: #000000; }
 
-/* تصحيح لون نص نتائج البحث في الوضع الليلي */
-.dark-mode #searchResults p.text-muted {
-  color: #ddd !important;
-}
-
-.dark-mode #searchResults h5 {
-  color: #fff !important;
-}
-
+    .dark-mode #searchResults p.text-muted {
+      color: #ddd !important;
+    }
+    .dark-mode #searchResults h5 {
+      color: #fff !important;
+    }
+    /* تحسين الفقاعات داخل الشات */
+    #chatMessages .bubble { max-width: 90%; }
   </style>
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html" id="brandName">
-        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:55px; display:block;">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <img src="images/logo-text.png" alt="منصة الخدمات العامة" width="170" height="50" style="height:55px; width:auto; display:block;">
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="فتح القائمة الرئيسية">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -145,33 +172,40 @@
   
       <div class="search-bar">
         <input type="text" placeholder="ابحث في الموقع..." id="searchInput">
-        <button id="searchBtn">بحث</button>
+        <button id="searchBtn" aria-label="بدء البحث">بحث</button>
       </div>
       <div id="searchResults" class="container mt-3"></div>
 
-      <div class="flex justify-center mt-6">
-  <a href="namazji.html"
-     class="flex items-center justify-center gap-2 text-white font-semibold rounded-xl transition-all duration-200"
+      <div class="d-flex justify-content-center mt-3">
+       <a href="namazji.html"
      style="
-       background-color: #00A651;
-       padding: 14px 24px;
-       width: 50%;
+       background-color: #008f45; /* الأخضر الغامق قليلاً للتباين */
+       color: white;
+       padding: 12px 20px;
+       width: 60%;            /* نفس نسبة شريط البحث */
+       max-width: 400px;      /* نفس الحد الأقصى لشريط البحث */
        text-decoration: none;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 10px;
+       border-radius: 8px;    /* نفس انحناء حواف البحث */
+       font-weight: bold;
+       transition: background-color 0.3s;
      "
-     onmouseover="this.style.backgroundColor='#00B85E'"
-     onmouseout="this.style.backgroundColor='#00A651'">
+     onmouseover="this.style.backgroundColor='#00A651'"
+     onmouseout="this.style.backgroundColor='#008f45'">
      
-     📄
+     <span style="font-size: 1.2rem;">📄</span>
      <span>نماذج الخدمات الحكومية</span>
-
-  </a>
-</div>
+      </a>
+     </div>
 
         <div class="row mt-5" id="contentCards">
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
-      <h4>الخدمات الحكومية</h4>
+      <h2 class="h4">الخدمات الحكومية</h2>
       <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
     </div>
@@ -180,7 +214,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-university fa-3x mb-3 text-primary"></i>
-      <h4>الخدمات البنكية</h4>
+      <h2 class="h4">الخدمات البنكية</h2>
       <p>تستطيع في هذه الخدمة التعلم طريقة الإيداع وطباعة البطاقات وغيرها.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
     </div>
@@ -189,7 +223,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
-      <h4>التأمين والمطالبات</h4>
+      <h2 class="h4">التأمين والمطالبات</h2>
       <p>تستطيع في هذه الخدمة التعلم طريقة التأمين والاختيار ومطالبة الشركات.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
     </div>
@@ -200,7 +234,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-briefcase fa-3x mb-3 text-primary"></i>
-      <h4>خدمات وزارة التجارة</h4>
+      <h2 class="h4">خدمات وزارة التجارة</h2>
       <p>تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات وزارة التجارة">للمتابعة</button>
     </div>
@@ -209,7 +243,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-users-cog fa-3x mb-3 text-primary"></i>
-      <h4>خدمات منصة قوى</h4>
+      <h2 class="h4">خدمات منصة قوى</h2>
       <p>خطوات منصة قوى مثل تسديد الرسوم، نقل خدمات العامل، وتوثيق العقود.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات منصة قوى">للمتابعة</button>
     </div>
@@ -218,7 +252,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-hand-holding-usd fa-3x mb-3 text-primary"></i>
-      <h4>خدمات حساب المواطن</h4>
+      <h2 class="h4">خدمات حساب المواطن</h2>
       <p>شرح التسجيل، إضافة تابع، تحديث البيانات، وحل المشكلات الشائعة.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات حساب المواطن">للمتابعة</button>
     </div>
@@ -229,7 +263,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-graduation-cap fa-3x mb-3 text-primary"></i>
-      <h4>الخدمات التعليمية</h4>
+      <h2 class="h4">الخدمات التعليمية</h2>
       <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
     </div>
@@ -238,7 +272,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-city fa-3x mb-3 text-primary"></i>
-      <h4>الخدمات البلدية</h4>
+      <h2 class="h4">الخدمات البلدية</h2>
       <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
     </div>
@@ -247,7 +281,7 @@
   <div class="col-md-4">
     <div class="service-card text-center">
       <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
-      <h4>الضمان الاجتماعي</h4>
+      <h2 class="h4">الضمان الاجتماعي</h2>
       <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
       <button class="btn btn-primary" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
     </div>
@@ -256,7 +290,7 @@
 
 
       <div class="news-section text-start">
-        <h3 id="newsTitle">اخر الاخبار السعودية</h3>
+        <h2 id="newsTitle" class="h3">اخر الاخبار السعودية</h2>
 
         <div class="news-slider-container">
           <div class="news-slider">
@@ -300,7 +334,7 @@
   </div>
 
   <div id="chatbot-icon" style="position:fixed;bottom:25px;right:25px;cursor:pointer;z-index:1000;">
-    <img src="images/animebot.png" width="70" alt="Chat Icon">
+  <img src="images/animebot.png" width="70" height="70" alt="Chat Icon">
   </div>
 
   <div id="chatbox" class="chatbox-container" style="display:none;position:fixed;bottom:110px;right:20px;width:330px;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.4);padding:10px;z-index:1000;">
@@ -315,11 +349,6 @@
     <input id="userInput" type="text" placeholder="اكتب سؤالك..." class="form-control mb-1">
     <button id="sendBtn" class="btn btn-success w-100">إرسال</button>
   </div>
-
-  <style>
-    /* إضافي صغير لضمان ظهور جيد للفقاعات داخل نافذة الشات */
-    #chatMessages .bubble { max-width: 90%; }
-  </style>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
