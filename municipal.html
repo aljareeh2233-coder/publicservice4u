@@ -3,118 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>الخدمات البلدية | منصة الخدمات العامة</title>
+  <meta name="description" content="دليل منصة بلدي: إصدار الرخص التجارية، الشهادات الصحية، وتقديم البلاغات.">
+  <link rel="canonical" href="https://publicservice4u.com/municipal.html">
+  <meta name="robots" content="index, follow">
+  <title>خدمات بلدي: رخص - شهادات صحية - بلاغات</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0EHZV252K6');
+  </script>
+
   <style>
     body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
     body.light-mode {background-color:#ffffff;color:#000000;}
+
     .navbar-dark-mode {background-color:#15294b!important;}
     .navbar-light-mode {background-color:#334a6b!important;}
     .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
-    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    footer{color:white;margin-top:auto;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
-    :root { --saudi-green: #00A651; --saudi-dark: #0b1a2e; }
+
+    .lang-switch,.mode-switch{
+      border:none;background:none;color:inherit;
+      font-size:16px;cursor:pointer;margin-inline:5px;
+    }
+
+    :root {
+      --saudi-green: #00A651;
+      --box-dark: #15294b;
+    }
+
     .content-box {
-      background-color:#15294b;
+      background-color:var(--box-dark);
       color:white;
-      border-radius:10px;
-      padding:20px;
-      margin-top:30px;
+      border-radius:12px;
+      padding:25px;
+      margin-bottom:30px;
       box-shadow:0 3px 10px rgba(0,0,0,0.3);
     }
-    body.light-mode .content-box {background-color:#f8f9fa;color:#000;}
-    .video-box {
-      background-color:#15294b;
-      color:white;
-      border-radius:10px;
-      padding:20px;
-      margin-top:30px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.3);
-    }
-    body.light-mode .video-box {
+
+    body.light-mode .content-box {
       background-color:#f8f9fa;
       color:#000;
     }
-    iframe {
-      width:100%;
-      height:380px;
-      border-radius:10px;
-      border:none;
+
+    .service-text { line-height: 1.9; text-align: justify; font-size: 1.05rem; }
+    
+    .video-container {
+      position: relative; 
+      padding-top: 56.25%; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      border: 2px solid #333;
     }
-    .related-links a {
-      display:block;
-      color:#00A651;
-      text-decoration:none;
-      margin-bottom:8px;
+    .video-container iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
     }
-    .related-links a:hover {text-decoration:underline;}
   </style>
 </head>
+
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html" id="brandName">
-  <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
-</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" width="170" height="50" style="height:50px; width:auto;">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+
+      <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" id="homeLink">الرئيسية</a></li>
         </ul>
-        <div class="d-flex">
-          <button class="lang-switch" id="langSwitch">EN</button>
-          <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
-        </div>
+
+        <button class="lang-switch" id="langSwitch">EN</button>
+        <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
       </div>
     </div>
   </nav>
 
   <main class="container mt-5 pt-5">
-    <h2 class="text-center mt-4" id="pageTitle">الخدمات البلدية</h2>
 
-    <!-- الفيديو الأول -->
-<div class="video-box">
-  <h4>1- استخراج رخصة بلدية عبر منصة بلدي</h4>
-  <iframe width="100%" height="380" src="https://www.youtube.com/embed/q6pbawp5D2E" title="اصدار رخصة نشاط تجاري الكترونيا بشكل فوري من منصة بلدي | الرخصة الفورية لممارسة النشاط التجاري | بلدي" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+    <h2 class="text-center mt-4 mb-4" id="pageTitle">الخدمات البلدية (منصة بلدي)</h2>
+    <p class="text-center mt-2 mb-5" id="pageDesc" style="max-width:700px;margin:auto;">
+      بوابتك الرقمية لإنجاز المعاملات البلدية دون زيارة الأمانة. شرح خطوات استخراج الرخص التجارية، الشهادات الصحية، وتقديم البلاغات لتحسين المشهد الحضري.
+    </p>
 
-    <!-- الفيديو الثاني -->
-<div class="video-box">
-  <h4>2- تقديم بلاغ أو شكوى عبر منصة بلدي</h4>
-  <iframe width="100%" height="380" src="https://www.youtube.com/embed/fbApu5Gn6ko" title="طريق رفع بلاغ في منصة بلدي" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-    <!-- الشرح -->
-    <div class="content-box mt-4">
-      <h5 id="instructionsTitle">الشرح</h5>
-      <p id="instructionsText">
-        توفر الخدمات البلدية الإلكترونية إمكانية استخراج الرخص، وتقديم البلاغات، ومتابعة المعاملات بكل سهولة من خلال منصة بلدي أو عبر موقع الأمانة.
-      </p>
-    </div>
-
-    <!-- روابط ذات صلة -->
-    <div class="content-box mt-4">
-      <h5 id="relatedTitle">روابط ذات صلة</h5>
-      <div class="related-links" id="relatedLinks">
-        <a href="https://balady.gov.sa/" target="_blank"><i class="fa-solid fa-globe"></i> منصة بلدي</a>
-        <a href="https://www.jeddah.gov.sa/" target="_blank"><i class="fa-solid fa-globe"></i> أمانة جدة</a>
+    <div class="content-box">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <h4 class="mb-3" id="v1Title"><i class="fa-solid fa-shop ms-2 text-success"></i> إصدار الرخصة التجارية الفورية</h4>
+          <div class="service-text" id="v1Desc">
+            <p>
+              تُعد "الرخصة الفورية" عبر منصة بلدي نقلة نوعية لأصحاب المشاريع. يشترط النظام وجود عقد إيجار إلكتروني موثق عبر شبكة "إيجار".
+            </p>
+            <p>
+              يتم تحديد نوع النشاط ومساحة المحل، وسداد الرسوم إلكترونياً. في بعض الأنشطة، تتطلب الرخصة موافقة الدفاع المدني وتركيب كاميرات المراقبة.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/q6pbawp5D2E" title="رخصة تجارية" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="content-box">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/fbApu5Gn6ko" title="تقديم بلاغ" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+          <h4 class="mb-3" id="v2Title"><i class="fa-solid fa-camera ms-2 text-success"></i> البلاغات (صور وأرسل)</h4>
+          <div class="service-text" id="v2Desc">
+            <p>
+              تتيح خدمة البلاغات (940) للمواطنين والمقيمين المساهمة في تحسين المشهد الحضري. يمكن الإبلاغ عن الحفر، أعطال الإنارة، أو النظافة العامة عبر تطبيق بلدي.
+            </p>
+            <p>
+              تتميز الخدمة بميزة تحديد الموقع الجغرافي (GPS) وإرفاق صور للمخالفة. يتم إرسال البلاغ لفرقة الصيانة المختصة ومعالجته.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <h4 class="mb-3" id="v3Title"><i class="fa-solid fa-user-doctor ms-2 text-success"></i> الشهادة الصحية للعاملين</h4>
+          <div class="service-text" id="v3Desc">
+            <p>
+              الشهادة الصحية شرط إلزامي لجميع العاملين في الأنشطة المتعلقة بالصحة العامة. يتم إصدارها بعد إجراء الفحص الطبي في أحد المراكز المعتمدة.
+            </p>
+            <p>
+              بمجرد ظهور نتيجة الفحص "لائق"، يتم ربط النتيجة آلياً بمنصة بلدي، ويمكن لصاحب العمل طباعة الشهادة فوراً وسداد الرسوم.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/figs6krivGo" title="شهادة صحية" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-box mt-4">
+      <h5 id="linksTitle"><i class="fas fa-link ms-2"></i> روابط رسمية</h5>
+      
+      <div class="d-flex flex-wrap gap-3 mt-3">
+        <a href="https://balady.gov.sa/" target="_blank" id="linkBalady" class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: inherit; transition: all 0.3s;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='inherit'">
+          <i class="fas fa-globe ms-2"></i> منصة بلدي
+        </a>
+
+        <a href="https://www.momrah.gov.sa/" target="_blank" id="linkMomrah" class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: inherit; transition: all 0.3s;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='inherit'">
+          <i class="fas fa-building-columns ms-2"></i> وزارة الشؤون البلدية
+        </a>
+      </div>
+    </div>
+
   </main>
 
-  <footer>
-    <div class="footer-bottom text-center">
-      <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
-    </div>
+  <footer class="text-center mt-4" style="background:#000; color:#fff; padding:10px;">
+    ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
   </footer>
-<!-- تحميل Bootstrap أولاً -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- بعده ملف الأكواد الخارجية -->
-<script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="translations.js"></script>
+  <script src="scripts.js"></script>
+
 </body>
 </html>

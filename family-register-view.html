@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض نموذج سجل الأسرة | الأحوال المدنية</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3d553d',
+            'primary-dark': '#2c3e2c',
+            secondary: '#f8f4e3',
+          },
+          fontFamily: {
+            'cairo': ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
+    iframe { border: 1px solid #e5e7eb; }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="bg-primary text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center relative">
+      <a href="namazji.html" class="text-white hover:text-gray-200 font-bold text-sm md:text-base flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        العودة للنماذج
+      </a>
+
+      <h1 class="text-xl md:text-2xl font-extrabold tracking-wide absolute left-1/2 transform -translate-x-1/2">
+        الأحوال المدنية
+      </h1>
+      
+      <div class="w-20"></div> 
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto p-4 md:p-6 max-w-5xl">
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">
+             نموذج طلب إصدار سجل أسرة / بدل مفقود
+          </h2>
+          <p class="text-gray-500 text-sm">
+            <strong>المصدر الرسمي:</strong> وكالة وزارة الداخلية للأحوال المدنية
+          </p>
+        </div>
+        
+        <a href="files/sogal_usra.pdf" download 
+           class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg shadow transition flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          تحميل النموذج
+        </a>
+      </div>
+
+      <hr class="my-4 border-gray-100">
+
+      <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-md">
+        <h3 class="font-bold text-blue-800 text-sm mb-1">تنبيهات هامة (حسب المادة 79):</h3>
+        <ul class="list-disc list-inside text-sm text-blue-700 space-y-1">
+          <li>الإدلاء بأي بيانات غير صحيحة يعاقب عليه بموجب المادة (79) من نظام الأحوال المدنية.</li>
+          <li>يجب تحديد نوع الوثيقة المطلوبة بدقة (سجل أسرة، شهادة ميلاد، بدل مفقود).</li>
+          <li>في حال الفقدان، يجب توضيح مكان وسبب الفقد وتاريخه.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-gray-200 rounded-xl p-1 shadow-inner">
+      <iframe src="files/sogal_usra.pdf" class="w-full h-[85vh] rounded-lg bg-white" title="عرض نموذج سجل الأسرة"></iframe>
+    </div>
+
+  </main>
+
+  <footer class="bg-gray-900 text-white text-center py-4 mt-8">
+    <p class="text-sm opacity-80">© 2025 منصة نماذجي | جميع الحقوق محفوظة</p>
+  </footer>
+
+</body>
+</html>

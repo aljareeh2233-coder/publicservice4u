@@ -1,5 +1,4 @@
-/* main.js - نسخة مستقرة ومصححة */
-/* لا تقم بدمج أكثر من ملف main.js واحد في الصفحة */
+/* main.js - النسخة النهائية مع تصحيح ترجمة العناوين h2 */
 
 document.addEventListener('DOMContentLoaded', function () {
   const modeSwitch = document.getElementById('modeSwitch');
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const footerContent = document.getElementById('footerContent');
   const brandName = document.getElementById('brandName');
 
-  // القوائم الكاملة (AR / EN)
+  // القوائم الكاملة (AR / EN) - كما في ملفك الأصلي
   const menus = {
     ar: `
       <li class="nav-item dropdown">
@@ -79,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Pages/Forms.aspx" target="_blank">نماذج الجوازات</a></li>
           <li><a class="dropdown-item" href="https://is.gd/reFWHs" target="_blank">نماذج الاحوال المدنية</a></li>
-
           <li><a class="dropdown-item" href="https://is.gd/1LHzx2" target="_blank">نماذج المرور</a></li>
         </ul>
       </li>
@@ -187,67 +185,64 @@ document.addEventListener('DOMContentLoaded', function () {
         </ul>
       </div>
       <div class="col-md-3 mb-3">
-        <h5>Website Links</h5>
+        <h5 id="footerLinksTitle">Website Links</h5>
         <ul class="list-unstyled">
-          <li><a href="faq.html" class="text-white text-decoration-none">FAQ</a></li>
-          <li><a href="contact.html" class="text-white text-decoration-none">Contact Us</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
-          <li><a href="privacy.html" class="text-white text-decoration-none">Privacy & Terms</a></li>
+          <li><a href="faq.html" class="text-white text-decoration-none" id="linkFaq">FAQ</a></li>
+          <li><a href="contact.html" class="text-white text-decoration-none" id="linkContact">Contact Us</a></li>
+          <li><a href="about.html" class="text-white text-decoration-none" id="linkAbout">About</a></li>
+          <li><a href="privacy.html" class="text-white text-decoration-none" id="linkPrivacy">Privacy Policy</a></li>
+          <li><a href="terms.html" class="text-white text-decoration-none" id="linkTerms">Terms & Conditions</a></li>
         </ul>
       </div>
     `
   };
 
-  // switchLanguage: يتحكم بترجمة الصفحة كاملة (العناوين، الأخبار، الفوتر، القوائم)
+  // switchLanguage
   function switchLanguage(lang) {
     const mainTitle = document.getElementById("mainTitle");
     const mainDesc = document.getElementById("mainDesc");
-    const cards = document.querySelectorAll(".service-card h4");
+    // [تم التعديل] استخدام h2 بدلاً من h4 ليطابق كود HTML
+    const cards = document.querySelectorAll(".service-card h2");
     const cardTexts = document.querySelectorAll(".service-card p");
     const newsTitle = document.getElementById("newsTitle");
     const newsSlider = document.querySelector(".news-slider");
-    const newsItems = [document.getElementById("newsItem1"), document.getElementById("newsItem2"), document.getElementById("newsItem3")];
     const nav = document.querySelector('nav');
     
-    // ✅ استعادة: التأكد من وجود فئات Bootstrap اللازمة للغة على الـ nav
     if (lang === "en") {
-        nav.classList.add('navbar-dark'); // هذه الفئة كانت موجودة أصلاً للمظهر
+        nav.classList.add('navbar-dark'); 
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
     } else {
         nav.classList.remove('navbar-dark');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
     }
     
     if (lang === "en") {
-      // نصوص عامة
       document.querySelectorAll('.service-card button').forEach(btn => btn.textContent = 'Continue');
-      mainTitle.textContent = "Welcome to the Public Services Platform";
-      mainDesc.textContent = "Choose the type of service you want from the menu above";
-      // English card titles (9 cards)
-      if (cards[0]) cards[0].textContent = "Government Services";
-      if (cards[1]) cards[1].textContent = "Banking Services";
-      if (cards[2]) cards[2].textContent = "Insurance and Claims";
-      // ✅ تم التعديل: خدمات وزارة التجارة (التعديل الذي أبقينا عليه)
-      if (cards[3]) cards[3].textContent = "Ministry of Commerce Services";
-      if (cards[4]) cards[4].textContent = "Qiwa Platform Services";
-      if (cards[5]) cards[5].textContent = "Citizen Account Services";
-      if (cards[6]) cards[6].textContent = "Educational Services";
-      if (cards[7]) cards[7].textContent = "Municipal Services";
-      if (cards[8]) cards[8].textContent = "Social Security";
+      if(mainTitle) mainTitle.textContent = "Welcome to the Public Services Platform";
+      if(mainDesc) mainDesc.textContent = "Choose the type of service you want from the menu above";
+      
+      const titlesEn = [
+        "Government Services", "Banking Services", "Insurance & Claims",
+        "Ministry of Commerce Services", "Qiwa Platform Services", "Citizen Account Services",
+        "Educational Services", "Municipal Services", "Social Security"
+      ];
+      cards.forEach((el, index) => { if(titlesEn[index]) el.textContent = titlesEn[index]; });
 
+      const descEn = [
+        "Learn how to fill out official government forms.",
+        "Learn how to make deposits, print cards, and more.",
+        "Learn how to choose the right insurance company and submit claims.",
+        "Learn about Ministry of Commerce services such as issuing and updating commercial registrations.",
+        "Main Qiwa services such as work permits, employee transfer, and contract attestation.",
+        "How to register, update information, and check eligibility in the Citizen Account program.",
+        "Learn how to access Noor, Madrasati, and other educational platforms.",
+        "Learn how to issue municipal licenses and follow up transactions electronically.",
+        "Learn how to register for Social Security and check your support status."
+      ];
+      cardTexts.forEach((el, index) => { if(descEn[index]) el.textContent = descEn[index]; });
 
-      // English card descriptions
-      if (cardTexts[0]) cardTexts[0].textContent = "Learn how to fill out official government forms.";
-      if (cardTexts[1]) cardTexts[1].textContent = "Learn how to make deposits, print cards, and more.";
-      if (cardTexts[2]) cardTexts[2].textContent = "Learn how to choose the right insurance company and submit claims.";
-      // ✅ تم التعديل: خدمات وزارة التجارة (التعديل الذي أبقينا عليه)
-      if (cardTexts[3]) cardTexts[3].textContent = "Learn about Ministry of Commerce services such as issuing and updating commercial registrations.";
-      if (cardTexts[4]) cardTexts[4].textContent = "Main Qiwa services such as work permits, employee transfer, and contract attestation.";
-      if (cardTexts[5]) cardTexts[5].textContent = "How to register, update information, and check eligibility in the Citizen Account program.";
-      if (cardTexts[6]) cardTexts[6].textContent = "Learn how to access Noor, Madrasati, and other educational platforms.";
-      if (cardTexts[7]) cardTexts[7].textContent = "Learn how to issue municipal licenses and follow up transactions electronically.";
-      if (cardTexts[8]) cardTexts[8].textContent = "Learn how to register for Social Security and check your support status.";
-
-
-      // أخبار
       if (newsTitle) newsTitle.textContent = "Latest Orders and Decisions";
       if (newsSlider) {
         newsSlider.innerHTML = `
@@ -257,53 +252,35 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
       }
 
-      // aria labels
-      document.querySelectorAll('.service-card button')[0]?.setAttribute('aria-label', 'View Government Services details');
-      document.querySelectorAll('.service-card button')[1]?.setAttribute('aria-label', 'View Banking Services details');
-      document.querySelectorAll('.service-card button')[2]?.setAttribute('aria-label', 'View Insurance & Claims details');
-      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'View Ministry of Commerce Services details');
-      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'View Qiwa Platform Services details');
-      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'View Citizen Account Services details');
-      document.querySelectorAll('.service-card button')[6]?.setAttribute('aria-label', 'View Educational Services details');
-      document.querySelectorAll('.service-card button')[7]?.setAttribute('aria-label', 'View Municipal Services details');
-      document.querySelectorAll('.service-card button')[8]?.setAttribute('aria-label', 'View Social Security details');
-      
-
-      // فوتر و منيو
       document.getElementById('menuList').innerHTML = menus.en;
       footerContent.innerHTML = footerText.en;
 
     } else {
-      // عربي - نصوص أصلية
-      mainTitle.textContent = "مرحباً بك في منصة الخدمات العامة";
-      mainDesc.textContent = "اختر نوع الخدمة التي ترغب بالوصول إليها من القائمة أعلاه";
+      // عربي
+      if(mainTitle) mainTitle.textContent = "مرحباً بك في منصة الخدمات العامة";
+      if(mainDesc) mainDesc.textContent = "اختر نوع الخدمة التي ترغب بالوصول إليها من القائمة أعلاه";
       document.querySelectorAll('.service-card button').forEach(btn => btn.textContent = 'للمتابعة');
-     // عناوين الكروت (9 كروت)
-     if (cards[0]) cards[0].textContent = "الخدمات الحكومية";
-     if (cards[1]) cards[1].textContent = "الخدمات البنكية";
-     if (cards[2]) cards[2].textContent = "التأمين والمطالبات";
-     // ✅ تم التعديل: خدمات وزارة التجارة (التعديل الذي أبقينا عليه)
-     if (cards[3]) cards[3].textContent = "خدمات وزارة التجارة";
-     if (cards[4]) cards[4].textContent = "خدمات منصة قوى";
-     if (cards[5]) cards[5].textContent = "خدمات حساب المواطن";
-     if (cards[6]) cards[6].textContent = "الخدمات التعليمية";
-     if (cards[7]) cards[7].textContent = "الخدمات البلدية";
-     if (cards[8]) cards[8].textContent = "الضمان الاجتماعي";
+     
+     const titlesAr = [
+        "الخدمات الحكومية", "الخدمات البنكية", "التأمين والمطالبات",
+        "خدمات وزارة التجارة", "خدمات منصة قوى", "خدمات حساب المواطن",
+        "الخدمات التعليمية", "الخدمات البلدية", "الضمان الاجتماعي"
+      ];
+      cards.forEach((el, index) => { if(titlesAr[index]) el.textContent = titlesAr[index]; });
 
-     // نصوص الكروت (الوصف تحت العنوان)
-     if (cardTexts[0]) cardTexts[0].textContent = "تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.";
-     if (cardTexts[1]) cardTexts[1].textContent = "تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.";
-     if (cardTexts[2]) cardTexts[2].textContent = "تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.";
-     // ✅ تم التعديل: خدمات وزارة التجارة (التعديل الذي أبقينا عليه)
-     if (cardTexts[3]) cardTexts[3].textContent = "تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.";
-     if (cardTexts[4]) cardTexts[4].textContent = "خطوات استخدام منصة قوى مثل تسديد الرسوم ونقل خدمات العامل وتوثيق العقود.";
-     if (cardTexts[5]) cardTexts[5].textContent = "شرح التسجيل في حساب المواطن وتحديث البيانات وحل المشاكل الشائعة.";
-     if (cardTexts[6]) cardTexts[6].textContent = "تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.";
-     if (cardTexts[7]) cardTexts[7].textContent = "تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.";
-     if (cardTexts[8]) cardTexts[8].textContent = "تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.";
+      const descAr = [
+        "تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.",
+        "تستطيع في هذه الخدمة التعلم طريقة الايداع وطباعة البطاقات وغيرها.",
+        "تستطيع في هذه الخدمة التعلم طريقة التامين والاختيار ومطالبة الشركات.",
+        "تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.",
+        "خطوات استخدام منصة قوى مثل تسديد الرسوم ونقل خدمات العامل وتوثيق العقود.",
+        "شرح التسجيل في حساب المواطن وتحديث البيانات وحل المشاكل الشائعة.",
+        "تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء عبر المنصة.",
+        "تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.",
+        "تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات."
+      ];
+      cardTexts.forEach((el, index) => { if(descAr[index]) el.textContent = descAr[index]; });
 
-
-      // أخبار عربي
       if (newsTitle) newsTitle.textContent = "اخر الاخبار الملكية";
       if (newsSlider) {
         newsSlider.innerHTML = `
@@ -313,64 +290,45 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
       }
 
-      // aria labels
-      document.querySelectorAll('.service-card button')[0]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات الحكومية');
-      document.querySelectorAll('.service-card button')[1]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات البنكية');
-      document.querySelectorAll('.service-card button')[2]?.setAttribute('aria-label', 'عرض تفاصيل التأمين والمطالبات');
-      document.querySelectorAll('.service-card button')[3]?.setAttribute('aria-label', 'عرض تفاصيل خدمات وزارة التجارة');
-      document.querySelectorAll('.service-card button')[4]?.setAttribute('aria-label', 'عرض تفاصيل خدمات منصة قوى');
-      document.querySelectorAll('.service-card button')[5]?.setAttribute('aria-label', 'عرض تفاصيل خدمات حساب المواطن');
-      document.querySelectorAll('.service-card button')[6]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات التعليمية');
-      document.querySelectorAll('.service-card button')[7]?.setAttribute('aria-label', 'عرض تفاصيل الخدمات البلدية');
-      document.querySelectorAll('.service-card button')[8]?.setAttribute('aria-label', 'عرض تفاصيل الضمان الاجتماعي');
-     
-
       document.getElementById('menuList').innerHTML = menus.ar;
       footerContent.innerHTML = footerText.ar;
     }
 
-    // أرسل إشعار لتحديث أي عناصر معتمدة على اللغة
     document.dispatchEvent(new CustomEvent('languageChanged'));
   }
 
-  // تهيئة القوائم والفوتر واللغة المحفوظة
+  // تهيئة القوائم
   menuList.innerHTML = menus.ar;
   footerContent.innerHTML = footerText.ar;
 
   const savedLang = localStorage.getItem('lang') || 'ar';
   switchLanguage(savedLang);
-  // زر اللغة: نعرض رمز الزر المعاكس
   langSwitch.textContent = savedLang === 'ar' ? 'EN' : 'AR';
 
-  // حفظ وضع المود (استعادة النسخة الأصلية للتحكم بالـ Nav)
+  // حفظ وضع المود
   const savedMode = localStorage.getItem('mode') || 'dark';
   const nav = document.querySelector('nav');
   
   if (savedMode === 'light') {
     document.body.classList.add('light-mode');
     document.body.classList.remove('dark-mode');
-    // ✅ استعادة: إعداد لون شريط التنقل للوضع النهاري
     nav.classList.add('navbar-light-mode');
     nav.classList.remove('navbar-dark-mode');
   } else {
     document.body.classList.add('dark-mode');
-    // ✅ استعادة: إعداد لون شريط التنقل للوضع الليلي
     nav.classList.add('navbar-dark-mode');
     nav.classList.remove('navbar-light-mode');
   }
 
-  // تفعيل الزرين
   modeSwitch.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
     document.body.classList.toggle('dark-mode');
-    // ✅ استعادة: تبديل لون شريط التنقل مع تبديل وضع الجسم
     nav.classList.toggle('navbar-light-mode');
     nav.classList.toggle('navbar-dark-mode');
     localStorage.setItem('mode', document.body.classList.contains('light-mode') ? 'light' : 'dark');
   });
 
   langSwitch.addEventListener('click', () => {
-    // اقلب لغة التخزين
     const current = localStorage.getItem('lang') || 'ar';
     const next = current === 'ar' ? 'en' : 'ar';
     localStorage.setItem('lang', next);
@@ -378,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
     langSwitch.textContent = next === 'ar' ? 'EN' : 'AR';
   });
 
-  // بيانات الـ modal باللغتين
+  // بيانات الـ modal
   const detailsData = {
     ar: [
       {
@@ -419,18 +377,27 @@ document.addEventListener('DOMContentLoaded', function () {
         title: "خدمات وزارة التجارة",
         body: `
          <p>خدمات وزارة التجارة مثل إصدار السجل التجاري، تجديده، تعديله وشطبه.</p>
+         <ul>
+           <li><a href="commerce.html" class="text-decoration-none text-primary">الدخول لخدمات السجل التجاري والأسماء التجارية</a></li>
+         </ul>
        `
       },
       {
         title: "خدمات منصة قوى",
         body: `
           <p>شرح أهم خدمات منصة قوى مثل إصدار وتجديد رخص العمل، نقل خدمات العامل، وتوثيق العقود.</p>
+          <ul>
+           <li><a href="qiwa.html" class="text-decoration-none text-primary">شرح نقل الكفالة وتوثيق العقود ورخص العمل</a></li>
+         </ul>
        `
       },
       {
         title: "خدمات حساب المواطن",
         body: `
           <p>خطوات التسجيل في حساب المواطن، إضافة التابعين، وتحديث البيانات والاستعلام عن الأهلية.</p>
+          <ul>
+           <li><a href="citizen.html" class="text-decoration-none text-primary">دليل التسجيل والإفصاح عن الدخل والاعتراضات</a></li>
+         </ul>
        `
       },
       {
@@ -480,8 +447,8 @@ document.addEventListener('DOMContentLoaded', function () {
           <p>Through this service, you can learn how to make deposits, print cards, and more.</p>
           <ul>
             <li><a href="bank_alahli.html" class="text-decoration-none text-primary">SNB – The Saudi National Bank</a></li>
-            <li><a href="bank_alrajhi.com.sa/" class="text-decoration-none text-primary">Al Rajhi Bank</a></li>
-            <li><a href="bank_riyad.com/" class="text-decoration-none text-primary">Riyad Bank</a></li>
+            <li><a href="bank_alrajhi.html" class="text-decoration-none text-primary">Al Rajhi Bank</a></li>
+            <li><a href="bank_riyad.html" class="text-decoration-none text-primary">Riyad Bank</a></li>
           </ul>
         `
       },
@@ -500,18 +467,27 @@ document.addEventListener('DOMContentLoaded', function () {
         title: "Ministry of Commerce Services",
         body: `
            <p>Ministry of Commerce services such as issuing, renewing, modifying, and canceling commercial registrations.</p>
+           <ul>
+             <li><a href="commerce.html" class="text-decoration-none text-primary">Commercial Registration & Trade Names</a></li>
+           </ul>
        `
       },
       {
         title: "Qiwa Platform Services",
         body: `
           <p>Main Qiwa services such as issuing work permits, transferring employees, and contract attestation.</p>
+          <ul>
+             <li><a href="qiwa.html" class="text-decoration-none text-primary">Employee Transfer, Contracts & Work Permits</a></li>
+           </ul>
        `
       },
       {
         title: "Citizen Account Services",
         body: `
           <p>How to register, update information, and check eligibility in the Citizen Account program.</p>
+          <ul>
+             <li><a href="citizen.html" class="text-decoration-none text-primary">Registration, Income Disclosure & Objections</a></li>
+           </ul>
        `
       },
       {
@@ -538,7 +514,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ]
   };
 
-  // modal helpers
   const modalEl = document.getElementById('detailsModal');
   const modal = new bootstrap.Modal(modalEl);
   const detailsTitle = document.getElementById('detailsTitle');
@@ -552,7 +527,6 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.show();
   }
 
-  // attach modal buttons (service cards)
   const detailButtons = document.querySelectorAll('.service-card button');
   function attachModalButtons() {
     detailButtons.forEach((btn, i) => {
@@ -564,7 +538,6 @@ document.addEventListener('DOMContentLoaded', function () {
   attachModalButtons();
   document.addEventListener('languageChanged', () => setTimeout(attachModalButtons, 50));
 
-  // search
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
   const searchResults = document.getElementById('searchResults');
@@ -579,36 +552,28 @@ document.addEventListener('DOMContentLoaded', function () {
     let newsResults = '';
     let hasResults = false;
 
-    // الحصول على بيانات المحتوى التفصيلي (Modal content) للغة الحالية
     const currentDetailsData = detailsData[lang];
 
-    // ===============================================
-    // 1. البحث في الكروت ومحتوى الـ Modal (موسع)
-    // ===============================================
     const cards = document.querySelectorAll('.service-card');
     cards.forEach((card, idx) => {
-      const title = (card.querySelector('h4')?.textContent || '').toLowerCase();
+      // [تم التعديل] استخدام h2 بدلاً من h4 ليطابق كود HTML
+      const title = (card.querySelector('h2')?.textContent || '').toLowerCase();
       const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
       
-      // توسيع نطاق البحث ليشمل محتوى الـ Modal (detailsData)
       let modalContent = '';
       if (currentDetailsData[idx]) {
-        // نستخدم innerHTML للعثور على أي نص داخل الروابط أو القوائم
         modalContent = (currentDetailsData[idx].body || '').toLowerCase();
       }
 
       if (title.includes(lowerQuery) || desc.includes(lowerQuery) || modalContent.includes(lowerQuery)) {
-        const cardTitle = card.querySelector('h4')?.textContent || '';
+        // [تم التعديل] استخدام h2 بدلاً من h4
+        const cardTitle = card.querySelector('h2')?.textContent || '';
         const cardDesc = (card.querySelector('p')?.textContent || '').substring(0, 60) + '...';
-        // إضافة وسم data-index للوصول السريع للمودال عبر الـ onclick
         cardResults += `<a href="#" class="list-group-item list-group-item-action" data-index="${idx}" onclick="showDetails(${idx}); return false;">${cardTitle} - ${cardDesc}</a>`;
         hasResults = true;
       }
     });
 
-    // ===============================================
-    // 2. البحث في القائمة العلوية (Menu)
-    // ===============================================
     const menuItems = document.querySelectorAll('#menuList .dropdown-item');
     menuItems.forEach(item => {
       const txt = (item.textContent || '').toLowerCase().trim();
@@ -618,9 +583,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // ===============================================
-    // 3. البحث في شريط الأخبار (News)
-    // ===============================================
     const newsItems = document.querySelectorAll('.news-slider .list-group-item');
     newsItems.forEach(item => {
       const txt = (item.textContent || '').toLowerCase();
@@ -630,18 +592,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // ===============================================
-    // 4. تجميع وترتيب النتائج (الكروت أولاً)
-    // ===============================================
     let resultsHTML = '';
-    
-    // 4.1. الكروت (أولوية قصوى)
     if (cardResults) resultsHTML += (isArabic ? '<h6 class="mt-3">الكروت الرئيسية:</h6>' : '<h6 class="mt-3">Main Cards:</h6>') + `<div class="list-group">${cardResults}</div>`;
-
-    // 4.2. القائمة (أولوية ثانية)
     if (menuResults) resultsHTML += (isArabic ? '<h6 class="mt-3">القائمة العلوية:</h6>' : '<h6 class="mt-3">Top Menu:</h6>') + `<div class="list-group">${menuResults}</div>`;
-
-    // 4.3. الأخبار (أولوية ثالثة)
     if (newsResults) resultsHTML += (isArabic ? '<h6 class="mt-3">الأخبار:</h6>' : '<h6 class="mt-3">News:</h6>') + `<div class="list-group">${newsResults}</div>`;
 
     if (!hasResults) resultsHTML = isArabic ? `<p class="mt-3 text-muted">لم يتم العثور على نتائج مطابقة لـ "${query}". جرب كلمات أخرى!</p>` : `<p class="mt-3 text-muted">No matching results for "${query}". Try other words!</p>`;
@@ -653,7 +606,6 @@ document.addEventListener('DOMContentLoaded', function () {
   searchBtn.addEventListener('click', () => performSearch(searchInput.value));
   searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(searchInput.value); });
 
-  // فتح قوائم بالماوس
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(drop => {
     drop.addEventListener('mouseenter', function () {
@@ -666,7 +618,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ===================== أخبار - سلايدر عمودي بسيط (CSS animation used) =====================
   const newsContainer = document.querySelector('.news-slider-container');
   if (newsContainer) {
     newsContainer.addEventListener('mouseenter', () => {
@@ -677,7 +628,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ===================== Chatbot (بسيط: ارسال إلى API خارجي) =====================
   const icon = document.getElementById('chatbot-icon');
   const chatbox = document.getElementById('chatbox');
   const sendBtn = document.getElementById('sendBtn');
@@ -725,27 +675,53 @@ document.addEventListener('DOMContentLoaded', function () {
   sendBtn.onclick = sendMessage;
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
 
-  // ===================== Safety: dispatch initial languageChanged to sync dependant parts =====================
   document.dispatchEvent(new CustomEvent('languageChanged'));
-}); // end DOMContentLoaded
-// نافذة التنبيه: تظهر مرة واحدة فقط
-document.addEventListener('DOMContentLoaded', () => {
+});
 
+document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('disclaimer-modal');
   const okBtn = document.getElementById('disclaimer-ok');
-
-  // إذا أول مرة يدخل الموقع
   if (!localStorage.getItem('disclaimerAccepted')) {
     modal.style.opacity = '1';
     modal.style.visibility = 'visible';
   }
-
   okBtn.addEventListener('click', () => {
     modal.style.opacity = '0';
     modal.style.visibility = 'hidden';
-
-    // نخزن الموافقة عشان ما تظهر ثاني مرة
     localStorage.setItem('disclaimerAccepted', 'true');
   });
+});
 
+/* ------------------------------
+   🔄 تحديث الأخبار تلقائيًا من وكالة الأنباء السعودية (SPA)
+   بدون أي تأثير على الكود الأصلي أو التصميم
+------------------------------ */
+
+function loadLatestNews() {
+  const newsSlider = document.querySelector('.news-slider');
+  if (!newsSlider) return;
+
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.spa.gov.sa/rss.xml")
+    .then(response => response.json())
+    .then(data => {
+      // نعرض أول 5 أخبار فقط لتجنب الطول
+      const items = data.items.slice(0, 5);
+      newsSlider.innerHTML = items.map(item => `
+        <a href="${item.link}" 
+           class="list-group-item hover:bg-green-50 transition"
+           target="_blank" 
+           rel="noopener noreferrer">
+           📰 ${item.title}
+        </a>
+      `).join('');
+    })
+    .catch(err => {
+      console.log("⚠️ تعذر تحميل الأخبار:", err);
+      // في حال فشل التحميل، يظل المحتوى القديم
+    });
+}
+
+// تشغيل التحديث عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(loadLatestNews, 1500); // تأخير بسيط لضمان تحميل الصفحة أولاً
 });

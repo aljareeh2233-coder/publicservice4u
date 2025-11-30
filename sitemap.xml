@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- الصفحة الرئيسية -->
   <url>
     <loc>https://publicservice4u.com/</loc>
-    <lastmod>2025-11-11</lastmod>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- صفحات عامة -->
+  <url><loc>https://publicservice4u.com/namazji.html</loc><lastmod>2025-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://publicservice4u.com/civil-form-view.html</loc><lastmod>2025-11-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://publicservice4u.com/family-register-view.html</loc><lastmod>2025-11-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://publicservice4u.com/citizen.html</loc><lastmod>2025-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://publicservice4u.com/qiwa.html</loc><lastmod>2025-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://publicservice4u.com/commerce.html</loc><lastmod>2025-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
   <url><loc>https://publicservice4u.com/about.html</loc><lastmod>2025-11-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://publicservice4u.com/contact.html</loc><lastmod>2025-11-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://publicservice4u.com/privacy.html</loc><lastmod>2025-11-11</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://publicservice4u.com/terms.html</loc><lastmod>2025-11-11</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://publicservice4u.com/faq.html</loc><lastmod>2025-11-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- الخدمات الحكومية -->
   <url><loc>https://publicservice4u.com/civil_forms.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/passport_forms.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/traffic_forms.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/najiz.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <!-- الخدمات البنكية -->
   <url><loc>https://publicservice4u.com/bank_alahli.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/bank_alrajhi.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/bank_riyad.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <!-- التأمين والمطالبات -->
   <url><loc>https://publicservice4u.com/bekare.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/taaminy.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://publicservice4u.com/Najm_website.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <!-- الخدمات التعليمية -->
   <url><loc>https://publicservice4u.com/education.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
-  <!-- الخدمات البلدية -->
   <url><loc>https://publicservice4u.com/municipal.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
-  <!-- الضمان الاجتماعي -->
   <url><loc>https://publicservice4u.com/social.html</loc><lastmod>2025-11-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
 </urlset>

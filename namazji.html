@@ -12,6 +12,16 @@
   <!-- خط Cairo -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0EHZV252K6');
+  </script>
+
   <style>
     /* تعريف الألوان المخصصة والخطوط لـ Tailwind */
     body {
@@ -291,7 +301,8 @@
   }
     </script>
 </head>
-<body class="bg-secondary font-cairo" dir="rtl">
+
+<body class="bg-secondary font-cairo min-h-screen flex flex-col" dir="rtl">
 
   <!-- الشريط العلوي اللاصق -->
  <header class="bg-primary text-white p-3 shadow-md sticky top-0 z-50 relative">
@@ -315,7 +326,7 @@
 </a>
 </header>
 
-  <main class="container mx-auto p-4 md:p-8">
+  <main class="flex-grow container mx-auto p-4">
 
     <!-- 1. قسم البحث -->
     <section class="mb-8 p-6 bg-white rounded-xl shadow-lg">
@@ -395,16 +406,22 @@
               </div>
 
               <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-                <h4 class="form-name text-lg font-bold mb-3">نموذج إصدار سجل الأسرة</h4>
+                <h4 class="form-name text-lg font-bold mb-3">نموذج إصدار سجل الأسرة (بدل تالف/مفقود)</h4>
                 <div class="text-sm text-gray-500 mb-4 space-y-1">
                   <p class="form-source"><strong>المصدر:</strong> الأحوال المدنية</p>
                   <p><strong>آخر تحديث:</strong> 2024</p>
-                </div>
-                <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-                   data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/954d13ab-89c3-4de1-986e-ae7b1444a096/%D8%AC%D8%AF%D8%A8%D8%AF+%D9%86%D9%85%D9%88%D8%B0%D8%AC+%D8%A7%D9%84%D9%85%D9%81%D9%82%D9%88%D8%AF.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-954d13ab-89c3-4de1-986e-ae7b1444a096-ot6.t59"
-                   data-word-link="#">
-                  تحميل النموذج
-                </a>
+              </div>
+  
+              <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
+                 data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/954d13ab-89c3-4de1-986e-ae7b1444a096/%D8%AC%D8%AF%D8%A8%D8%AF+%D9%86%D9%85%D9%88%D8%B0%D8%AC+%D8%A7%D9%84%D9%85%D9%81%D9%82%D9%88%D8%AF.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-954d13ab-89c3-4de1-986e-ae7b1444a096-ot6.t59"
+                 data-word-link="#">
+                تحميل النموذج
+              </a>
+
+              <a href="family-register-view.html"
+                class="mt-3 bg-primary text-white font-semibold py-2 px-4 rounded-lg w-full text-center block hover:bg-primary-dark transition">
+              👁‍🗨 عرض النموذج التفاعلي
+              </a>
               </div>
 
               <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
@@ -412,11 +429,17 @@
                 <div class="text-sm text-gray-500 mb-4 space-y-1">
                   <p class="form-source"><strong>المصدر:</strong> وكالة الأحوال المدنية</p>
                   <p><strong>آخر تحديث:</strong> 2024</p>
-                </div>
+              </div>
+  
                 <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
                    data-pdf-link="https://www.moi.gov.sa/wps/wcm/connect/eb19722e-efb5-403a-8a19-7e6804ffe704/EditDeleteAddCorrectionApplication_n.pdf.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb19722e-efb5-403a-8a19-7e6804ffe704-oBDUFoh"
                    data-word-link="#">
-                  تحميل النموذج
+                 تحميل النموذج
+                </a>
+
+                <a href="civil-form-view.html"
+                   class="mt-3 bg-primary text-white font-semibold py-2 px-4 rounded-lg w-full text-center block hover:bg-primary-dark transition">
+                 👁‍🗨 عرض النموذج التفاعلي
                 </a>
               </div>
 
@@ -578,37 +601,7 @@
 
         </div>
       </div>
-
-      <!-- الفئة 2: خدمات بلدية -->
-      <div class="category mb-8">
-        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: خدمات بلدية</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">نموذج بلاغ مخالفة (منصة بلدي)</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> وزارة الشؤون البلدية والقروية</p>
-              <p><strong>آخر تحديث:</strong> 15/08/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-          
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">طلب رخصة بناء (مخطط سكني)</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> أمانة المنطقة</p>
-              <p><strong>آخر تحديث:</strong> 01/10/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-        </div>
-      </div>
-      
+         
       <!-- الفئة 3: خدمات تعليمية -->
       <div class="category mb-8">
         <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: خدمات تعليمية</h3>
@@ -639,98 +632,11 @@
             </a>
           </div>
         </div>
-      </div>
-      
-      <!-- الفئة 4: الضمان الاجتماعي -->
-      <div class="category mb-8">
-        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: الضمان الاجتماعي والتمويل</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">نموذج طلب دعم مالي (الضمان)</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> وزارة الموارد البشرية (الضمان)</p>
-              <p><strong>آخر تحديث:</strong> 01/07/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-          
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">نموذج تحديث بيانات مستفيد</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> الضمان الاجتماعي المطور</p>
-              <p><strong>آخر تحديث:</strong> 15/06/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- الفئة 5: التجارة والاستثمار -->
-      <div class="category mb-8">
-        <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4">الفئة: التجارة والاستثمار</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">تأسيس سجل تجاري لمؤسسة فردية</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> المركز السعودي للأعمال</p>
-              <p><strong>آخر تحديث:</strong> 05/11/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
-              تحميل النموذج
-            </a>
-          </div>
-          
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">طلب تعديل بيانات السجل التجاري</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> وزارة التجارة</p>
-              <p><strong>آخر تحديث:</strong> 01/11/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-          
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">طلب تسجيل أو تجديد علامة تجارية</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> الهيئة السعودية للملكية الفكرية</p>
-              <p><strong>آخر تحديث:</strong> 20/10/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="#" data-word-link="#">
-              تحميل النموذج
-            </a>
-          </div>
-          
-          <div class="form-item bg-card-bg rounded-lg shadow-md p-5 border border-gray-100 hover:shadow-lg hover:bg-card-hover transition-all">
-            <h4 class="form-name text-lg font-bold mb-3">طلب تسجيل براءة اختراع</h4>
-            <div class="text-sm text-gray-500 mb-4 space-y-1">
-              <p class="form-source"><strong>المصدر:</strong> الهيئة السعودية للملكية الفكرية</p>
-              <p><strong>آخر تحديث:</strong> 15/11/2024</p>
-            </div>
-            <a href="#" class="form-button bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg w-full text-center inline-block transition-colors"
-               data-pdf-link="https://placeholder.com/pdf/link" data-word-link="https://placeholder.com/word/link">
-              تحميل النموذج
-            </a>
-          </div>
-        </div>
-      </div>
+      </div>      
+</main>
 
-    </section>
-  </main>
-
-  <!-- التذييل -->
-  <footer class="bg-black text-white text-center p-2 mt-8">
-    <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
+<footer class="text-center mt-4" style="background:#000; color:#fff; padding:10px;">
+    ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
   </footer>
   
   <!-- النافذة المنبثقة للتحميل -->

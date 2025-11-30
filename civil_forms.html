@@ -3,107 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="تعرف على نماذج الأحوال المدنية وطريقة تعبئة نموذج التبليغ عن الولادة أو الوفاة بخطوات واضحة.">
-  <title>نماذج الأحوال المدنية | منصة الخدمات العامة</title>
+  <meta name="description" content="دليل كامل لإصدار وتجديد الجواز السعودي وإصدار الإقامة عبر أبشر">
+  <link rel="canonical" href="https://publicservice4u.com/passport_forms.html">
+  <meta name="robots" content="index, follow">
+  <title>إصدار وتجديد الجواز 1447 وإصدار الإقامة</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0EHZV252K6');
+  </script>
+  
   <style>
     body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
     body.light-mode {background-color:#ffffff;color:#000000;}
+
     .navbar-dark-mode {background-color:#15294b!important;}
     .navbar-light-mode {background-color:#334a6b!important;}
     .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
-    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    footer{color:white;margin-top:auto;}
-    .footer-top{background-color:#15294b;padding:40px 0 10px 0;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
+
+    .lang-switch,.mode-switch{
+      border:none;background:none;color:inherit;
+      font-size:16px;cursor:pointer;margin-inline:5px;
+    }
+
     :root {
       --saudi-green: #00A651;
-      --saudi-dark: #0b1a2e;
+      --box-dark: #15294b;
     }
+
     .content-box {
-      background-color:#15294b;
+      background-color:var(--box-dark);
       color:white;
-      border-radius:10px;
+      border-radius:12px;
       padding:20px;
       margin-top:30px;
       box-shadow:0 3px 10px rgba(0,0,0,0.3);
     }
+
     body.light-mode .content-box {
       background-color:#f8f9fa;
       color:#000;
     }
-    iframe {
-      width:100%;
-      height:400px;
-      border-radius:10px;
-      border:none;
+
+    iframe { width:100%; height:350px; border-radius:12px; border:none; box-shadow:0 3px 10px rgba(0,0,0,0.3); }
+
+    @media (min-width: 992px){
+      .video-side {padding-right:20px;}
+      .text-side {padding-left:20px;}
     }
+    .steps-list { line-height: 1.9; margin-top: 15px; padding-right: 20px; }
+    .steps-list li { margin-bottom: 10px; }
   </style>
 </head>
+
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html" id="brandName">
-  <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
-</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" width="170" height="50" style="height:50px; width:auto;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" id="homeLink">الرئيسية</a></li>
         </ul>
-        <div class="d-flex">
-          <button class="lang-switch" id="langSwitch">EN</button>
-          <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
-        </div>
+        <button class="lang-switch" id="langSwitch">EN</button>
+        <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
       </div>
     </div>
   </nav>
 
   <main class="container mt-5 pt-5">
+
     <h2 class="text-center mt-4" id="pageTitle">نماذج الأحوال المدنية</h2>
+    <p class="text-center mt-2" id="pageDesc" style="max-width:600px;margin:auto;">
+      دليلك الشامل لخدمات الأحوال المدنية، شرح الخطوات، وحلول المشاكل الشائعة.
+    </p>
 
-<div class="content-box">
-  <h5 id="videoTitle-newborn">🎥 فيديو تعليمي: تسجيل مولود جديد عبر أبشر</h5>
+    <div class="content-box">
+      <div class="row">
 
-  <div style="position:relative; padding-top:56.25%; border-radius:10px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,0.3);">
-    <iframe
-      src="https://www.youtube.com/embed/aIexshSRETw"
-      title="شرح طريقة تسجيل المواليد وإصدار سجل أسرة جديد عبر موقع أبشر - 2025"
-      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-      loading="lazy">
-    </iframe>
-  </div>
+        <div class="col-lg-6 text-side order-1">
+          <h3 id="stepsTitle"><i class="fas fa-list-ol ms-2 text-success"></i> خطوات تنفيذ الخدمة</h3>
 
-  <p class="mt-3" id="videoDesc-newborn">
-    في هذا الفيديو ستتعلم خطوة بخطوة طريقة تسجيل مولود جديد عبر منصة <strong>أبشر</strong>، من تعبئة البيانات وحتى إصدار سجل الأسرة.
-  </p>
-</div>
+          <ul class="steps-list" id="stepsList">
+            <li><strong>الدخول للمنصة:</strong> ابدأ بالدخول إلى حسابك في منصة <strong>أبشر</strong> ثم انتقل لتبويب "خدماتي".</li>
+            <li><strong>اختيار الخدمة:</strong> من القائمة الرئيسية للأحوال المدنية، اختر خدمة <strong>تسجيل المواليد</strong>.</li>
+            <li><strong>تعبئة البيانات:</strong> أدخل بيانات المولود بدقة وتأكد من مطابقتها لشهادة الميلاد المؤقتة.</li>
+            <li><strong>التوصيل:</strong> اختر طريقة استلام سجل الأسرة الجديد (واصل) ليصلك إلى باب المنزل.</li>
+            <li><strong>التأكيد:</strong> راجع كافة البيانات المدخلة ثم اضغط على زر "تأكيد الطلب".</li>
+          </ul>
 
-<!-- ✅ روابط ذات صلة -->
-<div class="content-box mt-4 links-section">
-  <h5 id="linksTitle">روابط ذات صلة</h5>
-  <a href="https://www.absher.sa" target="_blank" style="display:block; color:#00A651; text-decoration:none; margin-bottom:6px;">
-    <i class="fa-solid fa-globe"></i> منصة أبشر الرسمية
-  </a>
-  <a href="https://www.moi.gov.sa" target="_blank" style="display:block; color:#00A651; text-decoration:none; margin-bottom:6px;">
-    <i class="fa-solid fa-globe"></i> وكالة الأحوال المدنية - وزارة الداخلية
-  </a>
-</div>
+          <div class="alert alert-warning mt-3" role="alert">
+            <i class="fas fa-exclamation-triangle ms-2"></i>
+            <strong id="alertText">ملاحظة هامة: يجب تسديد أجور التوصيل عبر سداد، والتأكد من وجود عنوان وطني مسجل.</strong>
+          </div>
+          
+          <p class="mt-3" id="serviceNote">تعتبر هذه الخدمة من أهم الخدمات الإلكترونية التي توفر وقت وجهد المواطنين والمقيمين.</p>
+        </div>
 
-<!-- ✅ تذييل الصفحة -->
-<footer class="text-center" style="margin-top:40px; background-color:#000; color:#fff; width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; padding:10px 0;">
-  <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
-</footer>
+        <div class="col-lg-6 video-side mb-4 order-2">
+          <h5 id="videoTitle"><i class="fas fa-video ms-2 text-success"></i> شرح عملي بالفيديو</h5>
 
-<!-- تحميل Bootstrap أولاً -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- بعده ملف الأكواد الخارجية -->
-<script src="scripts.js"></script>
+          <div style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; border: 2px solid #333;">
+            <iframe
+              src="https://www.youtube.com/embed/aIexshSRETw"
+              title="شرح تسجيل المواليد"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              allowfullscreen loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="content-box mt-4">
+      <h5 id="linksTitle"><i class="fas fa-link ms-2"></i> روابط هامة</h5>
+      
+      <div class="d-flex flex-wrap gap-3 mt-3">
+        <a href="https://www.absher.sa" target="_blank" id="linkAbsher"
+           class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
+          <i class="fas fa-globe ms-2"></i> منصة أبشر الرسمية
+        </a>
+
+        <a href="https://www.moi.gov.sa" target="_blank" id="linkMoi"
+           class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
+          <i class="fas fa-building ms-2"></i> موقع الأحوال المدنية
+        </a>
+        
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="text-center mt-4" style="background:#000; color:#fff; padding:10px;">
+    ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="translations.js"></script>
+  <script src="scripts.js"></script>
+
 </body>
 </html>

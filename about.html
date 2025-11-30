@@ -15,8 +15,7 @@
     .navbar-light-mode {background-color:#334a6b!important;}
     .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
     .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    #mainTitle{margin-top:100px;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
+    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px; color: white;}
     .about-section {margin-top:50px; padding:20px; border-radius:10px;}
     .light-mode .about-section {background-color:#f8f9fa; color:#000;}
     .dark-mode .about-section {background-color:#15294b; color:#fff;}
@@ -35,26 +34,22 @@
     .timeline-content {padding: 20px 30px; background-color: white; position: relative; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
     .dark-mode .timeline-content {background-color: #1f3a63; color: white;}
     .stats-card {background: linear-gradient(135deg, var(--saudi-green, #00A651), #008c44); color: white; border-radius: 10px; padding: 20px; text-align: center;}
-    .dropdown-submenu {position: relative;}
-    .dropdown-submenu .dropdown-menu {top: 0; right: 100%; margin-top: 0; margin-right: .1rem; display: none; position: absolute;}
-    .dropdown-submenu:hover .dropdown-menu {display: block;}
     :root {--saudi-green: #00A651; --saudi-dark: #0b1a2e;}
     .btn-primary {background-color: var(--saudi-green) !important; border-color: var(--saudi-green) !important;}
     .btn-primary:hover {background-color: #008c44 !important;}
     .about-section {border-left: 4px solid var(--saudi-green);}
     .dark-mode .about-section {border-left-color: #00A651;}
     .light-mode .about-section {border-left-color: #008c44;}
-    /* نص مخفي دلالياً ليمر الفحص ويخدم قارئات الشاشة */
     .visually-hidden {position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
   </style>
 </head>
 <body>
-  <!-- شريط التنقل -->
+  
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
-<a class="navbar-brand" href="index.html" id="brandName">
-  <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
-</a>
+      <a class="navbar-brand" href="index.html" id="brandName">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -74,37 +69,40 @@
 
   <main class="flex-fill">
     <div class="container mt-5 pt-5 text-center">
-<h2 id="missionTitle">رؤيتنا</h2>
-<p id="missionText">نسعى لأن نكون المنصة السعودية الرائدة للوصول السريع إلى الخدمات ضمن رؤية 2030.</p>
+      
+      <h2 class="mt-5" id="mainTitle">عن المنصة</h2>
+      <p class="lead" id="mainDesc">منصة الخدمات العامة توفر وصولاً موحداً إلى الخدمات الحكومية والبنكية والتأمينية.</p>
+
       <div class="row mt-5">
         <div class="col-md-12">
           <div class="about-section">
-            <h2>رؤيتنا</h2>
-            <p>نسعى لأن نكون المنصة السعودية الرائدة للوصول السريع إلى الخدمات ضمن رؤية 2030.</p>
+            
+            <h2 id="missionTitle">رؤيتنا</h2>
+            <p id="missionText">نسعى لأن نكون المنصة السعودية الرائدة للوصول السريع إلى الخدمات ضمن رؤية 2030.</p>
 
-            <h2>تاريخنا</h2>
+            <h2 id="historyTitle" class="mt-5">تاريخنا</h2>
             <div class="timeline">
               <div class="timeline-item left">
                 <div class="timeline-content">
                   <h3>2025</h3>
-                  <p>إطلاق المنصة مع 7 خدمات أساسية.</p>
+                  <p id="hist_2025">إطلاق المنصة مع 7 خدمات أساسية.</p>
                 </div>
               </div>
               <div class="timeline-item right">
                 <div class="timeline-content">
                   <h3>2026</h3>
-                  <p>إضافة 20 خدمة جديدة ودعم العمل دون اتصال (PWA).</p>
+                  <p id="hist_2026">إضافة 20 خدمة جديدة ودعم العمل دون اتصال (PWA).</p>
                 </div>
               </div>
               <div class="timeline-item left">
                 <div class="timeline-content">
                   <h3>2030</h3>
-                  <p>التكامل الكامل مع جميع الجهات الحكومية.</p>
+                  <p id="hist_2030">التكامل الكامل مع جميع الجهات الحكومية.</p>
                 </div>
               </div>
             </div>
 
-            <h2>إحصائياتنا</h2>
+            <h2 id="statsTitle" class="mt-5">إحصائياتنا</h2>
             <div class="row mt-4">
               <div class="col-md-3">
                 <div class="stats-card">
@@ -113,7 +111,7 @@
                     <i class="fas fa-users" aria-hidden="true"></i>
                   </h3>
                   <h4>10,000+</h4>
-                  <p>مستخدم شهري</p>
+                  <p id="stat_users">مستخدم شهري</p>
                 </div>
               </div>
               <div class="col-md-3">
@@ -123,7 +121,7 @@
                     <i class="fas fa-link" aria-hidden="true"></i>
                   </h3>
                   <h4>50+</h4>
-                  <p>روابط خدمة</p>
+                  <p id="stat_links">روابط خدمة</p>
                 </div>
               </div>
               <div class="col-md-3">
@@ -133,7 +131,7 @@
                     <i class="fas fa-globe" aria-hidden="true"></i>
                   </h3>
                   <h4>2</h4>
-                  <p>لغات</p>
+                  <p id="stat_langs">لغات</p>
                 </div>
               </div>
               <div class="col-md-3">
@@ -143,25 +141,26 @@
                     <i class="fas fa-star" aria-hidden="true"></i>
                   </h3>
                   <h4>4.8</h4>
-                  <p>تقييم</p>
+                  <p id="stat_rating">تقييم</p>
                 </div>
               </div>
             </div>
 
             <div class="text-center mt-4">
-              <a href="PublicServices1111.html" class="btn btn-primary btn-lg" id="startBtn">ابدأ الآن</a>
+              <a href="index.html" class="btn btn-primary btn-lg" id="startBtn">ابدأ الآن</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-
+  
   <footer class="footer-bottom text-center">
-    <p class="mb-0" id="footerBottom">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
+    <p class="mb-0" id="footerBottom">© 2025 منصة الخدمات العامة - تطوير وإشراف خالد مظهر 💚 الإصدار 2.0</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="translations.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>

@@ -3,121 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="تعرف على الخدمات الإلكترونية للبنك الأهلي السعودي مثل التحويلات وتحديث بطاقة الصراف عبر منصة الخدمات العامة.">
-  <title>البنك الأهلي السعودي | منصة الخدمات العامة</title>
+  <meta name="description" content="شرح كامل لخدمات البنك الأهلي: تسجيل الدخول، التحويل المحلي، طباعة بطاقة مدى">
+  <link rel="canonical" href="https://publicservice4u.com/bank_alahli.html">
+  <meta name="robots" content="index, follow">
+  <title>خدمات البنك الأهلي: تسجيل الدخول - طباعة بطاقة - التحويل</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0EHZV252K6');
+  </script>
+  
   <style>
     body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
     body.light-mode {background-color:#ffffff;color:#000000;}
+
     .navbar-dark-mode {background-color:#15294b!important;}
     .navbar-light-mode {background-color:#334a6b!important;}
     .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
-    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    footer{color:white;margin-top:auto;}
-    .footer-top{background-color:#15294b;padding:40px 0 10px 0;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px;}
+
+    .lang-switch,.mode-switch{
+      border:none;background:none;color:inherit;
+      font-size:16px;cursor:pointer;margin-inline:5px;
+    }
+
     :root {
       --saudi-green: #00A651;
-      --saudi-dark: #0b1a2e;
+      --box-dark: #15294b;
     }
+
     .content-box {
-      background-color:#15294b;
+      background-color:var(--box-dark);
       color:white;
-      border-radius:10px;
-      padding:20px;
-      margin-top:30px;
+      border-radius:12px;
+      padding:25px;
+      margin-bottom:30px;
       box-shadow:0 3px 10px rgba(0,0,0,0.3);
     }
+
     body.light-mode .content-box {
       background-color:#f8f9fa;
       color:#000;
     }
-    iframe {
-      width:100%;
-      height:380px;
-      border-radius:10px;
-      border:none;
+
+    .service-text { line-height: 1.8; text-align: justify; }
+    
+    .video-container {
+      position: relative; 
+      padding-top: 56.25%; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      border: 2px solid #333;
     }
-    .related-links a {
-      display:block;
-      color:#00A651;
-      text-decoration:none;
-      margin-bottom:5px;
+    .video-container iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
     }
-    .related-links a:hover {text-decoration:underline;}
   </style>
 </head>
+
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
-<a class="navbar-brand" href="index.html" id="brandName">
-  <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
-</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" width="170" height="50" style="height:50px; width:auto;">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+
+      <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html" id="homeLink">الرئيسية</a></li>
         </ul>
-        <div class="d-flex">
-          <button class="lang-switch" id="langSwitch">EN</button>
-          <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
-        </div>
+
+        <button class="lang-switch" id="langSwitch">EN</button>
+        <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
       </div>
     </div>
   </nav>
 
   <main class="container mt-5 pt-5">
-    <h2 class="text-center mt-4" id="pageTitle">البنك الأهلي السعودي</h2>
 
-    <!-- الفيديوهات التعليمية -->
-<div class="content-box">
-  <h5 id="videoTitle-alahli">خدمات البنك الأهلي عبر الإنترنت</h5>
-<iframe width="853" height="480" src="https://www.youtube.com/embed/hSlwT-PnAYE?list=PLCzlCif153wB0dcgrSu595GafSbyTy_Qj" title="الأهلي أون لاين بحلته الجديدة تفضل بتجربته الآن" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <h2 class="text-center mt-4 mb-4" id="pageTitle">خدمات البنك الأهلي السعودي</h2>
+    <p class="text-center mt-2 mb-5" id="pageDesc" style="max-width:650px;margin:auto;">
+      شرح مرئي مبسّط لأبرز خدمات البنك الأهلي عبر التطبيق ومنصة الخدمات الإلكترونية بخطوات واضحة وسهلة.
+    </p>
 
-      <div class="content-box">
-      <h5 id="video2Title">التحويل بين الحسابات</h5>
-<iframe width="928" height="522" src="https://www.youtube.com/embed/rTORIxyW2Ak" title="كيفية التحويل بين الحساب الجاري و البطاقة الائتمانية في تطبيق الاهلي ✅️" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="content-box">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <h4 class="mb-3" id="v1Title"><i class="fa-solid fa-right-to-bracket ms-2 text-success"></i> تسجيل الدخول للأهلي أونلاين</h4>
+          <div class="service-text" id="v1Desc">
+            <p>
+              يوضح هذا الفيديو طريقة تسجيل الدخول إلى حسابك في الأهلي أونلاين سواء من التطبيق أو من المتصفح. تبدأ الخطوات
+              بإدخال رقم الهوية أو الرقم المستخدم، ثم كتابة كلمة المرور.
+            </p>
+            <p>
+              يعرض الفيديو طريقة استرجاع اسم المستخدم أو إعادة تعيين كلمة المرور في حال نسيانها، ونصائح أمنية.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/hSlwT-PnAYE?list=PLCzlCif153wB0dcgrSu595GafSbyTy_Qj" title="الأهلي أونلاين" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="content-box">
-<div class="video-box">
-  <h5>طريقة طباعة بطاقة الصراف الآلي البنك الأهلي</h5>
-  <iframe width="100%" height="480" src="https://www.youtube.com/embed/7tYVw0G6uD4" title="طريقة طباعة بطاقة الصراف الآلي للبنك الأهلي السعودي من خلال جهاز الخدمة الذاتية" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-</div>
-    
-<!-- الشرح -->
-    <div class="content-box mt-4">
-      <h5 id="instructionsTitle">الشرح</h5>
-      <p id="instructionsText">
-        في هذه الصفحة يمكنك التعرف على الخدمات الإلكترونية للبنك الأهلي السعودي.
-        تشمل هذه الخدمات تسجيل الدخول إلى حسابك البنكي عبر الإنترنت، تنفيذ التحويلات المالية بين الحسابات،
-        وطباعة أو تجديد بطاقة الصراف الآلي بكل سهولة من خلال أجهزة الخدمة الذاتية أو التطبيق الإلكتروني.
-      </p>
-    </div>
-
-    <!-- روابط ذات صلة -->
-    <div class="content-box mt-4">
-      <h5 id="relatedTitle">روابط ذات صلة</h5>
-      <div class="related-links" id="relatedLinks">
-        <a href="https://www.alahli.com/" target="_blank"><i class="fa-solid fa-globe"></i> الموقع الرسمي للبنك الأهلي السعودي</a>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <h4 class="mb-3 d-lg-none" id="v2TitleMob"><i class="fa-solid fa-money-bill-transfer ms-2 text-success"></i> التحويل المحلي</h4>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/rTORIxyW2Ak" title="التحويل المحلي" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+          <h4 class="mb-3 d-none d-lg-block" id="v2TitleDesk"><i class="fa-solid fa-money-bill-transfer ms-2 text-success"></i> التحويل المحلي</h4>
+          <div class="service-text" id="v2Desc">
+            <p>
+              يشرح الفيديو خطوات إجراء التحويل المحلي داخل المملكة عبر تطبيق البنك الأهلي. تبدأ العملية باختيار الحساب
+              وإدخال بيانات المستفيد.
+            </p>
+            <p>
+              يوضح الفيديو طريقة إضافة مستفيد جديد، واستقبال رمز التفعيل، ثم إتمام التحويل خلال ثوانٍ.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="content-box">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 order-lg-1 order-1">
+          <h4 class="mb-3" id="v3Title"><i class="fa-solid fa-print ms-2 text-success"></i> طباعة بطاقة الصراف (مدى)</h4>
+          <div class="service-text" id="v3Desc">
+            <p>
+              يتناول الفيديو طريقة طلب وإعادة طباعة بطاقة مدى من أجهزة الخدمة الذاتية التابعة للبنك الأهلي. يوضح كيفية تحديد
+              أقرب جهاز وإدخال الهوية.
+            </p>
+            <p>
+              كما يشرح الفيديو الفرق بين “إعادة الإصدار” و“إصدار بطاقة جديدة”، وكيفية تفعيل البطاقة بعد الاستلام.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4 order-lg-2 order-2">
+        <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/7tYVw0G6uD4" title="طباعة بطاقة الصراف" allowfullscreen></iframe>
+        </div>
+     </div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <h5 id="linksTitle"><i class="fas fa-link ms-2"></i> روابط رسمية هامة</h5>
+      <div class="d-flex flex-wrap gap-3 mt-3">
+        <a href="https://www.alahli.com" target="_blank" id="linkAlahli" class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
+          <i class="fas fa-globe ms-2"></i> موقع البنك الأهلي
+        </a>
+
+        <a href="https://www.alahli.com/ar-sa/Pages/ATMs.aspx" target="_blank" id="linkLocations" class="btn d-flex align-items-center" 
+           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
+           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
+          <i class="fas fa-map-location-dot ms-2"></i> مواقع أجهزة الخدمة الذاتية
+        </a>
+      </div>
+    </div>
+
   </main>
 
-  <footer>
-    <div class="footer-bottom text-center">
-      <p class="mb-0">©2025 كافة الحقوق محفوظة لموقع الخدمات العامة</p>
-    </div>
+  <footer class="text-center mt-4" style="background:#000; color:#fff; padding:10px;">
+    ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
   </footer>
-<!-- تحميل Bootstrap أولاً -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- بعده ملف الأكواد الخارجية -->
-<script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="translations.js"></script>
+  <script src="scripts.js"></script>
+
 </body>
 </html>
