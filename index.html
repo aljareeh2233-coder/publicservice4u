@@ -11,7 +11,6 @@
 
   <link rel="icon" type="image/png" href="images/favicon.png">
   
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
@@ -24,7 +23,7 @@
   <style>
     html, body {height: 100%; margin: 0; display: flex; flex-direction: column;}
     body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
-    body.light-mode {background-color:#ffffff;color:#000000;}
+    body.light-mode {background-color:#f4f6f8;color:#000000;}
     
     /* تنسيقات النافبار */
     .navbar-dark-mode {
@@ -44,21 +43,15 @@
         color: white !important;
     }
 
-    /* --- إصلاح زر القائمة (الهامبرغر) للوضع الليلي --- */
     .navbar-dark-mode .navbar-toggler {
       border-color: rgba(255,255,255,0.5) !important;
     }
-    .navbar-dark-mode .navbar-toggler-icon {
+    .navbar-dark-mode .navbar-toggler-icon,
+    .navbar-light-mode .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
     }
-    /* --- إصلاح زر القائمة للوضع النهاري (ليظهر بالأبيض على الخلفية الزرقاء) --- */
     .navbar-light-mode .navbar-toggler {
       border-color: rgba(255,255,255,0.5) !important;
-    }
-
-    .navbar-light-mode .navbar-toggler-icon {
-   /* نفس كود الأيقونة البيضاء */
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
     }
 
     .lang-switch, .mode-switch {border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
@@ -77,12 +70,11 @@
     /* تنسيقات البحث */
     .search-bar {margin-top:20px; text-align:center;}
     .search-bar input {width:60%; max-width:400px; padding:10px; border:1px solid #ccc; border-radius:8px;}
-    /* تم تعديل لون زر البحث ليظهر بوضوح */
     .search-bar button {
         padding:10px 20px; 
         border:none; 
         border-radius:8px; 
-        background-color:#00A651; /* لون أخضر واضح */
+        background-color:#00A651; 
         color:white; 
         margin-right:5px;
     }
@@ -110,26 +102,50 @@
     #chatbot-icon img { border-radius: 50%; box-shadow: 0 0 15px #00A651, 0 0 30px rgba(0,166,81,0.6); border: 2px solid #00A651; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     #chatbot-icon img:hover { transform: scale(1.05); box-shadow: 0 0 25px #00ff80, 0 0 50px rgba(0,166,81,0.8); }
 
-    /* العنوان يظهر دائمًا وواضح */
     #newsTitle{ text-align:right; font-weight:700; margin:0 0 10px 0; }
     .dark-mode .news-section #newsTitle{ color:#fff; }
     .light-mode .news-section #newsTitle{ color:#000; }
 
-    /* صندوق السلايدر */
-    .news-slider-container{ height:55px; overflow:hidden; position:relative; background:#fff; border-radius:8px; }
-    .news-slider{ display:flex; flex-direction:column; animation:slideUp 9s infinite; animation-delay:.5s; }
-    .news-slider .list-group-item{
-      height:55px; display:flex; align-items:center; justify-content:flex-start; padding:0 15px;
-      border:none; border-bottom:1px solid #ddd; background:#fff; color:#000; text-decoration:none;
-      font-size:15px; font-weight:500; transition:background .3s, color .3s;
+    /* صندوق السلايدر الإخباري */
+    .news-slider-container {
+      height: 55px;
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+      border-radius: 8px;
     }
-    .news-slider .list-group-item:hover{ background:#f5f5f5; color:#00A651; }
-
-    @keyframes slideUp{
-      0%,30%   { transform:translateY(0); }
-      33%,63%  { transform:translateY(-55px); }
-      66%,96%  { transform:translateY(-110px); }
-      100%     { transform:translateY(0); }
+    .news-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 18s ease-in-out infinite;
+    }
+    .news-slider .list-group-item {
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 15px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    .news-slider .list-group-item:hover {
+      background: #f5f5f5;
+      color: #00A651;
+    }
+    @keyframes slideUp {
+      0%   { transform: translateY(0); }
+      16%  { transform: translateY(-55px); }
+      32%  { transform: translateY(-110px); }
+      48%  { transform: translateY(-165px); }
+      64%  { transform: translateY(-220px); }
+      80%  { transform: translateY(-275px); }
+      100% { transform: translateY(0); }
     }
 
     /* شات فقاعات */
@@ -145,15 +161,64 @@
     .chatbot-title { transition: color 0.3s ease; }
     body.dark-mode .chatbot-title { color: #ffffff; }
     body.light-mode .chatbot-title { color: #000000; }
-
-    .dark-mode #searchResults p.text-muted {
-      color: #ddd !important;
-    }
-    .dark-mode #searchResults h5 {
-      color: #fff !important;
-    }
-    /* تحسين الفقاعات داخل الشات */
+    .dark-mode #searchResults p.text-muted { color: #ddd !important; }
+    .dark-mode #searchResults h5 { color: #fff !important; }
     #chatMessages .bubble { max-width: 90%; }
+
+    /* ========================================= */
+    /* ✨ تنسيقات السلايدر الجديد (البطاقات المتحركة) ✨ */
+    /* ========================================= */
+    .service-slider-wrapper {
+      overflow: hidden;
+      position: relative;
+      padding: 10px 0;
+    }
+    .service-slider {
+      display: flex;
+      gap: 15px;
+      transition: transform 1s ease-in-out;
+    }
+    .mini-card {
+      /* الوضع الافتراضي للكمبيوتر (4 بطاقات) */
+      flex: 0 0 calc(25% - 15px);
+      background-color: #e8f0fa;
+      color: #000;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mini-card h5 { font-size: 1rem; font-weight: bold; margin-bottom: 8px; }
+    .mini-card p { font-size: 0.85rem; margin-bottom: 10px; }
+    .mini-card .btn { font-size: 0.8rem; padding: 4px 12px; }
+    .mini-card:hover {
+      transform: scale(1.03);
+    }
+    
+    /* الوضع الليلي للبطاقات المتحركة */
+    body.dark-mode .mini-card {
+      background-color: #1f3a63;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+    }
+
+    /* التجاوب مع الشاشات (Responsive) */
+    @media (max-width: 992px) {
+      .mini-card { flex: 0 0 calc(33.33% - 15px); } /* 3 بطاقات للتابلت */
+    }
+    @media (max-width: 768px) {
+      .mini-card { flex: 0 0 calc(50% - 15px); } /* بطاقتين للجوال الكبير */
+    }
+    @media (max-width: 480px) {
+      .mini-card { flex: 0 0 calc(90% - 15px); margin-left: 5%; } /* بطاقة واحدة للجوال الصغير */
+    }
+    /* ========================================= */
+
   </style>
 </head>
 <body>
@@ -189,133 +254,223 @@
       <div class="d-flex justify-content-center mt-3">
        <a href="namazji.html"
      style="
-       background-color: #008f45; /* الأخضر الغامق قليلاً للتباين */
+       background-color: #008f45;
        color: white;
        padding: 12px 20px;
-       width: 60%;            /* نفس نسبة شريط البحث */
-       max-width: 400px;      /* نفس الحد الأقصى لشريط البحث */
+       width: 60%;
+       max-width: 400px;
        text-decoration: none;
        display: flex;
        align-items: center;
        justify-content: center;
        gap: 10px;
-       border-radius: 8px;    /* نفس انحناء حواف البحث */
+       border-radius: 8px;
        font-weight: bold;
        transition: background-color 0.3s;
      "
      onmouseover="this.style.backgroundColor='#00A651'"
      onmouseout="this.style.backgroundColor='#008f45'">
-     
      <span style="font-size: 1.2rem;">📄</span>
      <span>نماذج الخدمات الحكومية</span>
       </a>
      </div>
 
-        <div class="row mt-5" id="contentCards">
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">الخدمات الحكومية</h2>
-      <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
-    </div>
-  </div>
+    <section id="serviceSliderSection" class="container my-5">
+      <h2 class="text-center mb-4" style="font-size: 1.5rem;">الخدمات الإلكترونية السريعة</h2>
+      <div class="service-slider-wrapper">
+        <div class="service-slider" id="serviceSlider">
+          <div class="mini-card">
+            <h5>الأحوال المدنية</h5>
+            <p>نماذج وتعاميم الأحوال.</p>
+            <a href="civil_forms.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-university fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">الخدمات البنكية</h2>
-      <p>تستطيع في هذه الخدمة التعلم طريقة الإيداع وطباعة البطاقات وغيرها.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
-    </div>
-  </div>
+          <div class="mini-card">
+            <h5>الجوازات</h5>
+            <p>إصدار وتجديد الجوازات.</p>
+            <a href="passport_forms.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">التأمين والمطالبات</h2>
-      <p>تستطيع في هذه الخدمة التعلم طريقة التأمين والاختيار ومطالبة الشركات.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
-    </div>
-  </div>
-</div>
+          <div class="mini-card">
+            <h5>المرور</h5>
+            <p>رخص السير واللوحات.</p>
+            <a href="traffic_forms.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-<div class="row mt-4">
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-briefcase fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">خدمات وزارة التجارة</h2>
-      <p>تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات وزارة التجارة">للمتابعة</button>
-    </div>
-  </div>
+          <div class="mini-card">
+            <h5>ناجز</h5>
+            <p>المحاكم والوكالات.</p>
+            <a href="najiz.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-users-cog fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">خدمات منصة قوى</h2>
-      <p>خطوات منصة قوى مثل تسديد الرسوم، نقل خدمات العامل، وتوثيق العقود.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات منصة قوى">للمتابعة</button>
-    </div>
-  </div>
+          <div class="mini-card">
+            <h5>حساب المواطن</h5>
+            <p>التسجيل والأهلية.</p>
+            <a href="citizen.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-hand-holding-usd fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">خدمات حساب المواطن</h2>
-      <p>شرح التسجيل، إضافة تابع، تحديث البيانات، وحل المشكلات الشائعة.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات حساب المواطن">للمتابعة</button>
-    </div>
-  </div>
-</div>
+          <div class="mini-card">
+            <h5>التعليم (نور)</h5>
+            <p>نتائج الطلاب والتسجيل.</p>
+            <a href="education.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-<div class="row mt-4">
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-graduation-cap fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">الخدمات التعليمية</h2>
-      <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
-    </div>
-  </div>
+          <div class="mini-card">
+            <h5>منصة بلدي</h5>
+            <p>الرخص التجارية والإنشائية.</p>
+            <a href="municipal.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-city fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">الخدمات البلدية</h2>
-      <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
-    </div>
-  </div>
+          <div class="mini-card">
+            <h5>منصة قوى</h5>
+            <p>نقل الكفالة والعقود.</p>
+            <a href="qiwa.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-  <div class="col-md-4">
-    <div class="service-card text-center">
-      <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
-      <h2 class="h4">الضمان الاجتماعي</h2>
-      <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
-      <button class="btn btn-primary" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
-    </div>
-  </div>
-</div>
+          <div class="mini-card">
+            <h5>وزارة التجارة</h5>
+            <p>السجلات التجارية.</p>
+            <a href="commerce.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
+          <div class="mini-card">
+            <h5>الضمان المطور</h5>
+            <p>التسجيل والدعم.</p>
+            <a href="social.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-      <div class="news-section text-start">
-        <h2 id="newsTitle" class="h3">اخر الاخبار السعودية</h2>
+          <div class="mini-card">
+            <h5>البنك الأهلي</h5>
+            <p>خدمات الأهلي أونلاين.</p>
+            <a href="bank_alahli.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
 
-        <div class="news-slider-container">
-          <div class="news-slider">
-            <a href="https://www.spa.gov.sa/news/tags/4" target="_blank" class="list-group-item" id="newsItem1">
-              جلسة مجلس الوزراء برئاسة ولي العهد حول توطين المهن (4 نوفمبر 2025)
-            </a>
-            <a href="https://www.spa.gov.sa/news/tags/3?page=1" target="_blank" class="list-group-item" id="newsItem2">
-              مرسوم ملكي رقم (م/73) بتعيين مفتي عام جديد (7 نوفمبر 2025)
-            </a>
-            <a href="https://uqn.gov.sa/" target="_blank" class="list-group-item" id="newsItem3">
-              تعديل جدول المخالفات والعقوبات لنظام العمل (أحدث تحديث HRSD)
-            </a>
+          <div class="mini-card">
+            <h5>مصرف الراجحي</h5>
+            <p>المباشر للأفراد.</p>
+            <a href="bank_alrajhi.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
+
+          <div class="mini-card">
+            <h5>بنك الرياض</h5>
+            <p>أونلاين الرياض.</p>
+            <a href="bank_riyad.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
+
+          <div class="mini-card">
+            <h5>بي كير</h5>
+            <p>مقارنة أسعار التأمين.</p>
+            <a href="bekare.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
+
+          <div class="mini-card">
+            <h5>تأميني</h5>
+            <p>شراء تأمين المركبات.</p>
+            <a href="taaminy.html" class="btn btn-primary btn-sm">انتقال</a>
+          </div>
+
+          <div class="mini-card">
+            <h5>نجم</h5>
+            <p>طباعة تقارير الحوادث.</p>
+            <a href="Najm_website.html" class="btn btn-primary btn-sm">انتقال</a>
           </div>
         </div>
       </div>
+    </section>
+    <div class="row mt-5" id="contentCards">
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-landmark fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">الخدمات الحكومية</h2>
+          <p>تستطيع في هذه الخدمة التعلم طريقة ملئ النماذج الحكومية الرسمية.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات الحكومية">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-university fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">الخدمات البنكية</h2>
+          <p>تستطيع في هذه الخدمة التعلم طريقة الإيداع وطباعة البطاقات وغيرها.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البنكية">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">التأمين والمطالبات</h2>
+          <p>تستطيع في هذه الخدمة التعلم طريقة التأمين والاختيار ومطالبة الشركات.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل التأمين والمطالبات">للمتابعة</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-briefcase fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">خدمات وزارة التجارة</h2>
+          <p>تعرف على خدمات وزارة التجارة مثل إصدار السجل التجاري وتحديث بياناته.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات وزارة التجارة">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-users-cog fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">خدمات منصة قوى</h2>
+          <p>خطوات منصة قوى مثل تسديد الرسوم، نقل خدمات العامل، وتوثيق العقود.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات منصة قوى">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-hand-holding-usd fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">خدمات حساب المواطن</h2>
+          <p>شرح التسجيل، إضافة تابع، تحديث البيانات، وحل المشكلات الشائعة.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل خدمات حساب المواطن">للمتابعة</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-graduation-cap fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">الخدمات التعليمية</h2>
+          <p>تستطيع عبر هذه الخدمة التعلم كيفية الدخول إلى منصة نور ومتابعة الأبناء.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات التعليمية">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-city fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">الخدمات البلدية</h2>
+          <p>تعرف على طريقة استخراج الرخص البلدية وتقديم البلاغات والشكاوى.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل الخدمات البلدية">للمتابعة</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <i class="fas fa-hand-holding-heart fa-3x mb-3 text-primary"></i>
+          <h2 class="h4">الضمان الاجتماعي</h2>
+          <p>تعرف على خطوات التسجيل والاستعلام عن الدعم والمساعدات.</p>
+          <button class="btn btn-primary" aria-label="عرض تفاصيل الضمان الاجتماعي">للمتابعة</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-section text-start">
+      <h2 id="newsTitle" class="h3">اخر الاخبار السعودية</h2>
+      <div class="news-slider-container">
+        <div class="news-slider">
+          <a href="https://www.spa.gov.sa/news/tags/4" target="_blank" class="list-group-item" id="newsItem1">جلسة مجلس الوزراء برئاسة ولي العهد حول توطين المهن (4 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/3?page=1" target="_blank" class="list-group-item" id="newsItem2">مرسوم ملكي رقم (م/73) بتعيين مفتي عام جديد (7 نوفمبر 2025)</a>
+          <a href="https://uqn.gov.sa/" target="_blank" class="list-group-item" id="newsItem3">تعديل جدول المخالفات والعقوبات لنظام العمل (أحدث تحديث HRSD)</a>
+          <a href="https://www.spa.gov.sa/news/tags/5" target="_blank" class="list-group-item" id="newsItem4">وزارة التعليم تعلن إطلاق مبادرة المدارس الذكية في جميع المناطق (15 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/8" target="_blank" class="list-group-item" id="newsItem5">وزارة الصحة تبدأ المرحلة الثانية من برنامج التحول الصحي الوطني (20 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/1" target="_blank" class="list-group-item" id="newsItem6">الهيئة السعودية للبيانات والذكاء الاصطناعي تطلق منصة رقمية جديدة لخدمة المواطنين (25 نوفمبر 2025)</a>
+        </div>
+      </div>
+    </div>
 
     </div>
   </main>
@@ -349,12 +504,10 @@
 
   <div id="chatbox" class="chatbox-container" style="display:none;position:fixed;bottom:110px;right:20px;width:330px;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.4);padding:10px;z-index:1000;">
     <button id="closeChat" title="إغلاق" style="position:absolute;top:10px;left:10px;width:30px;height:30px;border-radius:50%;background-color:#00A651;color:white;border:none;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 6px rgba(0,0,0,0.3);transition:background 0.2s;">×</button>
-
     <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;margin-top:10px;">
       <img src="images/animebot.png" alt="بوت الخدمات" width="45" height="45" style="border-radius:50%;border:2px solid #00A651;">
       <h5 class="chatbot-title mb-0">بوت الخدمات العامة 💬</h5>
     </div>
-
     <div id="chatMessages" style="height:280px;overflow-y:auto;background:#0b1a2e;padding:8px;border-radius:10px;margin-bottom:8px;"></div>
     <input id="userInput" type="text" placeholder="اكتب سؤالك..." class="form-control mb-1">
     <button id="sendBtn" class="btn btn-success w-100">إرسال</button>
@@ -362,50 +515,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
-<div id="disclaimer-modal" class="modal-overlay" style="
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s ease;
-">
-  <div style="
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    width: 90%;
-    max-width: 420px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  ">
-    <h3 style="font-size: 20px; font-weight: 800; color: #3d553d; margin-bottom: 15px;">
-      تنبيه هام
-    </h3>
-
-    <p style="font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 25px;">
-      منصة الخدمات العامة موقع مستقل وغير تابع لأي جهة حكومية.
-      جميع الروابط و الشروحات تهدف لتوجيهك للمصادر الرسمية فقط.
-    </p>
-
-    <button id="disclaimer-ok" style="
-      background: #3d553d;
-      color: white;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-      transition: .2s;
-    ">
-      موافق
-    </button>
+<div id="disclaimer-modal" class="modal-overlay" style="position: fixed;top: 0; left: 0;width: 100%; height: 100%;background: rgba(0,0,0,0.55);display: flex;justify-content: center;align-items: center;z-index: 9999;opacity: 0;visibility: hidden;transition: opacity .3s ease;">
+  <div style="background: white;padding: 25px;border-radius: 14px;width: 90%;max-width: 420px;text-align: center;box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+    <h3 style="font-size: 20px; font-weight: 800; color: #3d553d; margin-bottom: 15px;">تنبيه هام</h3>
+    <p style="font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 25px;">منصة الخدمات العامة موقع مستقل وغير تابع لأي جهة حكومية. جميع الروابط و الشروحات تهدف لتوجيهك للمصادر الرسمية فقط.</p>
+    <button id="disclaimer-ok" style="background: #3d553d;color: white;padding: 10px 22px;border-radius: 8px;font-weight: bold;cursor: pointer;width: 100%;font-size: 16px;transition: .2s;">موافق</button>
   </div>
 </div>
 </body>

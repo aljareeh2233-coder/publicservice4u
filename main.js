@@ -1,13 +1,17 @@
-/* main.js - النسخة النهائية مع تصحيح ترجمة العناوين h2 */
+/* main.js - النسخة الكاملة والمحدثة مع ترجمة السلايدر */
 
 document.addEventListener('DOMContentLoaded', function () {
+  
+  // 1. تعريف العناصر الأساسية
   const modeSwitch = document.getElementById('modeSwitch');
   const langSwitch = document.getElementById('langSwitch');
   const menuList = document.getElementById('menuList');
   const footerContent = document.getElementById('footerContent');
   const brandName = document.getElementById('brandName');
 
-  // القوائم الكاملة (AR / EN) - كما في ملفك الأصلي
+  // =========================================================
+  //  نصوص القوائم والترجمة (AR / EN)
+  // =========================================================
   const menus = {
     ar: `
       <li class="nav-item dropdown">
@@ -26,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
           </li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الخدمات البنكية</a>
         <ul class="dropdown-menu">
@@ -35,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.riyadbank.com/" target="_blank">بنك الرياض</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">التأمين والمطالبات</a>
         <ul class="dropdown-menu">
@@ -44,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.walaa.com/" target="_blank">تأمين السفر</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الخدمات التعليمية</a>
         <ul class="dropdown-menu">
@@ -54,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://rbu-admit.edu.sa/" target="_blank">القبول الجامعي الموحد</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الخدمات البلدية</a>
         <ul class="dropdown-menu">
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.jeddah.gov.sa/" target="_blank">أمانة جدة</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الضمان الاجتماعي</a>
         <ul class="dropdown-menu">
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.my.gov.sa/" target="_blank">الاستعلام عن الأهلية</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">النماذج الرسمية</a>
         <ul class="dropdown-menu">
@@ -90,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.moj.gov.sa/" target="_blank">Najiz</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Banking Services</a>
         <ul class="dropdown-menu">
@@ -99,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.riyadbank.com/" target="_blank">Riyad Bank</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Insurance & Claims</a>
         <ul class="dropdown-menu">
@@ -108,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.walaa.com/" target="_blank">Travel Insurance</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Educational Services</a>
         <ul class="dropdown-menu">
@@ -118,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://rbu-admit.edu.sa/" target="_blank">Unified University Admission</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Municipal Services</a>
         <ul class="dropdown-menu">
@@ -127,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.jeddah.gov.sa/" target="_blank">Jeddah Municipality</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Social Security</a>
         <ul class="dropdown-menu">
@@ -136,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.my.gov.sa/" target="_blank">Eligibility Inquiry</a></li>
         </ul>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Official Forms</a>
         <ul class="dropdown-menu">
@@ -197,17 +189,61 @@ document.addEventListener('DOMContentLoaded', function () {
     `
   };
 
-  // switchLanguage
+  // =========================================================
+  //  بيانات ترجمة السلايدر (Mini Cards)
+  // =========================================================
+  const sliderTranslations = {
+    ar: [
+      { title: "الأحوال المدنية", desc: "نماذج وتعاميم الأحوال" },
+      { title: "الجوازات", desc: "إصدار وتجديد الجوازات" },
+      { title: "المرور", desc: "رخص السير واللوحات" },
+      { title: "ناجز", desc: "المحاكم والوكالات" },
+      { title: "حساب المواطن", desc: "التسجيل والأهلية" },
+      { title: "التعليم (نور)", desc: "نتائج الطلاب والتسجيل" },
+      { title: "منصة بلدي", desc: "الرخص التجارية والإنشائية" },
+      { title: "منصة قوى", desc: "نقل الكفالة والعقود" },
+      { title: "وزارة التجارة", desc: "السجلات التجارية" },
+      { title: "الضمان المطور", desc: "التسجيل والدعم" },
+      { title: "البنك الأهلي", desc: "خدمات الأهلي أونلاين" },
+      { title: "مصرف الراجحي", desc: "المباشر للأفراد" },
+      { title: "بنك الرياض", desc: "أونلاين الرياض" },
+      { title: "بي كير", desc: "مقارنة أسعار التأمين" },
+      { title: "تأميني", desc: "شراء تأمين المركبات" },
+      { title: "نجم", desc: "طباعة تقارير الحوادث" }
+    ],
+    en: [
+      { title: "Civil Affairs", desc: "Forms and Regulations" },
+      { title: "Passports", desc: "Issuance and Renewal" },
+      { title: "Traffic", desc: "Licenses and Plates" },
+      { title: "Najiz", desc: "Courts and POAs" },
+      { title: "Citizen Account", desc: "Registration & Eligibility" },
+      { title: "Education (Noor)", desc: "Grades and Registration" },
+      { title: "Balady", desc: "Commercial & Construction Licenses" },
+      { title: "Qiwa Platform", desc: "Sponsorship Transfer & Contracts" },
+      { title: "Ministry of Commerce", desc: "Commercial Registers" },
+      { title: "Social Security", desc: "Registration and Support" },
+      { title: "SNB Bank", desc: "AlAhli Online Services" },
+      { title: "Al Rajhi Bank", desc: "Al Mubasher Retail" },
+      { title: "Riyad Bank", desc: "Riyad Online" },
+      { title: "BCare", desc: "Insurance Price Comparison" },
+      { title: "Tameeni", desc: "Buy Vehicle Insurance" },
+      { title: "Najm", desc: "Accident Reports" }
+    ]
+  };
+
+  // =========================================================
+  //  وظائف تغيير اللغة والوضع (Language & Mode)
+  // =========================================================
   function switchLanguage(lang) {
     const mainTitle = document.getElementById("mainTitle");
     const mainDesc = document.getElementById("mainDesc");
-    // [تم التعديل] استخدام h2 بدلاً من h4 ليطابق كود HTML
     const cards = document.querySelectorAll(".service-card h2");
     const cardTexts = document.querySelectorAll(".service-card p");
     const newsTitle = document.getElementById("newsTitle");
     const newsSlider = document.querySelector(".news-slider");
     const nav = document.querySelector('nav');
     
+    // إعدادات الاتجاه والنافبار
     if (lang === "en") {
         nav.classList.add('navbar-dark'); 
         document.documentElement.setAttribute('dir', 'ltr');
@@ -217,7 +253,35 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.setAttribute('dir', 'rtl');
         document.documentElement.setAttribute('lang', 'ar');
     }
-    
+
+    // --------------------------------------------------------
+    // تحديث ترجمة بطاقات السلايدر (Mini Cards)
+    // --------------------------------------------------------
+    const sliderCards = document.querySelectorAll('.mini-card');
+    const sliderBtnText = lang === 'en' ? 'Go' : 'انتقال';
+    const currentSliderData = sliderTranslations[lang];
+
+    if (currentSliderData && sliderCards.length > 0) {
+      sliderCards.forEach((card, index) => {
+        // نستخدم باقي القسمة للتعامل مع البطاقات المنسخة (Clones)
+        const realIndex = index % currentSliderData.length;
+        const data = currentSliderData[realIndex];
+        
+        if (data) {
+          const titleEl = card.querySelector('h5');
+          const descEl = card.querySelector('p');
+          const btnEl = card.querySelector('.btn');
+
+          if (titleEl) titleEl.textContent = data.title;
+          if (descEl) descEl.textContent = data.desc;
+          if (btnEl) btnEl.textContent = sliderBtnText;
+        }
+      });
+    }
+
+    // --------------------------------------------------------
+    // تحديث باقي نصوص الصفحة
+    // --------------------------------------------------------
     if (lang === "en") {
       document.querySelectorAll('.service-card button').forEach(btn => btn.textContent = 'Continue');
       if(mainTitle) mainTitle.textContent = "Welcome to the Public Services Platform";
@@ -246,12 +310,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (newsTitle) newsTitle.textContent = "Latest Orders and Decisions";
       if (newsSlider) {
         newsSlider.innerHTML = `
-          <a href="https://www.spa.gov.sa/news/tags/4" class="list-group-item" target="_blank">Cabinet session chaired by the Crown Prince on Saudization of professions (Nov 4, 2025)</a>
-          <a href="https://www.spa.gov.sa/news/tags/3?page=1" class="list-group-item" target="_blank">Royal Decree No. (M/73) appointing a new Grand Mufti (Nov 7, 2025)</a>
-          <a href="https://uqn.gov.sa/" class="list-group-item" target="_blank">Amendment to the table of violations and penalties of the Labor Law (latest HRSD update)</a>
+          <a href="https://www.spa.gov.sa/news/tags/4" target="_blank" class="list-group-item">Cabinet session chaired by the Crown Prince on Saudization of professions (Nov 4, 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/3?page=1" target="_blank" class="list-group-item">Royal Decree No. (M/73) appointing a new Grand Mufti (Nov 7, 2025)</a>
+          <a href="https://uqn.gov.sa/" target="_blank" class="list-group-item">Amendment to the table of violations and penalties of the Labor Law (latest HRSD update)</a>
+          <a href="https://www.spa.gov.sa/news/tags/5" target="_blank" class="list-group-item">Ministry of Education launches the Smart Schools Initiative across all regions (Nov 15, 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/8" target="_blank" class="list-group-item">Ministry of Health launches the second phase of the National Health Transformation Program (Nov 20, 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/1" target="_blank" class="list-group-item">SDAIA launches a new digital platform to serve citizens (Nov 25, 2025)</a>
         `;
       }
-
       document.getElementById('menuList').innerHTML = menus.en;
       footerContent.innerHTML = footerText.en;
 
@@ -281,34 +347,32 @@ document.addEventListener('DOMContentLoaded', function () {
       ];
       cardTexts.forEach((el, index) => { if(descAr[index]) el.textContent = descAr[index]; });
 
-      if (newsTitle) newsTitle.textContent = "اخر الاخبار الملكية";
+      if (newsTitle) newsTitle.textContent = "اخر الاخبار السعودية";
       if (newsSlider) {
         newsSlider.innerHTML = `
-          <a href="https://www.spa.gov.sa/news/tags/4" class="list-group-item" target="_blank">جلسة مجلس الوزراء برئاسة ولي العهد حول توطين المهن (4 نوفمبر 2025)</a>
-          <a href="https://www.spa.gov.sa/news/tags/3?page=1" class="list-group-item" target="_blank">مرسوم ملكي رقم (م/73) بتعيين مفتي عام جديد (7 نوفمبر 2025)</a>
-          <a href="https://uqn.gov.sa/" class="list-group-item" target="_blank">تعديل جدول المخالفات والعقوبات لنظام العمل (أحدث تحديث HRSD)</a>
+          <a href="https://www.spa.gov.sa/news/tags/4" target="_blank" class="list-group-item">جلسة مجلس الوزراء برئاسة ولي العهد حول توطين المهن (4 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/3?page=1" target="_blank" class="list-group-item">مرسوم ملكي رقم (م/73) بتعيين مفتي عام جديد (7 نوفمبر 2025)</a>
+          <a href="https://uqn.gov.sa/" target="_blank" class="list-group-item">تعديل جدول المخالفات والعقوبات لنظام العمل (أحدث تحديث HRSD)</a>
+          <a href="https://www.spa.gov.sa/news/tags/5" target="_blank" class="list-group-item">وزارة التعليم تعلن إطلاق مبادرة المدارس الذكية في جميع المناطق (15 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/8" target="_blank" class="list-group-item">وزارة الصحة تبدأ المرحلة الثانية من برنامج التحول الصحي الوطني (20 نوفمبر 2025)</a>
+          <a href="https://www.spa.gov.sa/news/tags/1" target="_blank" class="list-group-item">الهيئة السعودية للبيانات والذكاء الاصطناعي تطلق منصة رقمية جديدة لخدمة المواطنين (25 نوفمبر 2025)</a>
         `;
       }
-
       document.getElementById('menuList').innerHTML = menus.ar;
       footerContent.innerHTML = footerText.ar;
     }
-
     document.dispatchEvent(new CustomEvent('languageChanged'));
   }
 
-  // تهيئة القوائم
+  // تهيئة القوائم واللغة والوضع
   menuList.innerHTML = menus.ar;
   footerContent.innerHTML = footerText.ar;
-
   const savedLang = localStorage.getItem('lang') || 'ar';
   switchLanguage(savedLang);
   langSwitch.textContent = savedLang === 'ar' ? 'EN' : 'AR';
 
-  // حفظ وضع المود
   const savedMode = localStorage.getItem('mode') || 'dark';
   const nav = document.querySelector('nav');
-  
   if (savedMode === 'light') {
     document.body.classList.add('light-mode');
     document.body.classList.remove('dark-mode');
@@ -320,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function () {
     nav.classList.remove('navbar-light-mode');
   }
 
+  // أحداث أزرار التبديل
   modeSwitch.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
     document.body.classList.toggle('dark-mode');
@@ -336,7 +401,9 @@ document.addEventListener('DOMContentLoaded', function () {
     langSwitch.textContent = next === 'ar' ? 'EN' : 'AR';
   });
 
-  // بيانات الـ modal
+  // =========================================================
+  //  بيانات المودال (التفاصيل)
+  // =========================================================
   const detailsData = {
     ar: [
       {
@@ -436,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <ul>
             <li><a href="civil_forms.html" class="text-decoration-none text-primary">Civil Affairs Forms</a></li>
             <li><a href="passport_forms.html" class="text-decoration-none text-primary">Passport and Residency Services</a></li>
-            <li><a href="traffic_forms.html" class="text-decoration-none text-primary">Traffic Forms – Plate Issuance and Damage Replacement</a></li>
+            <li><a href="traffic_forms.html" class="text-decoration-none text-primary">Traffic Forms</a></li>
             <li><a href="najiz.html" class="text-decoration-none text-primary">Najiz and Electronic Court Services</a></li>
           </ul>
         `
@@ -538,6 +605,9 @@ document.addEventListener('DOMContentLoaded', function () {
   attachModalButtons();
   document.addEventListener('languageChanged', () => setTimeout(attachModalButtons, 50));
 
+  // =========================================================
+  //  البحث (Search)
+  // =========================================================
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
   const searchResults = document.getElementById('searchResults');
@@ -553,20 +623,15 @@ document.addEventListener('DOMContentLoaded', function () {
     let hasResults = false;
 
     const currentDetailsData = detailsData[lang];
-
     const cards = document.querySelectorAll('.service-card');
     cards.forEach((card, idx) => {
-      // [تم التعديل] استخدام h2 بدلاً من h4 ليطابق كود HTML
       const title = (card.querySelector('h2')?.textContent || '').toLowerCase();
       const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
-      
       let modalContent = '';
       if (currentDetailsData[idx]) {
         modalContent = (currentDetailsData[idx].body || '').toLowerCase();
       }
-
       if (title.includes(lowerQuery) || desc.includes(lowerQuery) || modalContent.includes(lowerQuery)) {
-        // [تم التعديل] استخدام h2 بدلاً من h4
         const cardTitle = card.querySelector('h2')?.textContent || '';
         const cardDesc = (card.querySelector('p')?.textContent || '').substring(0, 60) + '...';
         cardResults += `<a href="#" class="list-group-item list-group-item-action" data-index="${idx}" onclick="showDetails(${idx}); return false;">${cardTitle} - ${cardDesc}</a>`;
@@ -582,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function () {
         hasResults = true;
       }
     });
-
+    
     const newsItems = document.querySelectorAll('.news-slider .list-group-item');
     newsItems.forEach(item => {
       const txt = (item.textContent || '').toLowerCase();
@@ -628,6 +693,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // =========================================================
+  //  تشات بوت
+  // =========================================================
   const icon = document.getElementById('chatbot-icon');
   const chatbox = document.getElementById('chatbox');
   const sendBtn = document.getElementById('sendBtn');
@@ -676,52 +744,84 @@ document.addEventListener('DOMContentLoaded', function () {
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
 
   document.dispatchEvent(new CustomEvent('languageChanged'));
+
+  // =========================================================
+  // 🚀 تحريك البطاقات (مصحح للاتجاه العربي RTL) 🚀
+  // =========================================================
+  try {
+    const slider = document.getElementById("serviceSlider");
+    
+    // إذا لم يجد السلايدر، لا يكمل لكي لا يوقف الصفحة
+    if (slider) {
+      // تنظيف أي نسخ قديمة لتجنب التكرار
+      const existingClones = slider.querySelectorAll('.cloned-card');
+      existingClones.forEach(clone => clone.remove());
+      
+      const originalCards = slider.querySelectorAll(".mini-card");
+      
+      // إذا كانت البطاقات موجودة
+      if (originalCards.length > 0) {
+        // نسخ أول 4 بطاقات
+        const clonesCount = 4;
+        for (let i = 0; i < clonesCount; i++) {
+          if (originalCards[i]) {
+            const clone = originalCards[i].cloneNode(true);
+            clone.classList.add('cloned-card');
+            slider.appendChild(clone);
+          }
+        }
+
+        let index = 0;
+        const transitionTime = 1000;
+        const slideInterval = 3500;
+
+        function moveSlider() {
+          if (!originalCards[0]) return; 
+          
+          const cardWidth = originalCards[0].offsetWidth + 15; 
+          index++;
+          
+          slider.style.transition = `transform ${transitionTime}ms ease-in-out`;
+
+          // ✨ هنا التعديل السحري: اكتشاف اتجاه الصفحة ✨
+          // إذا كانت الصفحة عربية (RTL)، نعكس الاتجاه ليصبح موجباً
+          const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+          const directionMultiplier = isRTL ? 1 : -1; 
+          
+          slider.style.transform = `translateX(${index * cardWidth * directionMultiplier}px)`;
+
+          // إعادة التعيين عند النهاية
+          if (index >= originalCards.length) {
+            setTimeout(() => {
+              slider.style.transition = 'none';
+              index = 0;
+              slider.style.transform = `translateX(0px)`;
+            }, transitionTime);
+          }
+        }
+
+        setInterval(moveSlider, slideInterval);
+      }
+    }
+  } catch (error) {
+    console.error("Slider Error Ignored:", error);
+  }
+
 });
 
+// نافذة التنبيه (Disclaimer)
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('disclaimer-modal');
   const okBtn = document.getElementById('disclaimer-ok');
-  if (!localStorage.getItem('disclaimerAccepted')) {
-    modal.style.opacity = '1';
-    modal.style.visibility = 'visible';
-  }
-  okBtn.addEventListener('click', () => {
-    modal.style.opacity = '0';
-    modal.style.visibility = 'hidden';
-    localStorage.setItem('disclaimerAccepted', 'true');
-  });
-});
-
-/* ------------------------------
-   🔄 تحديث الأخبار تلقائيًا من وكالة الأنباء السعودية (SPA)
-   بدون أي تأثير على الكود الأصلي أو التصميم
------------------------------- */
-
-function loadLatestNews() {
-  const newsSlider = document.querySelector('.news-slider');
-  if (!newsSlider) return;
-
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.spa.gov.sa/rss.xml")
-    .then(response => response.json())
-    .then(data => {
-      // نعرض أول 5 أخبار فقط لتجنب الطول
-      const items = data.items.slice(0, 5);
-      newsSlider.innerHTML = items.map(item => `
-        <a href="${item.link}" 
-           class="list-group-item hover:bg-green-50 transition"
-           target="_blank" 
-           rel="noopener noreferrer">
-           📰 ${item.title}
-        </a>
-      `).join('');
-    })
-    .catch(err => {
-      console.log("⚠️ تعذر تحميل الأخبار:", err);
-      // في حال فشل التحميل، يظل المحتوى القديم
+  if (modal && okBtn) {
+    if (!localStorage.getItem('disclaimerAccepted')) {
+      modal.style.opacity = '1';
+      modal.style.visibility = 'visible';
+    }
+    okBtn.addEventListener('click', () => {
+      modal.style.opacity = '0';
+      modal.style.visibility = 'hidden';
+      localStorage.setItem('disclaimerAccepted', 'true');
     });
-}
-
-// تشغيل التحديث عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(loadLatestNews, 1500); // تأخير بسيط لضمان تحميل الصفحة أولاً
+  }
 });
