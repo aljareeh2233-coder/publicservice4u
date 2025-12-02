@@ -82,28 +82,43 @@
 
   <!-- سكربت قراءة الرابط -->
   <script>
-    // قراءة القيم من الرابط
-    const params = new URLSearchParams(window.location.search);
+  // قراءة القيم من الرابط
+  const params = new URLSearchParams(window.location.search);
+  let file = params.get("file");
+  const title = params.get("title") || "عرض النموذج";
 
-    // الاسم المختصر الذي يكتبه المستخدم
-    let file = params.get("file");
+  // وضع العنوان
+  document.getElementById("form-title").textContent = decodeURIComponent(title);
 
-    // العنوان
-    const title = params.get("title") || "عرض النموذج";
-
-    // وضع العنوان داخل الصفحة
-    document.getElementById("form-title").textContent = decodeURIComponent(title);
-
-    // إذا كتب فقط اسم الملف → نضيف له مجلد files
-    if (file) {
-      if (!file.startsWith("/files/") && !file.startsWith("files/")) {
-        file = "files/" + file;
-      }
-      document.getElementById("pdf-frame").src = file;
-    } else {
-      document.getElementById("pdf-frame").src = "";
+  if (file) {
+    // 1. تجهيز مسار الملف
+    if (!file.startsWith("/files/") && !file.startsWith("files/") && !file.startsWith("http")) {
+      file = "files/" + file;
     }
-  </script>
+
+    // 2. الحصول على الرابط الكامل (Domain + File)
+    // جوجل يحتاج رابط كامل مثل: https://publicservice4u.com/files/xxxx.pdf
+    const fullUrl = window.location.origin + "/" + file.replace(/^\//, "");
+
+    // 3. التحقق: هل المستخدم يتصفح من جوال؟
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    const iframe = document.getElementById("pdf-frame");
+
+    if (isMobile) {
+      // إذا كان جوال -> استخدم عارض جوجل
+      iframe.src = "https://docs.google.com/gview?url=" + fullUrl + "&embedded=true";
+    } else {
+      // إذا كان كمبيوتر -> العرض المباشر (أوضح وأسرع)
+      iframe.src = file;
+    }
+
+  } else {
+    // إذا لم يوجد ملف
+    document.getElementById("pdf-frame").style.display = 'none';
+    document.getElementById("form-title").textContent = "لم يتم تحديد ملف للعرض";
+  }
+</script>
 
 </body>
 </html>

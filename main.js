@@ -253,6 +253,51 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.setAttribute('dir', 'rtl');
         document.documentElement.setAttribute('lang', 'ar');
     }
+    // ========================================================
+    // 🛠️ التعديلات النهائية الشاملة (البحث، السلايدر، الزر الأخضر)
+    // ========================================================
+    
+    // 1. ترجمة زر البحث + النص التوضيحي داخله
+    const btnSearch = document.getElementById('searchBtn');
+    const inputSearch = document.getElementById('searchInput');
+    
+    if (btnSearch) {
+        btnSearch.textContent = lang === 'en' ? 'Search' : 'بحث';
+    }
+    if (inputSearch) {
+        inputSearch.placeholder = lang === 'en' ? 'Search the site...' : 'ابحث في الموقع...';
+    }
+
+    // 2. ترجمة عنوان الخدمات السريعة (السلايدر)
+    const sliderSecTitle = document.querySelector('#serviceSliderSection h2');
+    if (sliderSecTitle) {
+        sliderSecTitle.textContent = lang === 'en' ? 'Quick Electronic Services' : 'الخدمات الإلكترونية السريعة';
+    }
+
+    // 3. ترجمة زر نماذج الخدمات الحكومية (الزر الأخضر الكبير)
+    const namazjiBtnText = document.querySelector('a[href="namazji.html"] span:last-child');
+    if (namazjiBtnText) {
+        namazjiBtnText.textContent = lang === 'en' ? 'Government Services Forms' : 'نماذج الخدمات الحكومية';
+    }
+    // ========================================================
+    // 4. ترجمة واجهة الشات بوت (Bot Interface)
+    // ========================================================
+    const chatInput = document.getElementById('userInput');
+    const chatSendBtn = document.getElementById('sendBtn');
+    const chatTitle = document.querySelector('.chatbot-title');
+
+    if (chatInput) {
+        chatInput.placeholder = lang === 'en' ? 'Type your question...' : 'اكتب سؤالك...';
+        // تغيير اتجاه الكتابة داخل الحقل
+        chatInput.style.textAlign = lang === 'en' ? 'left' : 'right';
+    }
+    if (chatSendBtn) {
+        chatSendBtn.textContent = lang === 'en' ? 'Send' : 'إرسال';
+    }
+    if (chatTitle) {
+        // الحفاظ على الأيقونة وتغيير النص
+        chatTitle.innerHTML = lang === 'en' ? 'Public Services Bot 💬' : 'بوت الخدمات العامة 💬';
+    }
 
     // --------------------------------------------------------
     // تحديث ترجمة بطاقات السلايدر (Mini Cards)
@@ -710,12 +755,24 @@ document.addEventListener('DOMContentLoaded', function () {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  // تعديل: فتح الشات مع رسالة ترحيب حسب اللغة
   icon.addEventListener('click', () => {
     const isHidden = (chatbox.style.display === 'none' || chatbox.style.display === '');
     chatbox.style.display = isHidden ? 'block' : 'none';
+    
+    // التحقق هل تم الترحيب سابقاً؟
     if (isHidden && !chatbox.dataset.greeted) {
       chatbox.dataset.greeted = 'true';
-      setTimeout(() => { addMessage('أهلًا بك في بوت الخدمات العامة 👋🇸🇦\nاكتب اسم الجهة مثل: نور، بلدي، أو راجحي.', 'bot'); }, 400);
+      
+      // تحديد اللغة الحالية
+      const currentLang = localStorage.getItem('lang') || 'ar';
+      
+      // النص المترجم
+      const welcomeText = currentLang === 'en' 
+        ? "Welcome to Public Services Bot 👋🇸🇦\nType the entity name like: Noor, Balady, or Rajhi."
+        : "أهلاً بك في بوت الخدمات العامة 👋🇸🇦\nاكتب اسم الجهة مثل: نور، بلدي، أو راجحي.";
+
+      setTimeout(() => { addMessage(welcomeText, 'bot'); }, 400);
     }
   });
 
@@ -823,5 +880,5 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.style.visibility = 'hidden';
       localStorage.setItem('disclaimerAccepted', 'true');
     });
-  }
+  }  
 });

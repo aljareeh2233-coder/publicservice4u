@@ -92,5 +92,26 @@
     <p class="text-sm opacity-80">© 2025 منصة نماذجي | جميع الحقوق محفوظة</p>
   </footer>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // التحقق هل المتصفح جوال؟
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      const iframe = document.querySelector('iframe');
+      // نأخذ مسار الملف الحالي
+      let currentSrc = iframe.getAttribute('src');
+      
+      // نتأكد أنه ليس رابط جوجل أصلاً
+      if (currentSrc && !currentSrc.includes('docs.google.com')) {
+        // ننشئ الرابط الكامل
+        const fullLink = window.location.origin + "/" + currentSrc;
+        // نحوله لعارض جوجل
+        iframe.src = "https://docs.google.com/gview?url=" + fullLink + "&embedded=true";
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
