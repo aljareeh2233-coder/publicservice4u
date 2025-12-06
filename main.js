@@ -1,4 +1,4 @@
-/* main.js - النسخة الكاملة والمحدثة مع ترجمة السلايدر */
+/* main.js - النسخة الكاملة والمحدثة مع تحويل نتائج البحث إلى Modal */
 
 document.addEventListener('DOMContentLoaded', function () {
   
@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const langSwitch = document.getElementById('langSwitch');
   const menuList = document.getElementById('menuList');
   const footerContent = document.getElementById('footerContent');
-  const brandName = document.getElementById('brandName');
+  const brandName = document.getElementById('brandName'); // تم الاحتفاظ به رغم عدم التعديل عليه
 
   // =========================================================
-  //  نصوص القوائم والترجمة (AR / EN)
+  //  نصوص القوائم والترجمة (AR / EN) - النسخة المتطابقة
   // =========================================================
   const menus = {
     ar: `
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a class="dropdown-item" href="https://www.absher.sa/wps/portal/individuals/static/ca-book-appointment/" target="_blank">الأحوال المدنية (حجز موعد)</a></li>
           <li><a class="dropdown-item" href="https://www.absher.sa" target="_blank">الجوازات</a></li>
           <li><a class="dropdown-item" href="https://www.absher.sa" target="_blank">المرور</a></li>
-          <li><a class="dropdown-item" href="https://www.moj.gov.sa" target="_blank">المحاكم</a></li>
+          <li><a class="dropdown-item" href="https://www.moj.gov.sa" target="_blank">المحاكم (ناجز)</a></li>
           <li class="dropdown-submenu">
             <a class="dropdown-item dropdown-toggle" href="#">وزارة الخارجية</a>
             <ul class="dropdown-menu">
@@ -42,14 +42,14 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">التأمين والمطالبات</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="https://www.cchi.gov.sa/" target="_blank">التأمين الصحي</a></li>
-          <li><a class="dropdown-item" href="https://www.tawuniya.com.sa/" target="_blank">مطالبات السيارات</a></li>
-          <li><a class="dropdown-item" href="https://www.walaa.com/" target="_blank">تأمين السفر</a></li>
+          <li><a class="dropdown-item" href="https://najm.sa/home/" target="_blank">مطالبات السيارات</a></li>
+          <li><a class="dropdown-item" href="https://tree.com.sa/ar/" target="_blank">تأمين السفر</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الخدمات التعليمية</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="https://noor.moe.gov.sa/Noor/Login.aspx?ref=noor" target="_blank">نظام نور</a></li>
+          <li><a class="dropdown-item" href="https://noor.moe.gov.sa/" target="_blank">نظام نور</a></li>
           <li><a class="dropdown-item" href="https://schools.madrasati.sa/" target="_blank">منصة مدرستي</a></li>
           <li><a class="dropdown-item" href="https://safeer2.moe.gov.sa/" target="_blank">نظام سفير</a></li>
           <li><a class="dropdown-item" href="https://rbu-admit.edu.sa/" target="_blank">القبول الجامعي الموحد</a></li>
@@ -80,12 +80,22 @@ document.addEventListener('DOMContentLoaded', function () {
         </ul>
       </li>
     `,
+    // ================= النسخة الإنجليزية (تمت مطابقتها بالعربية) =================
     en: `
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Government Services</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="https://www.absher.sa/" target="_blank">Absher</a></li>
-          <li><a class="dropdown-item" href="https://www.moj.gov.sa/" target="_blank">Najiz</a></li>
+          <li><a class="dropdown-item" href="https://www.absher.sa/wps/portal/individuals/static/ca-book-appointment/" target="_blank">Civil Affairs (Book Appointment)</a></li>
+          <li><a class="dropdown-item" href="https://www.absher.sa" target="_blank">Passports (Jawazat)</a></li>
+          <li><a class="dropdown-item" href="https://www.absher.sa" target="_blank">Traffic (Muroor)</a></li>
+          <li><a class="dropdown-item" href="https://www.moj.gov.sa" target="_blank">Courts (Najiz)</a></li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="#">Ministry of Foreign Affairs</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://ratification.mofa.gov.sa/" target="_blank">Attestation Appointment</a></li>
+              <li><a class="dropdown-item" href="https://ksavisa.sa/" target="_blank">E-Visas</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="nav-item dropdown">
@@ -99,9 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Insurance & Claims</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="https://www.cchi.gov.sa/" target="_blank">Health Insurance</a></li>
-          <li><a class="dropdown-item" href="https://www.tawuniya.com.sa/" target="_blank">Car Claims</a></li>
-          <li><a class="dropdown-item" href="https://www.walaa.com/" target="_blank">Travel Insurance</a></li>
+          <li><a class="dropdown-item" href="https://www.cchi.gov.sa/" target="_blank">Health Insurance (CCHI)</a></li>
+          <li><a class="dropdown-item" href="https://najm.sa/home/" target="_blank">Vehicle Claims</a></li>
+          <li><a class="dropdown-item" href="https://tree.com.sa/en/" target="_blank">Travel Insurance</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
@@ -117,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Municipal Services</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="https://balady.gov.sa/" target="_blank">Balady Platform</a></li>
-          <li><a class="dropdown-item" href="https://ecrp.balady.gov.sa/" target="_blank">Building Permits</a></li>
+          <li><a class="dropdown-item" href="https://ecrp.balady.gov.sa/" target="_blank">Construction Permits</a></li>
           <li><a class="dropdown-item" href="https://www.jeddah.gov.sa/" target="_blank">Jeddah Municipality</a></li>
         </ul>
       </li>
@@ -133,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Official Forms</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Pages/Forms.aspx" target="_blank">Passport Forms</a></li>
+          <li><a class="dropdown-item" href="https://is.gd/reFWHs" target="_blank">Civil Affairs Forms</a></li>
           <li><a class="dropdown-item" href="https://is.gd/1LHzx2" target="_blank">Traffic Forms</a></li>
-          <li><a class="dropdown-item" href="https://is.gd/q2LnKP" target="_blank">Civil Affairs Forms</a></li>
         </ul>
       </li>
     `
@@ -275,9 +285,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 3. ترجمة زر نماذج الخدمات الحكومية (الزر الأخضر الكبير)
-    const namazjiBtnText = document.querySelector('a[href="namazji.html"] span:last-child');
-    if (namazjiBtnText) {
-        namazjiBtnText.textContent = lang === 'en' ? 'Government Services Forms' : 'نماذج الخدمات الحكومية';
+    const namazjiLabel = document.getElementById('namazjiText');
+    if (namazjiLabel) {
+        namazjiLabel.textContent = lang === 'en' ? 'Government Services Forms' : 'نماذج الخدمات الحكومية';
     }
     // ========================================================
     // 4. ترجمة واجهة الشات بوت (Bot Interface)
@@ -651,22 +661,41 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('languageChanged', () => setTimeout(attachModalButtons, 50));
 
   // =========================================================
-  //  البحث (Search)
+  //  البحث (Search) - تم التعديل هنا
   // =========================================================
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
-  const searchResults = document.getElementById('searchResults');
+  const searchResults = document.getElementById('searchResults'); // تم الاحتفاظ به لغرض التنظيف
+
+  // تعريف Modal البحث الجديد (الذي تم إضافته في index.html)
+  const searchModalEl = document.getElementById('searchModal');
+  const searchModal = new bootstrap.Modal(searchModalEl);
+  const searchModalTitle = document.getElementById('searchModalTitle');
+  const searchModalBody = document.getElementById('modalSearchResultsBody');
+
 
   function performSearch(query) {
-    if (!query.trim()) { searchResults.innerHTML = ''; return; }
-    const lowerQuery = query.toLowerCase();
     const lang = localStorage.getItem('lang') || 'ar';
     const isArabic = lang === 'ar';
+
+    if (!query.trim()) {
+      // إذا كان الاستعلام فارغًا، افتح Modal برسالة خطأ
+      searchModalTitle.textContent = isArabic ? `نتائج البحث` : `Search Results`;
+      searchModalBody.innerHTML = isArabic ? 
+        `<p class="mt-3 text-muted">الرجاء إدخال كلمة بحث صحيحة.</p>` : 
+        `<p class="mt-3 text-muted">Please enter a valid search term.</p>`;
+      searchModal.show();
+      return;
+    }
+    
+    const lowerQuery = query.toLowerCase();
+    
     let cardResults = '';
     let menuResults = '';
     let newsResults = '';
     let hasResults = false;
 
+    // ----------------- منطق البحث (نفس المنطق السابق) -----------------
     const currentDetailsData = detailsData[lang];
     const cards = document.querySelectorAll('.service-card');
     cards.forEach((card, idx) => {
@@ -679,7 +708,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (title.includes(lowerQuery) || desc.includes(lowerQuery) || modalContent.includes(lowerQuery)) {
         const cardTitle = card.querySelector('h2')?.textContent || '';
         const cardDesc = (card.querySelector('p')?.textContent || '').substring(0, 60) + '...';
-        cardResults += `<a href="#" class="list-group-item list-group-item-action" data-index="${idx}" onclick="showDetails(${idx}); return false;">${cardTitle} - ${cardDesc}</a>`;
+        // يجب أن تعمل showDetails في السياق العام للصفحة (Global Scope)
+        cardResults += `<a href="#" class="list-group-item list-group-item-action" data-index="${idx}" onclick="showDetails(${idx}); searchModal.hide(); return false;">${cardTitle} - ${cardDesc}</a>`;
         hasResults = true;
       }
     });
@@ -701,6 +731,7 @@ document.addEventListener('DOMContentLoaded', function () {
         hasResults = true;
       }
     });
+    // ------------------------------------------------------------------
 
     let resultsHTML = '';
     if (cardResults) resultsHTML += (isArabic ? '<h6 class="mt-3">الكروت الرئيسية:</h6>' : '<h6 class="mt-3">Main Cards:</h6>') + `<div class="list-group">${cardResults}</div>`;
@@ -709,8 +740,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!hasResults) resultsHTML = isArabic ? `<p class="mt-3 text-muted">لم يتم العثور على نتائج مطابقة لـ "${query}". جرب كلمات أخرى!</p>` : `<p class="mt-3 text-muted">No matching results for "${query}". Try other words!</p>`;
 
-    const resultsTitle = isArabic ? '<h5 class="mt-3">النتائج:</h5>' : '<h5 class="mt-3">Results:</h5>';
-    searchResults.innerHTML = resultsTitle + resultsHTML;
+    // 🚀 تطبيق التغيير: عرض النتائج في Modal
+    searchModalTitle.textContent = isArabic ? `نتائج البحث عن: ${query}` : `Search Results for: ${query}`;
+    searchModalBody.innerHTML = resultsHTML;
+    searchModal.show();
+    
+    // تنظيف العنصر القديم (اختياري)
+    if (searchResults) searchResults.innerHTML = '';
   }
 
   searchBtn.addEventListener('click', () => performSearch(searchInput.value));
@@ -803,7 +839,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.dispatchEvent(new CustomEvent('languageChanged'));
 
   // =========================================================
-  // 🚀 تحريك البطاقات (مصحح للاتجاه العربي RTL) 🚀
+  // 🚀 تحريك البطاقات (مصحح للاتجاه العربي RTL) 🚀 - تم استخدام translate3d للتحسين
   // =========================================================
   try {
     const slider = document.getElementById("serviceSlider");
@@ -840,19 +876,18 @@ document.addEventListener('DOMContentLoaded', function () {
           
           slider.style.transition = `transform ${transitionTime}ms ease-in-out`;
 
-          // ✨ هنا التعديل السحري: اكتشاف اتجاه الصفحة ✨
-          // إذا كانت الصفحة عربية (RTL)، نعكس الاتجاه ليصبح موجباً
+          // ✨ استخدام translate3d لتحسين أداء الحركة ✨
           const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
           const directionMultiplier = isRTL ? 1 : -1; 
           
-          slider.style.transform = `translateX(${index * cardWidth * directionMultiplier}px)`;
+          slider.style.transform = `translate3d(${index * cardWidth * directionMultiplier}px, 0, 0)`;
 
           // إعادة التعيين عند النهاية
           if (index >= originalCards.length) {
             setTimeout(() => {
               slider.style.transition = 'none';
               index = 0;
-              slider.style.transform = `translateX(0px)`;
+              slider.style.transform = `translate3d(0px, 0, 0)`;
             }, transitionTime);
           }
         }
@@ -882,3 +917,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }  
 });
+// وظيفة showDetails يجب أن تكون متاحة خارج DOMContentLoaded لإمكانية استخدامها في روابط نتائج البحث
+// (تم نقلها إلى Global Scope عبر خاصية onclick في روابط نتائج البحث داخل دالة performSearch)
+
+// توفير showDetails في النطاق العام للتشغيل من الـ Modal
+window.showDetails = function(index) {
+    const detailsData = { /* ... (نسخ بيانات detailsData هنا إذا لم تكن موجودة عالميًا) ... */ };
+    const modalEl = document.getElementById('detailsModal');
+    const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    const detailsTitle = document.getElementById('detailsTitle');
+    const detailsBody = document.getElementById('modalDetailsBody');
+    const lang = localStorage.getItem('lang') || 'ar';
+    const data = detailsData[lang][index];
+    detailsTitle.textContent = data.title;
+    detailsBody.innerHTML = data.body;
+    modal.show();
+}

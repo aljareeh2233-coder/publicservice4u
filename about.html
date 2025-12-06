@@ -3,160 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="تعرف على رؤية وأهداف منصة الخدمات العامة، رحلتنا نحو التحول الرقمي ضمن رؤية السعودية 2030.">
-  <title>عن الموقع - منصة الخدمات العامة</title>
+  <meta name="description" content="تعرف على منصة الخدمات العامة، رؤيتنا، وأهدافنا لخدمة المجتمع.">
+  <title>عن المنصة - الخدمات العامة</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    html, body {height: 100%; margin: 0; display: flex; flex-direction: column;}
-    body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
-    body.light-mode {background-color:#ffffff;color:#000000;}
-    .navbar-dark-mode {background-color:#15294b!important;}
-    .navbar-light-mode {background-color:#334a6b!important;}
-    .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
-    .lang-switch,.mode-switch{border:none;background:none;color:inherit;font-size:16px;cursor:pointer;margin-inline:5px;}
-    .footer-bottom{background-color:#000000;padding:10px 0;font-size:14px; color: white;}
-    .about-section {margin-top:50px; padding:20px; border-radius:10px;}
-    .light-mode .about-section {background-color:#f8f9fa; color:#000;}
-    .dark-mode .about-section {background-color:#15294b; color:#fff;}
-    .timeline {position: relative; max-width: 1200px; margin: 0 auto;}
-    .timeline::after {content: ''; position: absolute; width: 6px; background-color: var(--saudi-green, #00A651); top: 0; bottom: 0; left: 50%; margin-left: -3px;}
-    html[dir="rtl"] .timeline::after {left: auto; right: 50%; margin-right: -3px;}
-    .timeline-item {padding: 10px 40px; position: relative; background-color: inherit; width: 50%;}
-    .timeline-item::after {content: ''; position: absolute; width: 25px; height: 25px; right: -17px; background-color: white; border: 4px solid var(--saudi-green, #00A651); top: 15px; border-radius: 50%; z-index: 1;}
-    html[dir="rtl"] .timeline-item::after {right: auto; left: -17px;}
-    .left {left: 0;}
-    .right {left: 50%;}
-    .right::after {left: -16px;}
-    html[dir="rtl"] .left {left: auto; right: 0;}
-    html[dir="rtl"] .right {left: auto; right: 50%;}
-    html[dir="rtl"] .right::after {left: auto; right: -16px;}
-    .timeline-content {padding: 20px 30px; background-color: white; position: relative; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-    .dark-mode .timeline-content {background-color: #1f3a63; color: white;}
-    .stats-card {background: linear-gradient(135deg, var(--saudi-green, #00A651), #008c44); color: white; border-radius: 10px; padding: 20px; text-align: center;}
-    :root {--saudi-green: #00A651; --saudi-dark: #0b1a2e;}
-    .btn-primary {background-color: var(--saudi-green) !important; border-color: var(--saudi-green) !important;}
-    .btn-primary:hover {background-color: #008c44 !important;}
-    .about-section {border-left: 4px solid var(--saudi-green);}
-    .dark-mode .about-section {border-left-color: #00A651;}
-    .light-mode .about-section {border-left-color: #008c44;}
-    .visually-hidden {position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
+    :root {--saudi-green: #00A651; --saudi-dark: #0b1a2e; --bg-card-light: #ffffff; --bg-card-dark: #1f3a63;}
+    html, body {height: 100%; margin: 0; display: flex; flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body.dark-mode {background-color: var(--saudi-dark); color: #f1f1f1;}
+    body.light-mode {background-color: #f8f9fa; color: #333;}
+    .navbar-dark-mode {background-color: #15294b!important;}
+    .navbar-light-mode {background-color: #334a6b!important;}
+    .navbar-light-mode .nav-link, .navbar-light-mode .navbar-brand {color: #ffffff!important;}
+    .footer-bottom {background-color: #000000; padding: 15px 0; font-size: 14px; color: white; margin-top: auto;}
+    .about-header {background: linear-gradient(135deg, var(--saudi-green), #007bff); color: white; padding: 60px 0; text-align: center; border-radius: 0 0 50px 50px; margin-bottom: 40px;}
+    .stats-card {background-color: var(--bg-card-light); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease; margin-bottom: 20px; border-bottom: 4px solid var(--saudi-green);}
+    .dark-mode .stats-card {background-color: var(--bg-card-dark); color: white;}
+    .stats-card:hover {transform: translateY(-10px);}
+    .stats-card i {font-size: 3rem; color: var(--saudi-green); margin-bottom: 15px;}
+    .stats-card h4 {font-size: 1.5rem; font-weight: bold; margin-bottom: 5px;}
+    .info-section {padding: 40px 0;}
+    .info-section h2 {color: var(--saudi-green); margin-bottom: 20px; font-weight: bold;}
+    .lang-switch, .mode-switch {border: none; background: none; color: white; font-size: 1.2rem; cursor: pointer; margin-inline: 10px;}
   </style>
 </head>
 <body>
-  
+
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html" id="brandName">
-        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; display:block;">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html" id="homeLink">الرئيسية</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <button class="lang-switch" id="langSwitch">EN</button>
-          <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
+          <li class="nav-item"><a class="nav-link" href="index.html" id="homeLink">الرئيسية</a></li>
+          </ul>
+        <div class="d-flex align-items-center">
+            <button class="lang-switch" id="langSwitch">EN</button>
+            <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
         </div>
       </div>
     </div>
   </nav>
 
-  <main class="flex-fill">
-    <div class="container mt-5 pt-5 text-center">
-      
-      <h2 class="mt-5" id="mainTitle">عن المنصة</h2>
-      <p class="lead" id="mainDesc">منصة الخدمات العامة توفر وصولاً موحداً إلى الخدمات الحكومية والبنكية والتأمينية.</p>
+  <header class="about-header mt-5">
+    <div class="container">
+      <h1 id="mainTitle" id="mainTitle">عن المنصة</h1>
+      <p id="mainDesc" id="mainDesc" class="lead">منصة الخدمات العامة توفر وصولاً موحداً ومبسطاً للخدمات.</p>
+    </div>
+  </header>
 
-      <div class="row mt-5">
-        <div class="col-md-12">
-          <div class="about-section">
-            
-            <h2 id="missionTitle">رؤيتنا</h2>
-            <p id="missionText">نسعى لأن نكون المنصة السعودية الرائدة للوصول السريع إلى الخدمات ضمن رؤية 2030.</p>
-
-            <h2 id="historyTitle" class="mt-5">تاريخنا</h2>
-            <div class="timeline">
-              <div class="timeline-item left">
-                <div class="timeline-content">
-                  <h3>2025</h3>
-                  <p id="hist_2025">إطلاق المنصة مع 7 خدمات أساسية.</p>
-                </div>
-              </div>
-              <div class="timeline-item right">
-                <div class="timeline-content">
-                  <h3>2026</h3>
-                  <p id="hist_2026">إضافة 20 خدمة جديدة ودعم العمل دون اتصال (PWA).</p>
-                </div>
-              </div>
-              <div class="timeline-item left">
-                <div class="timeline-content">
-                  <h3>2030</h3>
-                  <p id="hist_2030">التكامل الكامل مع جميع الجهات الحكومية.</p>
-                </div>
-              </div>
-            </div>
-
-            <h2 id="statsTitle" class="mt-5">إحصائياتنا</h2>
-            <div class="row mt-4">
-              <div class="col-md-3">
-                <div class="stats-card">
-                  <h3>
-                    <span class="visually-hidden">عدد المستخدمين</span>
-                    <i class="fas fa-users" aria-hidden="true"></i>
-                  </h3>
-                  <h4>10,000+</h4>
-                  <p id="stat_users">مستخدم شهري</p>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stats-card">
-                  <h3>
-                    <span class="visually-hidden">عدد الروابط</span>
-                    <i class="fas fa-link" aria-hidden="true"></i>
-                  </h3>
-                  <h4>50+</h4>
-                  <p id="stat_links">روابط خدمة</p>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stats-card">
-                  <h3>
-                    <span class="visually-hidden">عدد اللغات</span>
-                    <i class="fas fa-globe" aria-hidden="true"></i>
-                  </h3>
-                  <h4>2</h4>
-                  <p id="stat_langs">لغات</p>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stats-card">
-                  <h3>
-                    <span class="visually-hidden">تقييم المنصة</span>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </h3>
-                  <h4>4.8</h4>
-                  <p id="stat_rating">تقييم</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="text-center mt-4">
-              <a href="index.html" class="btn btn-primary btn-lg" id="startBtn">ابدأ الآن</a>
-            </div>
-          </div>
-        </div>
+  <main class="container mb-5">
+    
+    <div class="row info-section align-items-center">
+      <div class="col-md-6">
+        <h2 id="missionTitle">رؤيتنا</h2>
+        <p id="missionText" class="lead">
+          نسعى لأن نكون المنصة السعودية الرائدة للوصول السريع إلى الخدمات الحكومية وشرحها بطريقة مبسطة، بما يتماشى مع التحول الرقمي ورؤية المملكة 2030.
+        </p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/3214/3214698.png" alt="Vision" style="max-width: 200px;">
       </div>
     </div>
+
+    <div class="text-center info-section">
+        <h2 id="statsTitle">مميزات المنصة</h2>
+        <div class="row mt-4">
+          
+          <div class="col-md-3">
+            <div class="stats-card">
+              <h3><i class="fas fa-check-circle"></i></h3>
+              <h4>100%</h4>
+              <p id="stat_users">مجاني بالكامل</p>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats-card">
+              <h3><i class="fas fa-file-alt"></i></h3>
+              <h4>20+</h4>
+              <p id="stat_links">نموذج جاهز</p>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats-card">
+               <h3><i class="fas fa-globe"></i></h3>
+              <h4>2</h4>
+              <p id="stat_langs">لغات مدعومة</p>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="stats-card">
+               <h3><i class="fas fa-mobile-alt"></i></h3>
+              <h4 id="val_easy">سهل</h4> 
+              <p id="stat_rating">متوافق مع الجوال</p>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="text-center mt-5 p-4 border rounded bg-light text-dark">
+        <h3 id="contactBoxTitle">تواصل معنا</h3> 
+       <p id="contactBoxP1">للاقتراحات أو الاستفسارات، يرجى التواصل عبر البريد الإلكتروني:</p>
+        
+        <a href="mailto:info@publicservice4u.com" class="btn btn-outline-success">
+            <i class="fas fa-envelope"></i> info@publicservice4u.com
+        </a>
+
+        <p id="contactBoxNote" class="text-muted mt-3 small">* تنويه: هذا الموقع مجهود شخصي ولا يمثل جهة حكومية.</p> 
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="index.html" class="btn btn-primary btn-lg" id="startBtn">ابدأ الآن</a>
+    </div>
+
   </main>
-  
+
   <footer class="footer-bottom text-center">
-    <p class="mb-0" id="footerBottom">© 2025 منصة الخدمات العامة - تطوير وإشراف خالد مظهر 💚 الإصدار 2.0</p>
+    <div class="container">
+        <p class="mb-0">
+            <span id="ftr_copyright">© 2025 منصة الخدمات العامة | جميع الحقوق محفوظة</span>
+            
+            <span class="d-none d-md-inline"> | </span>
+            
+            <a href="privacy.html" id="ftr_privacy" style="color: white; text-decoration: underline;">سياسة الخصوصية</a>
+            
+            <span class="mx-1">|</span>
+            
+            <a href="terms.html" id="ftr_terms" style="color: white; text-decoration: underline;">شروط الاستخدام</a>
+        </p>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -3,122 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عرض النموذج</title>
+  <title>عرض النموذج | نماذجي</title>
 
-  <!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#3d553d',
-          secondary: '#008c44'
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3d553d',
+            'primary-dark': '#2c3e2c',
+          },
+          fontFamily: {
+            'cairo': ['Cairo', 'sans-serif'],
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
   <style>
-    body {
-      background: #fafafa;
-    }
-    iframe {
-      border: 1px solid #ccc;
-    }
+    body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
   </style>
 </head>
 
 <body class="min-h-screen flex flex-col">
 
-  <!-- هيدر مطابق لنماذجي -->
-  <header class="bg-primary text-white p-3 shadow-md sticky top-0 z-50 relative">
-    
-    <!-- زر الرئيسية -->
-    <a href="index.html"
-       class="absolute right-4 top-1/2 -translate-y-1/2 text-white font-bold text-lg hover:underline">
-      الرئيسية
-    </a>
+  <header class="bg-primary text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center relative">
+      <a href="namazji.html" class="text-white hover:text-gray-200 font-bold text-sm md:text-base flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        العودة للنماذج
+      </a>
 
-    <!-- عنوان نماذجي -->
-    <h1 class="text-3xl font-extrabold tracking-wide text-center">
-      نماذجي
-    </h1>
+      <h1 class="text-xl md:text-2xl font-extrabold tracking-wide absolute left-1/2 transform -translate-x-1/2">
+        نماذجي
+      </h1>
+      
+      <div class="w-20"></div> 
+    </div>
+  </header>
 
-    </header>
+  <main class="flex-grow container mx-auto p-4 md:p-6 max-w-5xl">
 
-  <!-- المحتوى الرئيسي -->
-  <main class="flex-grow container mx-auto p-4">
+    <h2 id="form-title" class="text-2xl font-bold text-primary text-center mb-4">جاري تحميل النموذج...</h2>
 
-    <!-- عنوان النموذج -->
-    <h2 id="form-title" class="text-2xl font-bold text-primary text-center mb-4"></h2>
-
-    <!-- صندوق الملاحظات -->
-    <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg p-3 mb-6 text-sm">
+    <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg p-3 mb-6 text-sm text-center shadow-sm font-medium">
       ملاحظة: يُفضل تعبئة النموذج من جهاز كمبيوتر لسهولة الكتابة والطباعة.  
       بعد إكمال البيانات يمكنك طباعة النموذج من زر الطباعة داخل عارض الـ PDF.
     </div>
 
-    <!-- إطار عرض PDF -->
-    <iframe id="pdf-frame" class="w-full h-[80vh] rounded-lg shadow-lg"></iframe>
+    <div class="bg-gray-200 rounded-xl p-1 shadow-inner min-h-[400px]">
 
-    <!-- زر الرجوع -->
-    <div class="text-center mt-6">
-      <a href="namazji.html"
-         class="bg-primary text-white px-5 py-2 rounded-lg shadow hover:bg-green-700 transition">
-        ⬅ الرجوع إلى نماذجي
-      </a>
+      <object 
+        id="desktop-viewer"
+        data="" 
+        type="application/pdf" 
+        class="hidden md:block w-full h-[85vh] rounded-lg bg-white">
+        <p class="p-5 text-center">عذراً، المتصفح لا يدعم العرض المباشر.</p>
+      </object>
+
+      <div class="block md:hidden bg-white h-[60vh] rounded-lg flex flex-col justify-center items-center p-6 text-center">
+        <div class="bg-gray-100 p-4 rounded-full mb-4">
+            <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">تنبيه لمستخدمي الجوال</h3>
+        <p class="text-gray-600 mb-6 max-w-xs">
+            متصفحات الجوال لا تدعم تعبئة النماذج الحكومية مباشرة. لضمان حفظ بياناتك، يرجى تحميل النموذج وتعبئته في تطبيق الملفات.
+        </p>
+        
+        <a id="mobile-download-btn" href="#" download class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg transition transform active:scale-95 font-bold flex items-center gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            تحميل النموذج للتعبئة
+        </a>
+      </div>
+
     </div>
 
   </main>
 
-  <!-- فوتر -->
-  <footer class="bg-gray-900 text-white text-center p-3 mt-auto">
-    <p>جميع الحقوق محفوظة © 2025 | منصة نماذجي</p>
+  <footer class="bg-gray-900 text-white text-center py-4 mt-8">
+    <p class="text-sm opacity-80">© 2025 منصة نماذجي | جميع الحقوق محفوظة</p>
   </footer>
 
-
-  <!-- سكربت قراءة الرابط -->
   <script>
-  // قراءة القيم من الرابط
-  const params = new URLSearchParams(window.location.search);
-  let file = params.get("file");
-  const title = params.get("title") || "عرض النموذج";
+    document.addEventListener("DOMContentLoaded", function() {
+      // قراءة البيانات من الرابط
+      const params = new URLSearchParams(window.location.search);
+      let file = params.get("file");
+      const title = params.get("title");
 
-  // وضع العنوان
-  document.getElementById("form-title").textContent = decodeURIComponent(title);
+      // تحديث العنوان
+      if (title) {
+        document.getElementById("form-title").textContent = title;
+        document.title = title + " | نماذجي";
+      } else {
+        document.getElementById("form-title").textContent = "عرض النموذج";
+      }
 
-  if (file) {
-    // 1. تجهيز مسار الملف
-    if (!file.startsWith("/files/") && !file.startsWith("files/") && !file.startsWith("http")) {
-      file = "files/" + file;
-    }
+      // تحديث الملف وروابط التحميل
+      if (file) {
+        // التأكد من المسار الصحيح
+        if (!file.includes("/") && !file.startsWith("http")) {
+          file = "files/" + file;
+        }
 
-    // 2. الحصول على الرابط الكامل (Domain + File)
-    // جوجل يحتاج رابط كامل مثل: https://publicservice4u.com/files/xxxx.pdf
-    const fullUrl = window.location.origin + "/" + file.replace(/^\//, "");
+        // تحديث عارض الكمبيوتر
+        const viewer = document.getElementById("desktop-viewer");
+        viewer.setAttribute("data", file);
 
-    // 3. التحقق: هل المستخدم يتصفح من جوال؟
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    const iframe = document.getElementById("pdf-frame");
-
-    if (isMobile) {
-      // إذا كان جوال -> استخدم عارض جوجل
-      iframe.src = "https://docs.google.com/gview?url=" + fullUrl + "&embedded=true";
-    } else {
-      // إذا كان كمبيوتر -> العرض المباشر (أوضح وأسرع)
-      iframe.src = file;
-    }
-
-  } else {
-    // إذا لم يوجد ملف
-    document.getElementById("pdf-frame").style.display = 'none';
-    document.getElementById("form-title").textContent = "لم يتم تحديد ملف للعرض";
-  }
-</script>
+        // تحديث زر تحميل الجوال
+        const downloadBtn = document.getElementById("mobile-download-btn");
+        downloadBtn.setAttribute("href", file);
+        
+      } else {
+        // في حال عدم وجود ملف
+        document.getElementById("form-title").textContent = "لم يتم تحديد ملف للعرض!";
+        document.getElementById("form-title").classList.add("text-red-600");
+      }
+    });
+  </script>
 
 </body>
 </html>

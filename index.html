@@ -86,7 +86,15 @@
     .dropdown-submenu {position: relative;}
     .dropdown-submenu .dropdown-menu {top: 0; right: 100%; margin-top: 0; margin-right: .1rem; display: none; position: absolute;}
     .dropdown-submenu:hover .dropdown-menu {display: block;}
-    .modal-header {display: flex; justify-content: space-between; flex-direction: row-reverse;}
+    
+    /* تنسيق Modal Header الموحد (تم نقله من inline) */
+    .modal-header {
+      background-color:#00A651; 
+      color:white;
+      display: flex; 
+      justify-content: space-between; 
+      flex-direction: row-reverse;
+    }
     body.dark-mode .modal-content {background-color: #15294b;}
 
     :root {
@@ -271,7 +279,7 @@
      onmouseover="this.style.backgroundColor='#00A651'"
      onmouseout="this.style.backgroundColor='#008f45'">
      <span style="font-size: 1.2rem;">📄</span>
-     <span>نماذج الخدمات الحكومية</span>
+     <span id="namazjiText">نماذج الخدمات الحكومية</span>
       </a>
      </div>
 
@@ -489,7 +497,7 @@
   <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header" style="background-color:#00A651; color:white;">
+        <div class="modal-header">
           <h5 class="modal-title" id="detailsTitle"><span class="visually-hidden">تفاصيل الخدمة</span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
         </div>
@@ -497,6 +505,23 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalTitle">نتائج البحث</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+        </div>
+        <div class="modal-body" id="modalSearchResultsBody">
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div id="chatbot-icon" style="position:fixed;bottom:25px;right:25px;cursor:pointer;z-index:1000;">
   <img src="images/animebot.png" width="70" height="70" alt="Chat Icon">

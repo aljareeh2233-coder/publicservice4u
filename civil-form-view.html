@@ -13,7 +13,7 @@
       theme: {
         extend: {
           colors: {
-            primary: '#3d553d',      /* نفس الأخضر المستخدم في نماذجي */
+            primary: '#3d553d',
             'primary-dark': '#2c3e2c',
             secondary: '#f8f4e3',
           },
@@ -27,7 +27,6 @@
 
   <style>
     body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
-    iframe { border: 1px solid #e5e7eb; }
   </style>
 </head>
 
@@ -82,8 +81,29 @@
       </div>
     </div>
 
-    <div class="bg-gray-200 rounded-xl p-1 shadow-inner">
-      <iframe src="files/EditDeleteAddCorrection.pdf" class="w-full h-[85vh] rounded-lg bg-white" title="عرض نموذج الأحوال"></iframe>
+    <div class="bg-gray-200 rounded-xl p-1 shadow-inner min-h-[400px]">
+      
+      <object 
+        data="files/EditDeleteAddCorrection.pdf" 
+        type="application/pdf" 
+        class="hidden md:block w-full h-[85vh] rounded-lg bg-white">
+        <p class="p-5 text-center">متصفحك لا يدعم العرض المباشر للنماذج التفاعلية. <a href="files/EditDeleteAddCorrection.pdf" class="text-primary font-bold">حمل النموذج من هنا</a>.</p>
+      </object>
+
+      <div class="block md:hidden bg-white h-[50vh] rounded-lg flex flex-col justify-center items-center p-6 text-center">
+        <div class="bg-gray-100 p-4 rounded-full mb-4">
+            <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">تنبيه لمستخدمي الجوال</h3>
+        <p class="text-gray-600 mb-6 max-w-xs">
+            متصفحات الجوال لا تدعم تعبئة النماذج الحكومية مباشرة. لضمان حفظ بياناتك بشكل صحيح، يرجى تحميل النموذج وتعبئته في تطبيق الملفات.
+        </p>
+        <a href="files/EditDeleteAddCorrection.pdf" download class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg transition transform active:scale-95 font-bold flex items-center gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            تحميل النموذج للتعبئة
+        </a>
+      </div>
+
     </div>
 
   </main>
@@ -91,27 +111,6 @@
   <footer class="bg-gray-900 text-white text-center py-4 mt-8">
     <p class="text-sm opacity-80">© 2025 منصة نماذجي | جميع الحقوق محفوظة</p>
   </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // التحقق هل المتصفح جوال؟
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      const iframe = document.querySelector('iframe');
-      // نأخذ مسار الملف الحالي
-      let currentSrc = iframe.getAttribute('src');
-      
-      // نتأكد أنه ليس رابط جوجل أصلاً
-      if (currentSrc && !currentSrc.includes('docs.google.com')) {
-        // ننشئ الرابط الكامل
-        const fullLink = window.location.origin + "/" + currentSrc;
-        // نحوله لعارض جوجل
-        iframe.src = "https://docs.google.com/gview?url=" + fullLink + "&embedded=true";
-      }
-    }
-  });
-</script>
 
 </body>
 </html>
