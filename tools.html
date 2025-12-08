@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="شرح أدوات منصة الخدمات العامة: حاسبة الضريبة، مواعيد الصرف، حاسبة القسط، الزكاة، العمر، التقاعد، ومعرفة قبول الطالب الجديد، وغيرها من الأدوات المفيدة."> 
+    <title>أدوات الخدمات العامة | Public Services Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0EHZV252K6');
+  </script>
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22; /* لون للتمييز */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --shadow: 0 8px 30px rgba(0,0,0,0.05);
+            --radius: 16px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            padding-bottom: 50px;
+        }
+
+        /* الهيدر */
+         header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* الشبكة */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* البطاقات */
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover { transform: translateY(-5px); }
+
+        .card-header { display: flex; align-items: center; margin-bottom: 20px; }
+        .icon-box {
+            width: 50px; height: 50px;
+            background: #e8f5e9; color: var(--primary-color);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            margin-left: 15px;
+        }
+        .tool-title { font-size: 1.2rem; font-weight: 700; }
+
+        /* العناصر الداخلية */
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; font-weight: 600; }
+        
+        input, select {
+            width: 100%; padding: 12px;
+            border: 2px solid #eee; border-radius: 10px;
+            font-family: inherit; font-size: 1rem;
+            transition: 0.3s;
+        }
+        input:focus { outline: none; border-color: var(--primary-color); }
+
+        button {
+            width: 100%; padding: 12px;
+            background: var(--secondary-color); color: white;
+            border: none; border-radius: 10px;
+            font-size: 1rem; cursor: pointer;
+            font-family: inherit; transition: 0.3s;
+        }
+        button:hover { background: #34495e; }
+        
+        .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        .btn-outline:hover { background: var(--primary-color); color: white; }
+
+        /* النتائج */
+        .result-box {
+            margin-top: 20px; padding: 15px;
+            background: #f8f9fa; border-radius: 10px;
+            border: 1px dashed #cbd5e0;
+            display: none; text-align: center;
+        }
+        .result-box.active { display: block; animation: fadeIn 0.5s; }
+        .result-value { font-size: 1.4rem; font-weight: bold; color: var(--primary-color); margin-top: 5px; }
+
+        /* تنسيق خاص لبطاقة الرواتب */
+        .salary-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px solid #eee;
+        }
+        .salary-row:last-child { border-bottom: none; }
+        .salary-name { font-weight: 600; font-size: 0.9rem; }
+        .salary-days { font-weight: bold; color: var(--accent-color); background: #fff3e0; padding: 2px 8px; border-radius: 5px; font-size: 0.9rem;}
+
+        html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<header style="position: relative;">
+    
+    <a href="index.html" style="
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.2); /* خلفية شفافة جميلة */
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s;
+    " onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.4)'" 
+      onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.2)'">
+        <i class="fas fa-home"></i> الرئيسية
+    </a>
+
+    <h1>أدوات الخدمات العامة</h1>
+    <p>كل ما يحتاجه المواطن والمقيم من حسابات في صفحة واحدة</p>
+</header>
+
+<div class="container">
+    <div class="tools-grid">
+
+        <div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-percent"></i></div>
+                <div class="tool-title">حاسبة الضريبة (15%)</div>
+            </div>
+            <div class="input-group">
+                <input type="number" id="vatInput" placeholder="أدخل المبلغ (ريال)">
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button onclick="calcVAT('add')">إضافة الضريبة</button>
+                <button class="btn-outline" onclick="calcVAT('remove')">خصم الضريبة</button>
+            </div>
+            <div id="vatResult" class="result-box">
+                <p>الإجمالي النهائي:</p>
+                <div class="result-value" id="vatValue">0</div>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="tool-title">مواعيد الصرف القادمة</div>
+            </div>
+            <div id="salaryList">
+                <div class="salary-row">
+                    <span class="salary-name">الضمان المطور</span>
+                    <span class="salary-days" id="damanDay">جاري الحساب...</span>
+                </div>
+                <div class="salary-row">
+                    <span class="salary-name">حساب المواطن</span>
+                    <span class="salary-days" id="citizenDay">جاري الحساب...</span>
+                </div>
+                <div class="salary-row">
+                    <span class="salary-name">الراتب الحكومي</span>
+                    <span class="salary-days" id="govDay">جاري الحساب...</span>
+                </div>
+            </div>
+            <p style="font-size:0.8rem; color:#888; margin-top:15px; text-align:center;">* يتم التحديث يومياً تلقائياً</p>
+        </div>
+
+        <div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-calculator"></i></div>
+                <div class="tool-title">حاسبة القسط (تقريبي)</div>
+            </div>
+            <div class="input-group">
+                <label>مبلغ التمويل</label>
+                <input type="number" id="loanAmount" placeholder="مثلاً 100000">
+            </div>
+            <div class="input-group">
+                <label>المدة (سنوات)</label>
+                <input type="number" id="loanYears" placeholder="مثلاً 5">
+            </div>
+            <button onclick="calcLoan()">احسب القسط</button>
+            <div id="loanResult" class="result-box">
+                <p>القسط الشهري المتوقع:</p>
+                <div class="result-value" id="loanValue">0</div>
+                <small style="display:block; margin-top:5px; color:#888;">شامل هامش ربح تقريبي 3%</small>
+            </div>
+        </div>
+<!-- 1. حاسبة العمر دقيق (محدثة بالستايل الجديد) -->
+<div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-birthday-cake"></i></div>
+                <div class="tool-title">حاسبة العمر دقيق</div>
+            </div>
+            <div class="input-group">
+                <label>تاريخ الميلاد (ميلادي)</label>
+                <input type="text" id="birthDate" 
+                       placeholder="مثال: 01/01/2020" 
+                       onfocus="(this.type='date')" 
+                       onblur="(this.type='text')">
+            </div>
+            <button onclick="calcAge()">احسب عمري</button>
+            <div id="ageResult" class="result-box">
+                <p>عمرك الآن:</p>
+                 <div class="result-value" id="ageValue" style="font-size: 1.1rem; direction: rtl;">-</div>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-school"></i></div>
+                <div class="tool-title">فحص قبول الطالب</div>
+            </div>
+            <div class="input-group">
+                <label>تاريخ ميلاد الطفل</label>
+                <input type="text" id="childDate" 
+                       placeholder="مثال: 15/09/2018" 
+                       onfocus="(this.type='date')" 
+                       onblur="(this.type='text')">
+            </div>
+            <button onclick="checkSchool()">هل يقبل؟</button>
+            <div id="schoolResult" class="result-box">
+                <div class="result-value" id="schoolValue" style="font-size:1.2rem;">-</div>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <div class="card-header">
+                <div class="icon-box"><i class="fas fa-calendar-alt"></i></div>
+                <div class="tool-title">تحويل لميلادي لهجري</div>
+            </div>
+            <div class="input-group">
+                <label>اختر التاريخ الميلادي</label>
+                <input type="text" id="gregDate" 
+                       placeholder="مثال: 25/12/2025" 
+                       onfocus="(this.type='date')" 
+                       onblur="(this.type='text')"
+                       onchange="convertDate()">
+            </div>
+            <div id="dateResult" class="result-box" style="display:block; background:#fff;">
+                <p>الموافق بالهجري:</p>
+                <div class="result-value" id="hijriValue" style="font-size:1.1rem; color:#2c3e50;">-</div>
+            </div>
+        </div>
+
+        <div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+        <div class="tool-title">حاسبة الزكاة (2.5%)</div>
+    </div>
+    <div class="input-group">
+        <label>إجمالي المبلغ (نقد + ذهب + أسهم)</label>
+        <input type="number" id="zakatAmount" placeholder="أدخل المبلغ الإجمالي بالريال">
+    </div>
+    <button onclick="calcZakat()">احسب الزكاة</button>
+    <div id="zakatResult" class="result-box">
+        <p>مقدار الزكاة الواجب إخراجه:</p>
+        <div class="result-value" id="zakatValue">-</div>
+    </div>
+</div>
+
+<div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-gift"></i></div>
+        <div class="tool-title">مكافأة نهاية الخدمة</div>
+    </div>
+    <div class="input-group">
+        <label>الراتب الأساسي + السكن</label>
+        <input type="number" id="esSalary" placeholder="الراتب الأخير">
+    </div>
+    <div class="input-group">
+        <label>عدد السنوات</label>
+        <input type="number" id="esYears" placeholder="مثال: 5">
+    </div>
+    <div class="input-group">
+        <label>سبب ترك العمل</label>
+        <select id="esReason">
+            <option value="resign">استقالة</option>
+            <option value="terminate">إنهاء عقد / تقاعد / فسخ</option>
+        </select>
+    </div>
+    <button onclick="calcEndService()">احسب المكافأة</button>
+    <div id="esResult" class="result-box">
+        <p>المكافأة المستحقة:</p>
+        <div class="result-value" id="esValue">-</div>
+        <small style="display:block; margin-top:5px; color:#888;">حسب نظام العمل السعودي</small>
+    </div>
+</div>
+
+<div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-university"></i></div>
+        <div class="tool-title">الراتب التقاعدي المتوقع</div>
+    </div>
+    <div class="input-group">
+        <label>متوسط الراتب (آخر سنتين)</label>
+        <input type="number" id="pensionSalary" placeholder="ريال">
+    </div>
+    <div class="input-group">
+        <label>عدد سنوات الخدمة</label>
+        <input type="number" id="pensionYears" placeholder="مثال: 25">
+    </div>
+    <button onclick="calcPension()">احسب الراتب</button>
+    <div id="pensionResult" class="result-box">
+        <p>الراتب التقاعدي الشهري:</p>
+        <div class="result-value" id="pensionValue">-</div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<footer class="text-center" style="background:#000; color:#fff; padding:10px; margin-top: 40px;">
+  ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
+</footer>
+
+
+<script>
+    // --- 1. حاسبة الضريبة ---
+    function calcVAT(type) {
+        const input = document.getElementById('vatInput');
+        const amount = parseFloat(input.value);
+        const resBox = document.getElementById('vatResult');
+        
+        if(!amount) {
+            alert("الرجاء إدخال مبلغ صحيح");
+            return;
+        }
+        
+        let text = "";
+        if(type === 'add') {
+            let total = amount * 1.15;
+            text = total.toFixed(2) + " ريال (بعد الضريبة)";
+        } else {
+            let base = amount / 1.15;
+            let tax = amount - base;
+            text = "الضريبة: " + tax.toFixed(2) + " | الأساس: " + base.toFixed(2);
+        }
+        
+        document.getElementById('vatValue').textContent = text;
+        resBox.classList.add('active');
+    }
+
+    // --- 2. مواعيد الصرف (العدادات) ---
+    function updateCountdowns() {
+        const today = new Date();
+        // تصفير الوقت لضمان دقة الحساب بالأيام
+        today.setHours(0,0,0,0);
+        
+        const year = today.getFullYear();
+        const month = today.getMonth(); 
+
+        function getDaysLeft(targetDay) {
+            let targetDate = new Date(year, month, targetDay);
+            // إذا التاريخ فات هذا الشهر، نحسب للشهر الجاي
+            if (today.getDate() > targetDay) {
+                targetDate = new Date(year, month + 1, targetDay);
+            }
+            
+            // حساب الفرق بالملي ثانية
+            const diff = targetDate - today;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+            
+            return days === 0 ? "اليوم! 💰" : days + " أيام";
+        }
+
+        // تحديث النصوص
+        document.getElementById('damanDay').textContent = getDaysLeft(1);  // الضمان
+        document.getElementById('citizenDay').textContent = getDaysLeft(10); // المواطن
+        document.getElementById('govDay').textContent = getDaysLeft(27);   // الراتب
+    }
+    
+    // تشغيل العدادات فوراً
+    updateCountdowns();
+
+    // --- 3. حاسبة القسط ---
+    function calcLoan() {
+        const p = parseFloat(document.getElementById('loanAmount').value);
+        const y = parseFloat(document.getElementById('loanYears').value);
+        if(!p || !y) return;
+        
+        const rate = 0.03; 
+        const total = p + (p * rate * y);
+        const monthly = total / (y * 12);
+        
+        document.getElementById('loanResult').classList.add('active');
+        document.getElementById('loanValue').textContent = monthly.toFixed(2) + " ريال";
+    }
+
+    // --- 4. حاسبة العمر ---
+    function calcAge() {
+        const birthInput = document.getElementById('birthDate').value;
+        if(!birthInput) return;
+        
+        const birth = new Date(birthInput);
+        const today = new Date();
+        
+        let years = today.getFullYear() - birth.getFullYear();
+        let months = today.getMonth() - birth.getMonth();
+        let days = today.getDate() - birth.getDate();
+
+        if (days < 0) {
+            months--;
+            days += 30; 
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        document.getElementById('ageResult').classList.add('active');
+        document.getElementById('ageValue').textContent = `${years} سنة و ${months} شهر و ${days} يوم`;
+    }
+
+    // --- 5. قبول المدارس ---
+    function checkSchool() {
+        const childInput = document.getElementById('childDate').value;
+        if(!childInput) return;
+        
+        const birth = new Date(childInput);
+        const today = new Date();
+        
+        // الحسبة الدقيقة بالعمر العشري
+        const ageInYears = (today - birth) / (1000 * 60 * 60 * 24 * 365.25);
+        const resBox = document.getElementById('schoolResult');
+        let msg = "";
+
+        if(ageInYears < 3) msg = "صغير جداً على المدرسة حالياً 👶";
+        else if (ageInYears < 4) msg = "مرحلة الحضانة / روضة مستوى 1 🧸";
+        else if (ageInYears < 5.5) msg = "مرحلة رياض الأطفال (KG2 - KG3) 🎨";
+        else if (ageInYears < 7) msg = "✅ مؤهل للصف الأول الابتدائي";
+        else msg = "أكبر من سن القبول المعتاد للصف الأول 📚";
+
+        resBox.classList.add('active');
+        document.getElementById('schoolValue').textContent = msg;
+    }
+
+    // --- 6. محول التاريخ (تعديل الاسم ليتوافق مع HTML) ---
+    function convertDate() {
+        const input = document.getElementById('gregDate').value;
+        if (!input) return;
+        
+        const date = new Date(input);
+        const hijri = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }).format(date);
+
+        document.getElementById('hijriValue').textContent = hijri;
+    }
+
+    // --- 7. حاسبة الزكاة ---
+    function calcZakat() {
+        const amount = parseFloat(document.getElementById('zakatAmount').value);
+        if(!amount) return;
+        
+        // معادلة الزكاة: المبلغ تقسيم 40 (أو ضرب 0.025)
+        const zakat = amount / 40;
+        
+        document.getElementById('zakatResult').classList.add('active');
+        document.getElementById('zakatValue').textContent = zakat.toFixed(2) + " ريال";
+    }
+
+    // --- 8. مكافأة نهاية الخدمة (حسب نظام العمل السعودي) ---
+    function calcEndService() {
+        const salary = parseFloat(document.getElementById('esSalary').value);
+        const years = parseFloat(document.getElementById('esYears').value);
+        const reason = document.getElementById('esReason').value;
+        
+        if(!salary || !years) return;
+
+        let reward = 0;
+
+        // 1. حساب المكافأة الأساسية (نص راتب لأول 5 سنوات، وراتب كامل لما بعدها)
+        if (years <= 5) {
+            reward = years * 0.5 * salary;
+        } else {
+            reward = (5 * 0.5 * salary) + ((years - 5) * salary);
+        }
+
+        // 2. تطبيق قواعد الاستقالة
+        if (reason === 'resign') {
+            if (years < 2) {
+                reward = 0; // لا يستحق شيء
+            } else if (years >= 2 && years < 5) {
+                reward = reward / 3; // يستحق الثلث
+            } else if (years >= 5 && years < 10) {
+                reward = (reward * 2) / 3; // يستحق الثلثين
+            }
+            // إذا 10 سنوات فأكثر يستحق كاملة حتى لو استقالة
+        }
+
+        document.getElementById('esResult').classList.add('active');
+        document.getElementById('esValue').textContent = reward.toFixed(2) + " ريال";
+    }
+
+    // --- 9. حاسبة التقاعد (نظام التأمينات) ---
+    function calcPension() {
+        const salary = parseFloat(document.getElementById('pensionSalary').value);
+        const years = parseFloat(document.getElementById('pensionYears').value);
+        
+        if(!salary || !years) return;
+
+        // المعادلة التقريبية: (متوسط الراتب × عدد السنوات) ÷ 40
+        let pension = (salary * years) / 40;
+
+        // لا يتجاوز الراتب التقاعدي 100% من المتوسط
+        if (pension > salary) pension = salary;
+
+        document.getElementById('pensionResult').classList.add('active');
+        document.getElementById('pensionValue').textContent = pension.toFixed(2) + " ريال";
+    }
+
+</script>
+
+</body>
+</html>

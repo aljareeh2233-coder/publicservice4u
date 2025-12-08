@@ -284,10 +284,15 @@ document.addEventListener('DOMContentLoaded', function () {
         sliderSecTitle.textContent = lang === 'en' ? 'Quick Electronic Services' : 'الخدمات الإلكترونية السريعة';
     }
 
-    // 3. ترجمة زر نماذج الخدمات الحكومية (الزر الأخضر الكبير)
+    // 3. ترجمة الأزرار الخضراء (النماذج + الأدوات)
     const namazjiLabel = document.getElementById('namazjiText');
     if (namazjiLabel) {
         namazjiLabel.textContent = lang === 'en' ? 'Government Services Forms' : 'نماذج الخدمات الحكومية';
+    }
+
+    const toolsLabel = document.getElementById('toolsText');
+    if (toolsLabel) {
+        toolsLabel.textContent = lang === 'en' ? 'Smart Tools & Calculators' : 'أدوات وحاسبات ذكية';
     }
     // ========================================================
     // 4. ترجمة واجهة الشات بوت (Bot Interface)
