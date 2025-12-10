@@ -25,6 +25,9 @@
     .info-section {padding: 40px 0;}
     .info-section h2 {color: var(--saudi-green); margin-bottom: 20px; font-weight: bold;}
     .lang-switch, .mode-switch {border: none; background: none; color: white; font-size: 1.2rem; cursor: pointer; margin-inline: 10px;}
+    /* تحسين قسم الخريطة في الوضع الليلي */
+    body.dark-mode #map-section { background-color: var(--bg-card-dark) !important; color: white; }
+    body.dark-mode #map-section p { color: #ccc !important; }
   </style>
 </head>
 <body>
@@ -55,6 +58,26 @@
       <p id="mainDesc" id="mainDesc" class="lead">منصة الخدمات العامة توفر وصولاً موحداً ومبسطاً للخدمات.</p>
     </div>
   </header>
+
+  <section class="py-5 bg-light" id="map-section">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold" style="color: var(--saudi-green); font-size: 2.2rem;">
+      زوار موقع الخدمات العامة من جميع أنحاء العالم
+    </h2>
+    <p class="text-center text-muted mb-5 lead">
+      إحصاءات حية ودقيقة 100% مباشرة من Google Analytics 4<br>
+      تُحدَّث تلقائيًا كل يوم
+    </p>
+
+    <div class="ratio ratio-21x9 shadow-lg rounded-4 overflow-hidden" style="background: white;">
+      <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/13128228-96f8-4d52-8513-204eadce8739/page/p_rkoakqdvyd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+
+    <p class="text-center mt-4 small text-secondary">
+      المصدر: Google Analytics 4 • آخر تحديث تلقائي
+    </p>
+  </div>
+</section>
 
   <main class="container mb-5">
     

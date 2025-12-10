@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="خريطة تفاعلية توضح إحصائيات زوار موقع الخدمات العامة وتوزيعهم الجغرافي حول العالم في الوقت الفعلي.">
+  <title>خريطة زوار الموقع التفاعلية - الخدمات العامة</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css">
+  
+  <style>
+    body { background:#0f172a; color:white; font-family:'Tajawal','Segoe UI',sans-serif; padding:40px 20px; }
+    h2 { color:#00d4aa; font-size:2.5rem; margin-bottom:10px; text-align: center; }
+    p { color:#94a3b8; font-size:1.1rem; text-align: center; }
+    /* تنسيق زر العودة */
+    .back-btn {
+      display: inline-block; /* يجعله ككتلة ليقبل الحواف */
+      color: #00d4aa;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 1px solid #00d4aa;
+      padding: 10px 20px;
+      border-radius: 30px; /* حواف دائرية ناعمة */
+      margin-bottom: 30px; /* مسافة تحته */
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      background: #00d4aa;
+      color: #0f172a; /* لون الخلفية الداكن للنص عند التحويم */
+      box-shadow: 0 0 15px rgba(0, 212, 170, 0.4); /* توهج بسيط */
+    }
+    #world-map {
+      width: 100%;
+      max-width: 1100px;
+      height: 600px;
+      margin: 40px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      background: #0b1a2e;
+    }
+    .jvm-tooltip {
+      background: rgba(0,0,0,0.9) !important;
+      color: white !important;
+      border: 1px solid #00d4aa;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="text-center">🗺️ زوار موقع الخدمات العامة من جميع أنحاء العالم</h2>
+  <p class="text-center">مرر الماوس على أي دولة لمعرفة عدد الزوار منها</p>
+  
+  <div style="text-align: center;">
+    <a href="index.html" class="back-btn">🏠 العودة للرئيسية</a>
+  </div>
+
+  <div id="world-map"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/js/jsvectormap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+
+  <script>
+    // بيانات الزوار حسب رمز الدولة (ISO Alpha-2)
+    // يمكنك تحديث هذه الأرقام يدويًا كل فترة أو ربطها بـ API لاحقًا
+    // بيانات الزوار الحقيقية (تم التحديث حسب الصورة)
+    const visitorsData = {
+      SA: 19,   // السعودية (52.78%)
+      US: 10,   // أمريكا (27.78%)
+      FR: 2,    // فرنسا
+      IN: 1,    // الهند
+      IR: 1,    // إيران
+      IE: 1,    // أيرلندا
+      RO: 1,    // رومانيا
+      RU: 1     // روسيا
+    };
+
+    new jsVectorMap({
+      selector: '#world-map',
+      map: 'world',
+      
+      // ✅ هنا التعديل: جعلناها true لتفعيل التكبير بالماوس
+      zoomOnScroll: true, 
+      zoomButtons: true, // (اختياري) لإظهار أزرار + و - على الجانب
+
+      showTooltip: true,
+
+      // ألوان الدول حسب عدد الزوار (كما هي لم تتغير)
+      visualizeData: {
+        scale: ['#1e293b', '#0ea5e9', '#00d4aa'], 
+        values: visitorsData,
+        defaultValue: 10
+      },
+
+      regionStyle: {
+        initial: { fill: '#1e293b' },
+        hover: { fill: '#0ea5e9', fillOpacity: 0.9, cursor: 'pointer' },
+        selected: { fill: '#00d4aa' }
+      },
+
+      // تمييز السعودية دائمًا
+      selectedRegions: ['SA'],
+
+      onRegionTooltipShow: function(e, tooltip, code) {
+        const count = visitorsData[code] || 0;
+        const flag = `<img src="https://flagcdn.com/24x18/${code.toLowerCase()}.png" style="margin-left:8px; vertical-align:middle;">`;
+        
+        if (code === 'SA') {
+          tooltip.text(flag + ' المملكة العربية السعودية 💚 ' + count.toLocaleString() + ' زائر', true);
+        } else {
+          const countryName = tooltip.text();
+          tooltip.text(flag + ' ' + countryName + ': ' + count.toLocaleString() + ' زائر', true);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

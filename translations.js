@@ -104,11 +104,17 @@ const translations = {
             ar: `<p>الخطوة الأولى لأي مطالبة حقوقية هي "صحيفة الدعوى". يشرح الفيديو كيفية تصنيف الدعوى (مالية، أحوال شخصية، عمالية) وتعبئة بيانات المدعى عليه بدقة.</p><p>كما نوضح أهمية إرفاق الأسانيد والمستندات في الخانات المخصصة لضمان قبول الدعوى وعدم رفضها شكلاً من قبل المحكمة.</p>`, 
             en: `<p>The first step for any claim is the "Lawsuit Sheet". The video explains classifying the case and entering defendant data.</p><p>We also highlight attaching evidence in the correct fields to ensure the case is accepted by the court.</p>` 
         },
-        v2TitleMob: { ar: '<i class="fa-solid fa-user-pen ms-2 text-success"></i> الوكالة الإلكترونية', en: '<i class="fa-solid fa-user-pen me-2 text-success"></i> Electronic POA' },
-        v2TitleDesk: { ar: '<i class="fa-solid fa-user-pen ms-2 text-success"></i> إصدار وفسخ الوكالات', en: '<i class="fa-solid fa-user-pen me-2 text-success"></i> Issue/Revoke POAs' },
+        v2TitleMob: { 
+            ar: '<i class="fa-solid fa-user-pen ms-2 text-success"></i> إصدار وكالة إلكترونية', 
+            en: '<i class="fa-solid fa-user-pen me-2 text-success"></i> Issue Electronic POA' 
+        },
+        v2TitleDesk: { 
+            ar: '<i class="fa-solid fa-user-pen ms-2 text-success"></i> إصدار وكالة إلكترونية', 
+            en: '<i class="fa-solid fa-user-pen me-2 text-success"></i> Issue Electronic POA' 
+        },
         v2Desc: { 
-            ar: `<p>يمكنك الآن توكيل محامٍ أو قريب وأنت في منزلك. يوضح الشرح طريقة اختيار بنود الوكالة وتحديد مدة سريانها.</p><p>كما يشرح كيفية "فسخ الوكالة" فورياً إلكترونياً في حال انتهاء الغرض منها لضمان حماية حقوقك القانونية.</p>`, 
-            en: `<p>You can authorize a lawyer or relative from home. The guide shows selecting POA terms and duration.</p><p>It also explains how to "Revoke POA" instantly online once its purpose is served to protect your legal rights.</p>` 
+            ar: `<p>يقدم الفيديو شرحًا سريعًا لطريقة إصدار وكالة إلكترونية عبر منصة ناجز دون الحاجة لمراجعة كتابات العدل.</p><p>يبدأ بشرح طريقة اختيار نوع الوكالة، ثم تحديد البنود والصلاحيات. يوضح الفيديو أيضًا كيفية إدخال بيانات الموكل والموكل له، ثم اعتماد الوكالة وإرسالها عبر الرسائل النصية.</p>`, 
+            en: `<p>The video provides a quick guide on issuing an electronic POA via Najiz without visiting a notary. It starts with selecting the POA type and terms.</p><p>It also explains entering principal and agent details, approving the POA, and sending it via SMS.</p>` 
         },
         v3Title: { ar: '<i class="fa-solid fa-scale-balanced ms-2 text-success"></i> الاستعلام وحضور الجلسات', en: '<i class="fa-solid fa-scale-balanced me-2 text-success"></i> Inquiries & Hearings' },
         v3Desc: { 

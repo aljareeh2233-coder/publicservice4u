@@ -164,15 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
         </ul>
       </div>
       <div class="col-md-3 mb-3">
-        <h5>روابط الموقع</h5>
-        <ul class="list-unstyled">
-          <li><a href="faq.html" class="text-white text-decoration-none">الأسئلة الشائعة</a></li>
-          <li><a href="contact.html" class="text-white text-decoration-none">اتصل بنا</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none">عن الموقع</a></li>
-          <li><a href="privacy.html" class="text-white text-decoration-none">الخصوصية وسياسة الاستخدام</a></li>
-          <li><a href="terms.html" class="text-white text-decoration-none">الشروط والأحكام</a></li>
-        </ul>
-      </div>
+  <h5>روابط الموقع</h5>
+  <ul class="list-unstyled">
+    <li><a href="faq.html" class="text-white text-decoration-none">الأسئلة الشائعة</a></li>
+    <li><a href="contact.html" class="text-white text-decoration-none">اتصل بنا</a></li>
+    <li><a href="about.html" class="text-white text-decoration-none">عن الموقع</a></li>
+    
+    <li><a href="map.html" class="text-white text-decoration-none">📊 خريطة الزوار التفاعلية</a></li>
+    
+    <li><a href="privacy.html" class="text-white text-decoration-none">الخصوصية وسياسة الاستخدام</a></li>
+    <li><a href="terms.html" class="text-white text-decoration-none">الشروط والأحكام</a></li>
+  </ul>
+</div>
     `,
     en: `
       <div class="col-lg-6 col-md-6 mb-4 mb-md-0 text-md-start">
@@ -187,15 +190,18 @@ document.addEventListener('DOMContentLoaded', function () {
         </ul>
       </div>
       <div class="col-md-3 mb-3">
-        <h5 id="footerLinksTitle">Website Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="faq.html" class="text-white text-decoration-none" id="linkFaq">FAQ</a></li>
-          <li><a href="contact.html" class="text-white text-decoration-none" id="linkContact">Contact Us</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none" id="linkAbout">About</a></li>
-          <li><a href="privacy.html" class="text-white text-decoration-none" id="linkPrivacy">Privacy Policy</a></li>
-          <li><a href="terms.html" class="text-white text-decoration-none" id="linkTerms">Terms & Conditions</a></li>
-        </ul>
-      </div>
+  <h5 id="footerLinksTitle">Website Links</h5>
+  <ul class="list-unstyled">
+    <li><a href="faq.html" class="text-white text-decoration-none" id="linkFaq">FAQ</a></li>
+    <li><a href="contact.html" class="text-white text-decoration-none" id="linkContact">Contact Us</a></li>
+    <li><a href="about.html" class="text-white text-decoration-none" id="linkAbout">About</a></li>
+    
+    <li><a href="map.html" class="text-white text-decoration-none" id="linkMap">Interactive Visitor Map 📊</a></li>
+    
+    <li><a href="privacy.html" class="text-white text-decoration-none" id="linkPrivacy">Privacy Policy</a></li>
+    <li><a href="terms.html" class="text-white text-decoration-none" id="linkTerms">Terms & Conditions</a></li>
+  </ul>
+</div>
     `
   };
 

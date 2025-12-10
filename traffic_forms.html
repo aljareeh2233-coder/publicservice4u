@@ -11,59 +11,121 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHZV252K6"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-0EHZV252K6');
   </script>
 
   <style>
-    body.dark-mode {background-color:#0b1a2e;color:#f1f1f1;}
-    body.light-mode {background-color:#ffffff;color:#000000;}
-
-    .navbar-dark-mode {background-color:#15294b!important;}
-    .navbar-light-mode {background-color:#334a6b!important;}
-    .navbar-light-mode .nav-link,.navbar-light-mode .navbar-brand{color:#ffffff!important;}
-
-    .lang-switch,.mode-switch{
-      border:none;background:none;color:inherit;
-      font-size:16px;cursor:pointer;margin-inline:5px;
-    }
-
+    /* ✨ المتغيرات العامة (الهوية الموحدة) */
     :root {
       --saudi-green: #00A651;
-      --box-dark: #15294b;
+      --saudi-dark: #0b1a2e;
+      --saudi-accent: #00d4aa;
+      --card-light: #ffffff;
+      --card-dark: #15294b;
     }
 
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
+    body.light-mode {background-color: #f8f9fa; color: #333;}
+    body.dark-mode {background-color: var(--saudi-dark); color: #f1f1f1;}
+
+    /* 🎨 الهيدر الملون (Hero Header) */
+    .hero-header {
+      background: linear-gradient(135deg, var(--saudi-dark), var(--saudi-green));
+      padding: 120px 0 60px 0;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      border-radius: 0 0 50px 50px;
+      box-shadow: 0 10px 30px rgba(0, 166, 81, 0.2);
+    }
+
+    .navbar-dark-mode {background-color: rgba(21, 41, 75, 0.95)!important; backdrop-filter: blur(10px);}
+    .navbar-light-mode {background-color: var(--saudi-green)!important;}
+    .navbar-light-mode .nav-link, .navbar-light-mode .navbar-brand {color: #ffffff!important;}
+
+    .lang-switch, .mode-switch {border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 20px; padding: 5px 15px; margin-inline: 5px; font-size: 14px; transition: 0.3s;}
+    .lang-switch:hover, .mode-switch:hover {background: white; color: var(--saudi-green);}
+
+    /* 📦 صندوق المحتوى (Card Style) */
     .content-box {
-      background-color:var(--box-dark);
-      color:white;
-      border-radius:12px;
-      padding:25px;
-      margin-bottom:30px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.3);
+      background-color: var(--card-light);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    body.dark-mode .content-box {
+      background-color: var(--card-dark);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    body.light-mode .content-box {
-      background-color:#f8f9fa;
-      color:#000;
-    }
-
-    .service-text { line-height: 1.8; text-align: justify; }
-    
+    /* 📺 تحسين إطار الفيديو */
     .video-container {
       position: relative; 
       padding-top: 56.25%; 
-      border-radius: 12px; 
+      border-radius: 15px; 
       overflow: hidden; 
-      border: 2px solid #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border: 4px solid white;
+    }
+    body.dark-mode .video-container {
+      border-color: #2a4163;
     }
     .video-container iframe {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+
+    /* 📝 تنسيق النصوص */
+    .service-text { line-height: 1.8; text-align: justify; font-size: 1.05rem; }
+
+    /* 🔗 الأزرار الرسمية (Clean CSS) */
+    .btn-official {
+      border: 2px solid var(--saudi-green);
+      color: var(--saudi-green);
+      background: transparent;
+      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    .btn-official:hover {
+      background-color: var(--saudi-green);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 166, 81, 0.3);
+    }
+    body.dark-mode .btn-official {
+      border-color: var(--saudi-accent);
+      color: var(--saudi-accent);
+    }
+    body.dark-mode .btn-official:hover {
+      background-color: var(--saudi-accent);
+      color: #000;
+    }
+
+    /* 🌑 قوانين الوضع الليلي الصارمة */
+    body.dark-mode p, 
+    body.dark-mode li,
+    body.dark-mode .service-text {
+      color: #ffffff !important;
+    }
+    body.dark-mode h4, 
+    body.dark-mode h5,
+    body.dark-mode .text-success {
+      color: var(--saudi-accent) !important;
+    }
+    /* استثناء للأيقونات لتبقى ملونة */
+    body.dark-mode h4 i, 
+    body.dark-mode h5 i {
+      color: var(--saudi-accent) !important;
     }
   </style>
 </head>
@@ -73,7 +135,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
-        <img src="images/logo-text.png" alt="منصة الخدمات العامة" width="170" height="50" style="height:50px; width:auto;">
+        <img src="images/logo-text.png" alt="منصة الخدمات العامة" style="height:50px; width:auto;">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -85,24 +147,30 @@
           <li class="nav-item"><a class="nav-link" href="index.html" id="homeLink">الرئيسية</a></li>
         </ul>
 
-        <button class="lang-switch" id="langSwitch">EN</button>
-        <button class="mode-switch" id="modeSwitch">☀️ / 🌙</button>
+        <div class="d-flex align-items-center">
+          <button class="lang-switch" id="langSwitch">EN</button>
+          <button class="mode-switch" id="modeSwitch">☀️/🌙</button>
+        </div>
       </div>
     </div>
   </nav>
 
-  <main class="container mt-5 pt-5">
+  <header class="hero-header">
+    <div class="container">
+      <h1 class="display-4 fw-bold" id="pageTitle">نماذج المرور</h1>
+      <p class="lead mt-2 opacity-75" id="pageDesc" style="max-width:700px;margin:0 auto;">
+        شرح شامل بالفيديو لكيفية تعبئة نماذج المرور، إصدار اللوحات الجديدة، وإسقاط المركبات التالفة عبر منصة أبشر.
+      </p>
+    </div>
+  </header>
 
-    <h2 class="text-center mt-4 mb-4" id="pageTitle">نماذج المرور - إصدار اللوحات وإسقاط المركبة</h2>
-    <p class="text-center mt-2 mb-5" id="pageDesc" style="max-width:650px;margin:auto;">
-      شرح شامل بالفيديو لكيفية تعبئة نماذج المرور، إصدار اللوحات الجديدة، وإسقاط المركبات التالفة عبر منصة أبشر.
-    </p>
+  <main class="container mb-5">
 
     <div class="content-box">
       <div class="row align-items-center">
         
         <div class="col-lg-6 mb-4 order-lg-1 order-1">
-          <h4 class="mb-3" id="video1Title"><i class="fa-solid fa-car-side ms-2 text-success"></i> شرح خطوات تعبئة نموذج إصدار لوحة</h4>
+          <h4 class="mb-3 fw-bold" id="video1Title"><i class="fa-solid fa-car-side ms-2 text-success"></i> شرح خطوات تعبئة نموذج إصدار لوحة</h4>
           
           <div class="service-text" id="video1Desc">
             <p>
@@ -128,14 +196,14 @@
       <div class="row align-items-center">
 
         <div class="col-lg-6 mb-4 order-lg-1 order-1">
-          <h4 class="mb-3 d-lg-none" id="video2TitleMob"><i class="fa-solid fa-trash ms-2 text-success"></i> إسقاط المركبة عبر أبشر</h4>
+          <h4 class="mb-3 d-lg-none fw-bold" id="video2TitleMob"><i class="fa-solid fa-trash ms-2 text-success"></i> إسقاط المركبة عبر أبشر</h4>
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/V_r43NjeAzo" title="شرح إسقاط المركبة" allowfullscreen loading="lazy"></iframe>
           </div>
         </div>
 
         <div class="col-lg-6 mb-4 order-lg-2 order-2">
-          <h4 class="mb-3 d-none d-lg-block" id="video2TitleDesk"><i class="fa-solid fa-trash ms-2 text-success"></i> شرح خطوات إسقاط مركبة تالفة</h4>
+          <h4 class="mb-3 d-none d-lg-block fw-bold" id="video2TitleDesk"><i class="fa-solid fa-trash ms-2 text-success"></i> شرح خطوات إسقاط مركبة تالفة</h4>
           
           <div class="service-text" id="video2Desc">
             <p>
@@ -152,35 +220,26 @@
     </div>
 
     <div class="content-box">
-      <h5 id="linksTitle"><i class="fas fa-link ms-2"></i> روابط هامة</h5>
+      <h5 id="linksTitle" class="fw-bold mb-3"><i class="fas fa-link ms-2 text-success"></i> روابط هامة</h5>
       <div class="d-flex flex-wrap gap-3 mt-3">
-        <a href="https://www.absher.sa" target="_blank" id="linkAbsher" class="btn d-flex align-items-center" 
-           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
-           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
-          <i class="fas fa-globe ms-2"></i> منصة أبشر
+        <a href="https://www.absher.sa" target="_blank" id="linkAbsher" class="btn btn-official">
+          <i class="fas fa-globe me-2"></i> منصة أبشر
         </a>
 
-        <a href="https://www.moi.gov.sa" target="_blank" id="linkMoi" class="btn d-flex align-items-center" 
-           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
-           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
-          <i class="fas fa-building ms-2"></i> المرور - وزارة الداخلية
+        <a href="https://www.moi.gov.sa" target="_blank" id="linkMoi" class="btn btn-official">
+          <i class="fas fa-building me-2"></i> المرور - وزارة الداخلية
         </a>
 
-        <a href="https://www.moi.gov.sa/wps/portal/!ut/p/z1/rVJNU4MwFPwr9MCxkwcJX8eMUwuKVdtBIZdO-KiNY4BSFP33Eu6AzPhOeZndnbc7ixiKESv5l3jjrahK_tHvCbOPEBDiG8S8f8R0A9S-Db29B0ZgAHodADdb6hMnBHDDrQUB9aO994wxUIzYX_hjgAdzjv-CGGJZ2dbtGSWyElouOl7qoJ7nShZaVpVtUbYab3RQHzrUTZUV-WdTXBW3zkSOElLgk4kBSE7SlPAstbB1stIidzLuYtsdkNdOQZkzes_GnPHTHzz4GRmq8mADZCrROQ02GVqfaTLpwgd0WJDMjJj5n2LGIrG7ufL07RbvlwujfYVUTb5bFC_u0IE3qJZRJF0s1zGIJymPu92ap-4P7uhq9Qu2Wlt5/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank" id="linkForms" class="btn d-flex align-items-center" 
-           style="border: 1px solid #00A651; color: #00A651; transition: all 0.3s; font-weight:bold;"
-           onmouseover="this.style.backgroundColor='#00A651'; this.style.color='white'"
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00A651'">
-          <i class="fas fa-file-pdf ms-2"></i> نموذج المرور الرسمي (PDF)
+        <a href="https://www.moi.gov.sa/wps/portal/!ut/p/z1/rVJNU4MwFPwr9MCxkwcJX8eMUwuKVdtBIZdO-KiNY4BSFP33Eu6AzPhOeZndnbc7ixiKESv5l3jjrahK_tHvCbOPEBDiG8S8f8R0A9S-Db29B0ZgAHodADdb6hMnBHDDrQUB9aO994wxUIzYX_hjgAdzjv-CGGJZ2dbtGSWyElouOl7qoJ7nShZaVpVtUbYab3RQHzrUTZUV-WdTXBW3zkSOElLgk4kBSE7SlPAstbB1stIidzLuYtsdkNdOQZkzes_GnPHTHzz4GRmq8mADZCrROQ02GVqfaTLpwgd0WJDMjJj5n2LGIrG7ufL07RbvlwujfYVUTb5bFC_u0IE3qJZRJF0s1zGIJymPu92ap-4P7uhq9Qu2Wlt5/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank" id="linkForms" class="btn btn-official">
+          <i class="fas fa-file-pdf me-2"></i> نموذج المرور الرسمي (PDF)
         </a>
       </div>
     </div>
 
   </main>
 
-  <footer class="text-center mt-4" style="background:#000; color:#fff; padding:10px;">
-    ©2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
+  <footer class="text-center mt-4 py-3" style="background:#08101a; color:#fff;">
+    © 2025 كافة الحقوق محفوظة لمنصة الخدمات العامة
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
