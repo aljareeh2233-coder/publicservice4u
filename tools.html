@@ -17,6 +17,10 @@
 
   gtag('config', 'G-0EHZV252K6');
   </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3745566190122321"
+     crossorigin="anonymous"></script>
+     
     <style>
         :root {
             --primary-color: #27ae60;
@@ -371,6 +375,73 @@ footer {
     </div>
 </div>
 
+<div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="tool-title">حاسبة الضمان المطور</div>
+    </div>
+    <div class="input-group">
+        <label>إجمالي دخل الأسرة الشهري</label>
+        <input type="number" id="damanIncome" placeholder="مثلاً: 3000">
+    </div>
+    <div class="input-group">
+        <label>عدد التابعين (الأسرة بدون العائل)</label>
+        <input type="number" id="damanCount" placeholder="مثلاً: 3">
+    </div>
+    <button onclick="calcDaman()">احسب الدعم المتوقع</button>
+    <div id="damanResult" class="result-box">
+        <p>الدعم التقديري المستحق:</p>
+        <div class="result-value" id="damanValue">-</div>
+        <small style="display:block; margin-top:5px; color:#888;">* الحساب بناءً على الحد المانع الجديد (1320 للعائل + 660 للتابع)</small>
+    </div>
+</div>
+
+<div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="tool-title">رسوم الخدمات الحكومية</div>
+    </div>
+    <div class="input-group">
+        <label>اختر الخدمة</label>
+        <select id="govServiceType" onchange="calcGovFees()">
+            <option value="">-- اختر الخدمة --</option>
+            <option value="300">إصدار جواز سفر (5 سنوات)</option>
+            <option value="600">إصدار جواز سفر (10 سنوات)</option>
+            <option value="200">تجديد رخصة قيادة (5 سنوات)</option>
+            <option value="400">تجديد رخصة قيادة (10 سنوات)</option>
+            <option value="100">إصدار رخصة سير (استمارة)</option>
+            <option value="150">نقل ملكية مركبة (خاصة)</option>
+            <option value="650">تجديد إقامة (عمالة منزلية)</option>
+            <option value="2000">رسوم المرافقين (سنوياً للفرد)</option>
+        </select>
+    </div>
+    <div id="govFeesResult" class="result-box">
+        <p>الرسوم الرسمية:</p>
+        <div class="result-value" id="govFeesValue">0 ريال</div>
+    </div>
+</div>
+
+<div class="tool-card">
+    <div class="card-header">
+        <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+        <div class="tool-title">المكافآت الطلابية</div>
+    </div>
+    <div class="input-group">
+        <label>المرحلة / التخصص</label>
+        <select id="eduStage">
+            <option value="scientific">جامعي - تخصص علمي</option>
+            <option value="literary">جامعي - تخصص نظري</option>
+            <option value="master">دراسات عليا (ماجستير/دكتوراه)</option>
+            <option value="takaful">إعانة تكافل (مدارس)</option>
+            <option value="disabled">إعانة ذوي الإعاقة (جامعي)</option>
+        </select>
+    </div>
+    <button onclick="calcEduSupport()">عرض المكافأة</button>
+    <div id="eduResult" class="result-box">
+        <p>قيمة المكافأة الشهرية:</p>
+        <div class="result-value" id="eduValue">-</div>
+    </div>
+</div>
     </div>
 </div>
 
@@ -574,6 +645,90 @@ footer {
 
         document.getElementById('pensionResult').classList.add('active');
         document.getElementById('pensionValue').textContent = pension.toFixed(2) + " ريال";
+    }
+    // --- 10. حاسبة الضمان المطور (تقديرية) ---
+    function calcDaman() {
+        const income = parseFloat(document.getElementById('damanIncome').value) || 0;
+        const dependents = parseFloat(document.getElementById('damanCount').value) || 0;
+        
+        // القيم الثابتة (حسب آخر تحديث 2024/2025)
+        const baseBreadwinner = 1320; // العائل
+        const baseDependent = 660;    // التابع
+        
+        // 1. حساب الحد الأعلى المحتسب (المعاش المستحق قبل خصم الدخل)
+        let totalEntitlement = baseBreadwinner + (dependents * baseDependent);
+        
+        // 2. حساب الدخل المحتسب (نصف الدخل الشهري)
+        let calculatedIncome = income * 0.5;
+        
+        // 3. حساب الدعم
+        let support = totalEntitlement - calculatedIncome;
+
+        // التحقق من الأهلية (إذا الناتج بالسالب يعني الدخل تجاوز الحد المانع)
+        let msg = "";
+        let color = "";
+        
+        if (support > 0) {
+            msg = support.toFixed(2) + " ريال";
+            color = "#27ae60"; // أخضر
+        } else {
+            msg = "غير مؤهل (الدخل يتجاوز الحد)";
+            color = "#c0392b"; // أحمر
+        }
+
+        const resBox = document.getElementById('damanResult');
+        const resVal = document.getElementById('damanValue');
+        
+        resBox.classList.add('active');
+        resVal.textContent = msg;
+        resVal.style.color = color;
+    }
+
+    // --- 11. حاسبة الرسوم الحكومية ---
+    function calcGovFees() {
+        const select = document.getElementById('govServiceType');
+        const fees = select.value;
+        const resBox = document.getElementById('govFeesResult');
+        
+        if(fees) {
+            resBox.classList.add('active');
+            document.getElementById('govFeesValue').textContent = fees + " ريال";
+        } else {
+            resBox.classList.remove('active');
+        }
+    }
+
+    // --- 12. حاسبة المكافآت التعليمية ---
+    function calcEduSupport() {
+        const stage = document.getElementById('eduStage').value;
+        let amount = 0;
+        let note = "";
+
+        switch(stage) {
+            case 'scientific':
+                amount = 1000; // تقريبي للتخصصات العلمية
+                note = " (يخصم منها 10 ريال للصندوق الطلابي)";
+                break;
+            case 'literary':
+                amount = 850; // تقريبي للنظري
+                note = " (يخصم منها 10 ريال للصندوق الطلابي)";
+                break;
+            case 'master':
+                amount = 900; // متوسط الدراسات العليا
+                note = " (تختلف حسب الجامعة والبدلات)";
+                break;
+            case 'takaful':
+                amount = 500; // إعانة تكافل سنوية/فصلية
+                note = " (تصرف عادة بداية الفصل الدراسي)";
+                break;
+            case 'disabled':
+                amount = 1500; // مكافأة بدل إعاقة (تقريبي)
+                note = " (تضاف للمكافأة الأساسية)";
+                break;
+        }
+
+        document.getElementById('eduResult').classList.add('active');
+        document.getElementById('eduValue').innerHTML = amount + " ريال" + `<span style="display:block;font-size:0.8rem;color:#666">${note}</span>`;
     }
 
 </script>
